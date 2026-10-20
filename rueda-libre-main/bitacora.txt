@@ -1,0 +1,16 @@
+
+------------------------------------------------------------
+1. URL completa: http://127.0.0.1:5500/index.html
+2. Protocolo: HTTP 
+3. Host: 127.0.0.1 (o localhost)
+4. Puerto: 5500
+5. Ruta: /index.html
+6. Método de la petición: GET
+7. Código de estado: 200 OK
+------------------------------------------------------------
+
+Notas y observaciones:
+- Tipo de contenido (Content-Type): text/html; charset=UTF-8
+- Dirección remota (Remote Address): 127.0.0.1:5500
+- El método GET solicita la representación del recurso (el archivo index.html).
+- El código 200 indica que la solicitud fue exitosa y el servidor entregó el documento.

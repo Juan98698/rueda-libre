@@ -14,3 +14,46 @@ Notas y observaciones:
 - Dirección remota (Remote Address): 127.0.0.1:5500
 - El método GET solicita la representación del recurso (el archivo index.html).
 - El código 200 indica que la solicitud fue exitosa y el servidor entregó el documento.
+
+
+========================================
+ESQUEMA DE REGIONES SEMÁNTICAS (v0.2)
+========================================
+
+1. index.html (Inicio)
+   ├── HEADER (Encabezado)
+   │    ├── Logo / Nombre del negocio (H1)
+   │    └── NAV (Menú de navegación principal)
+   ├── MAIN (Contenido principal - ÚNICO)
+   │    ├── Introducción y accesos rápidos
+   │    ├── SECTION: "¿Quiénes somos?" (H2)
+   │    ├── SECTION: "Nuestros servicios" (H2)
+   │    │    ├── ARTICLE: Alquiler de bicicletas
+   │    │    ├── ARTICLE: Recorridos guiados
+   │    │    ├── ARTICLE: Mantenimiento
+   │    │    └── ARTICLE: Venta de repuestos
+   │    ├── SECTION: "¿Cómo alquilar?" (H3)
+   │    └── SECTION: "¿Qué beneficios obtienes?" (H3)
+   └── FOOTER (Pie de página)
+        └── Contacto, mapa y correo
+
+2. tarifas.html
+   ├── HEADER -> Logo + NAV
+   ├── MAIN
+   │    ├── SECTION: Tabla de tarifas de alquiler
+   │    ├── SECTION: Tabla de recorridos guiados + enlace a reservas
+   │    ├── SECTION: Información adicional y horarios
+   │    └── ASIDE: "¿Qué llevar?" (información complementaria)
+   └── FOOTER -> Créditos y correo
+
+3. reservas.html
+   ├── HEADER -> Logo/Nombre + NAV
+   ├── MAIN
+   │    ├── Contenido de reserva (H1, descripción, enlace de correo)
+   │    └── ASIDE: "Horario de atención" (contenido secundario/complementario)
+   └── FOOTER -> Créditos y correo
+
+
+en index.html Se integró el enlace de correo directamente en la información 
+de contacto del pie de página para mejorar la experiencia de usuario 
+y evitar enlaces duplicados al mismo destino mailto.

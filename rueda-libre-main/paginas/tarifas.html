@@ -13,121 +13,134 @@
 </head>
 
 
+
 <body>
-    <nav>
-        <ul>
-            <li><a href="../index.html">Inicio</a></li>
-            <li><a href="tarifas.html">Tarifas y rutas</a></li>
-            <li><a href="reservas.html">Reservas</a></li>
-        </ul>
+    <header>
+        <img src="../img/portada.png" alt="Logo de Rueda Libre" width="200">
+        <nav>
+            <ul>
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="tarifas.html">Tarifas y rutas</a></li>
+                <li><a href="reservas.html">Reservas</a></li>
+            </ul>
 
-    </nav>
-
-    <img src="../img/portada.png" alt="Logo de Rueda Libre" width="200">
-
-    <table border="1"> <!--Contenedor de la tabla-->
-
-        <caption> <strong>Tarifas de alquiler de bicicletas</strong></caption> <!--Titulo de la tabla-->
-        <thead><!--Bloque o fila con los titulos de cada columna-->
-            <tr><!--Representa una fila-->
-                <th scope="col">Tipo de bicicleta</th><!--lleva los titulos de cada columna en negrilla-->
-                <th scope="col">1 hora</th>
-                <th scope="col">Medio dia (4 h)</th>
-                <th scope="col">Día completo</th>
-            </tr>
-        </thead>
-        <tbody><!--es el contenedor de todas las filas con sus datos-->
-            <tr>
-                <td>Urbana</td><!--una celda con un dato-->
-                <td>$10.000</td>
-                <td>$30.000</td>
-                <td>$50.000</td>
-
-            </tr>
-
-            <tr>
-                <td>Montaña</td>
-                <td>$15.000</td>
-                <td>$45.000</td>
-                <td>$70.000</td>
-            </tr>
-
-            <tr>
-                <td>Electrica</td>
-                <td>$25.000</td>
-                <td>$70.000</td>
-                <td>$110.000</td>
-
-            </tr>
-
-        </tbody>
-    </table>
+        </nav>
 
 
-    <table id="Recorridos" border="1">
-        <caption> <strong>Recorridos guiados</strong></caption>
-        <thead>
-            <tr>
-                <th scope="col">Recorrido</th>
-                <th scope="col">Distancia</th>
-                <th scope="col">Duración</th>
-                <th scope="col">Nivel</th>
-                <th scope="col">Precio por persona</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Río y parques</td>
-                <td>12 km</td>
-                <td>2 h</td>
-                <td>facil</td>
-                <td>$45.000</td>
-            </tr>
+    </header>
+    <main>
+        <section>
+            <h2>Tarifas de alquiler de bicicletas</h2>
 
-            <tr>
-                <td>Sabores de Barrio</td>
-                <td>18 km</td>
-                <td>3 h</td>
-                <td>Medio</td>
-                <td>$60.000</td>
+            <table border="1"> <!--Contenedor de la tabla-->
 
-            </tr>
+                <caption><strong>Precios por hora, medio día y día completo</strong></caption> <!--Titulo de la tabla-->
+                <thead><!--Bloque o fila con los titulos de cada columna-->
+                    <tr><!--Representa una fila-->
+                        <th scope="col">Tipo de bicicleta</th><!--lleva los titulos de cada columna en negrilla-->
+                        <th scope="col">1 hora</th>
+                        <th scope="col">Medio dia (4 h)</th>
+                        <th scope="col">Día completo</th>
+                    </tr>
+                </thead>
+                <tbody><!--es el contenedor de todas las filas con sus datos-->
+                    <tr>
+                        <td>Urbana</td><!--una celda con un dato-->
+                        <td>$10.000</td>
+                        <td>$30.000</td>
+                        <td>$50.000</td>
 
-            <tr>
+                    </tr>
 
-                <td>Reto Las Palmas</td>
-                <td>25 km</td>
-                <td>4 h</td>
-                <td>Dificil</td>
-                <td>$85.000</td>
+                    <tr>
+                        <td>Montaña</td>
+                        <td>$15.000</td>
+                        <td>$45.000</td>
+                        <td>$70.000</td>
+                    </tr>
 
-            </tr>
+                    <tr>
+                        <td>Electrica</td>
+                        <td>$25.000</td>
+                        <td>$70.000</td>
+                        <td>$110.000</td>
 
-        </tbody>
-    </table>
-    <p>¿Listo para salir a rodar? <a href="reservas.html"><strong>Reservar ahora</strong></a></p>
+                    </tr>
+
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h2>Recorridos guiados</h2>
+            <table id="Recorridos" border="1">
+                <caption><strong>Detalle de rutas, distancias, dificultad y costo</strong></caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Recorrido</th>
+                        <th scope="col">Distancia</th>
+                        <th scope="col">Duración</th>
+                        <th scope="col">Nivel</th>
+                        <th scope="col">Precio por persona</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Río y parques</td>
+                        <td>12 km</td>
+                        <td>2 h</td>
+                        <td>facil</td>
+                        <td>$45.000</td>
+                    </tr>
+
+                    <tr>
+                        <td>Sabores de Barrio</td>
+                        <td>18 km</td>
+                        <td>3 h</td>
+                        <td>Medio</td>
+                        <td>$60.000</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Reto Las Palmas</td>
+                        <td>25 km</td>
+                        <td>4 h</td>
+                        <td>Dificil</td>
+                        <td>$85.000</td>
+
+                    </tr>
+
+                </tbody>
+            </table>
+            <p>¿Listo para salir a rodar? <a href="reservas.html"><strong>Reservar ahora</strong></a></p>
+        </section>
+        <section>
+            <h3>Información adicional para el cliente</h3>
+            <p><strong>Importante:</strong><br>
+                Todos los alquileres incluyen casco de seguridad y candado sin costo adicional. <br></p>
+
+            <h3>Horarios de salida</h3>
+            <p>Los recorridos guiados tienen salidas en los siguientes horarios:</p>
+            <ul>
+                <li><strong>Rio y parques:</strong> lunes 6:00am y 2:00pm</li>
+                <li><strong>Sabores de barrio:</strong> Miercoles 7:00am y 3:00pm</li>
+                <li><strong>Reto las palmas:</strong> Viernes 8:00am y 4:00pm</li>
+            </ul>
+        </section>
+        <aside>
+            <h3>¿Qué llevar?</h3>
+            <ul>
+                <li>Documento de indentidad</li>
+                <li>Ropa y calzado deportivo</li>
+                <li>Buena Hidratación</li>
+                <li>Protector solar y gafas de sol</li>
 
 
-    <h3>Información adicional para el cliente</h3>
-    <p><strong>Importante:</strong><br>
-        Todos los alquileres incluyen casco de seguridad y candado sin costo adicional. <br></p>
-
-    <h3>Horarios de salida</h3>
-    <p>Los recorridos guiados tienen salidas en los siguientes horarios:</p>
-    <ul>
-        <li><strong>Rio y parques:</strong> lunes 6:00am y 2:00pm</li>
-        <li><strong>Sabores de barrio:</strong> Miercoles 7:00am y 3:00pm</li>
-        <li><strong>Reto las palmas:</strong> Viernes 8:00am y 4:00pm</li>
-    </ul>
-    <h3>¿Qué llevar?</h3>
-    <ul>
-        <li>Documento de indentidad</li>
-        <li>Ropa y calzado deportivo</li>
-        <li>Buena Hidratación</li>
-        <li>Protector solar y gafas de sol</li>
-
-
-    </ul>
+            </ul>
+        </aside>
+    </main>
     <footer>
         <p>Rueda Libre &copy; 2026 | Correo: <a href="mailto:hola@ruedalibre.example">hola@ruedalibre.example</a></p>
     </footer>

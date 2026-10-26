@@ -1,0 +1,167 @@
+------------------------------------------------------------
+DESPLIEGUE EN LÍNEA (v0.2):
+- URL pública (GitHub Pages): https://juan98698.github.io/rueda-libre/
+- Repositorio GitHub: https://github.com/Juan98698/rueda-libre
+------------------------------------------------------------
+------------------------------------------------------------
+1. URL completa: http://127.0.0.1:5500/index.html
+2. Protocolo: HTTP 
+3. Host: 127.0.0.1 (o localhost)
+4. Puerto: 5500
+5. Ruta: /index.html
+6. Método de la petición: GET
+7. Código de estado: 200 OK
+------------------------------------------------------------
+
+Notas y observaciones:
+- Tipo de contenido (Content-Type): text/html; charset=UTF-8
+- Dirección remota (Remote Address): 127.0.0.1:5500
+- El método GET solicita la representación del recurso (el archivo index.html).
+- El código 200 indica que la solicitud fue exitosa y el servidor entregó el documento.
+
+
+========================================
+ESQUEMA DE REGIONES SEMÁNTICAS (v0.2)
+========================================
+
+1. index.html (Inicio)
+   ├── HEADER (Encabezado)
+   │    ├── Logo / Nombre del negocio (H1)
+   │    └── NAV (Menú de navegación principal)
+   ├── MAIN (Contenido principal - ÚNICO)
+   │    ├── Introducción y accesos rápidos
+   │    ├── SECTION: "¿Quiénes somos?" (H2)
+   │    ├── SECTION: "Nuestros servicios" (H2)
+   │    │    ├── ARTICLE: Alquiler de bicicletas
+   │    │    ├── ARTICLE: Recorridos guiados
+   │    │    ├── ARTICLE: Mantenimiento
+   │    │    └── ARTICLE: Venta de repuestos
+   │    ├── SECTION: "¿Cómo alquilar?" (H3)
+   │    └── SECTION: "¿Qué beneficios obtienes?" (H3)
+   └── FOOTER (Pie de página)
+        └── Contacto, mapa y correo
+
+2. tarifas.html
+   ├── HEADER -> Logo + NAV
+   ├── MAIN
+   │    ├── SECTION: Tabla de tarifas de alquiler
+   │    ├── SECTION: Tabla de recorridos guiados + enlace a reservas
+   │    ├── SECTION: Información adicional y horarios
+   │    └── ASIDE: "¿Qué llevar?" (información complementaria)
+   └── FOOTER -> Créditos y correo
+
+3. reservas.html
+   ├── HEADER -> Logo/Nombre + NAV
+   ├── MAIN
+   │    ├── Contenido de reserva (H1, descripción, enlace de correo)
+   │    └── ASIDE: "Horario de atención" (contenido secundario/complementario)
+   └── FOOTER -> Créditos y correo
+
+
+en index.html Se integró el enlace de correo directamente en la información 
+de contacto del pie de página para mejorar la experiencia de usuario 
+y evitar enlaces duplicados al mismo destino mailto.
+
+
+========================================
+JUSTIFICACIÓN DE CONTROLES DEL FORMULARIO
+========================================
+1. Tipo de bicicleta (Radio buttons - input type="radio"):
+   Se eligieron botones de radio porque son opciones mutuamente excluyentes (el cliente solo puede elegir un tipo de bicicleta principal). Al compartir el mismo atributo name="tipo_bicicleta", el navegador garantiza que solo se seleccione una opción a la vez.
+
+2. Fecha del alquiler (input type="date"):
+   Se eligió el campo de tipo fecha para que el navegador despliegue un selector de calendario nativo y estandarizado, evitando errores de tipeo y formatos ambiguos por parte del cliente.
+
+3. Comentarios (textarea):
+   A diferencia de un campo de texto simple de una sola línea, textarea permite al cliente ingresar texto multilínea con saltos de renglón para aclaraciones o solicitudes especiales.
+
+
+========================================================================================================
+TABLA DE PRUEBAS DE VALIDACIÓN NATIVA
+========================================================================================================
+| # | Campo                | Dato de prueba       | Resultado esperado                                      | Resultado obtenido                                      |
+|---|----------------------|----------------------|---------------------------------------------------------|---------------------------------------------------------|
+| 1 | Nombre completo      | "Ju"                 | Bloquea envío: exige mínimo 3 caracteres (minlength)    | Bloqueado: aviso de longitud mínima mostrado            |
+| 2 | Documento            | "12345" (5 dígitos)  | Bloquea envío: exige entre 6 y 10 dígitos (pattern)     | Bloqueado: muestra title con formato esperado           |
+| 3 | Documento            | "1020304A" (letras) | Bloquea envío: solo acepta números (pattern)            | Bloqueado: rechaza caracteres no numéricos              |
+| 4 | Correo electrónico   | "usuario-sin-arroba" | Bloquea envío: exige formato con '@' (type="email")     | Bloqueado: solicita incluir '@' en la dirección         |
+| 5 | Celular              | "1234567890"         | Bloquea envío: debe comenzar por 3 (pattern)            | Bloqueado: no coincide con el patrón esperado           |
+| 6 | Celular              | "300123" (incompleto)| Bloquea envío: debe tener 10 dígitos exactos            | Bloqueado: muestra title de 10 dígitos y empezar por 3  |
+| 7 | Fecha de reserva     | "2026-10-31"         | Bloquea envío: fecha anterior al mínimo (min="2026-11-01")| Bloqueado: no permite seleccionar ni enviar día previo|
+| 8 | Cantidad bicicletas  | "7" (o "0")          | Bloquea envío: fuera del rango 1 a 6 (max="6")          | Bloqueado: valor debe ser menor o igual a 6             |
+| 9 | Políticas            | Desmarcado           | Bloquea envío: casilla obligatoria (required)           | Bloqueado: solicita marcar la casilla para continuar    |
+========================================================================================================
+
+
+========================================================================================================
+AUDITORÍA DE ACCESIBILIDAD WEB (WCAG 2.1 - NIVEL AA)
+========================================================================================================
+
+Criterios auditados:
+- Texto alternativo en imágenes (WCAG 1.1.1 - Contenido no textual).
+- Jerarquía y estructura lógica de encabezados (WCAG 1.3.1 - Información y relaciones).
+- Textos de enlace comprensibles fuera de contexto y destino claro (WCAG 2.4.4 - Propósito de enlaces).
+- Idioma base del documento declarado (WCAG 3.1.1 - Idioma de la página: lang="es").
+- Navegación lógica con teclado y controles agrupados (WCAG 2.1.1 / 1.3.1 - Agrupación de controles).
+
+--------------------------------------------------------------------------------------------------------
+TABLA DE HALLAZGOS Y CORRECCIONES
+--------------------------------------------------------------------------------------------------------
+| # | Página / Elemento         | Criterio WCAG               | Hallazgo detectado                                                                 | Corrección aplicada y justificación técnica                                                                                                   |
+|---|---------------------------|-----------------------------|------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1 | tarifas.html (Encabezado) | 1.3.1 Información/Estructura | Ausencia de etiqueta <h1>; la página iniciaba directamente en <h2> en el <main>.   | Se incorporó <h1> en el <header> con "Tarifas de alquiler de bicicletas", dotando al documento de un título único para lectores de pantalla.   |
+| 2 | index.html (Jerarquía)    | 1.3.1 Información/Estructura | Discontinuidad de niveles: secciones principales en <h3> y un <h4> en el footer.   | Se unificaron las secciones a nivel <h2> y el pie a <h2>Contacta con nosotros</h2>, asegurando una lectura secuencial sin saltos abruptos.     |
+| 3 | index.html (Imágenes)     | 1.1.1 Contenido no textual  | Textos alternativos vagos: portada con "portada..." y mapa con solo alt="ruta".    | Se enriqueció el alt del mapa con descripción precisa de la ruta urbana y la portada con la descripción contextual del amanecer y bicicleta.  |
+| 4 | index.html (Enlaces)      | 2.4.4 / 3.2.5 Predecible    | Enlace a Google Maps con texto escueto ("Encuentranos") y target="_blank" oculto.  | Se cambió a "Encuentranos en google maps", agregando rel="noopener noreferrer" para contextualizar el destino y mejorar la seguridad.          |
+| 5 | index.html / tarifas.html | 4.1.1 / 1.3.1 Integridad    | Error de anclaje: href="#recorridos" (minúscula) vs id="Recorridos" (mayúscula).   | Se normalizó el identificador a id="recorridos", evitando enlaces internos rotos en servidores estrictos a mayúsculas como Linux/GitHub.     |
+| 6 | reservas.html (Formulario)| 1.3.1 / 3.3.2 Instrucciones | Opciones de radio button para "tipo de bicicleta" sueltas sin agrupación semántica.| Se agruparon dentro de un <fieldset> con su <legend>Tipo de bicicleta</legend>, permitiendo que el lector de pantalla anuncie la pregunta.     |
+
+
+========================================================================================================
+EVALUACIÓN DE CONTRASTE DE COLOR (WCAG 2.1) Y MAPA DE USO
+========================================================================================================
+
+Parámetros normativos (Nivel AA):
+- Texto normal (< 18pt o < 14pt negrita): Ratio mínimo requerido de 4.5:1.
+- Texto grande (>= 18pt / 24px, o >= 14pt negrita): Ratio mínimo requerido de 3.0:1.
+- No apto: Ratio inferior a 3.0:1 (rechazado para cualquier tipo de texto).
+
+--------------------------------------------------------------------------------------------------------
+TABLA DE EVALUACIÓN DE LAS 8 COMBINACIONES DE MARCA
+--------------------------------------------------------------------------------------------------------
+| # | Color de Texto             | Color de Fondo             | Ratio   | Clasificación WCAG                    | Evaluación técnica                                 |
+|---|----------------------------|----------------------------|:-------:|---------------------------------------|----------------------------------------------------|
+| 1 | Blanco (#FFFFFF)           | Verde Ruta (#1E7A4F)       | 5.31:1  | Apta para texto normal y grande       | Supera el umbral 4.5:1 (Pasa AA normal y AAA gran)|
+| 2 | Blanco (#FFFFFF)           | Naranja Pedal (#F39A2B)    | 2.22:1  | NO apta                               | Falla ambos umbrales. Ilegible para personas con   |
+|   |                            |                            |         |                                       | baja visión o en pantallas brillantes.             |
+| 3 | Azul Noche (#14213D)       | Naranja Pedal (#F39A2B)    | 7.20:1  | Apta para texto normal y grande       | Excelente contraste. Supera el nivel más estricto  |
+|   |                            |                            |         |                                       | AAA (> 7:1).                                       |
+| 4 | Azul Noche (#14213D)       | Crema (#FAF6EF)            | 14.83:1 | Apta para texto normal y grande       | Máxima legibilidad (Pasa AAA holgadamente).        |
+| 5 | Gris Asfalto (#5B6470)     | Crema (#FAF6EF)            | 5.57:1  | Apta para texto normal y grande       | Supera el 4.5:1 exigido para texto secundario (AA).|
+| 6 | Verde Ruta (#1E7A4F)       | Crema (#FAF6EF)            | 4.93:1  | Apta para texto normal y grande       | Cumple para textos de enlaces y destacados (AA).   |
+| 7 | Naranja Pedal (#F39A2B)    | Crema (#FAF6EF)            | 2.06:1  | NO apta                               | Falla severa de contraste (< 3:1). No debe usarse  |
+|   |                            |                            |         |                                       | como color de texto sobre el fondo Crema.          |
+| 8 | Blanco (#FFFFFF)           | Azul Noche (#14213D)       | 15.97:1 | Apta para texto normal y grande       | Contraste óptimo (Pasa AAA). Ideal para banners.   |
+
+--------------------------------------------------------------------------------------------------------
+MAPA DE USO DE COLOR (RECOMENDACIÓN TÉCNICA PARA EL CLIENTE)
+--------------------------------------------------------------------------------------------------------
+
+1. Fondo general del sitio:
+   - Color: Crema (#FAF6EF). Genera un tono cálido y descansado a la vista.
+
+2. Jerarquía tipográfica sobre fondo Crema:
+   - Títulos, encabezados (h1, h2, h3) y texto principal: Azul Noche (#14213D). Ratio 14.83:1 (AAA).
+   - Texto secundario, notas al pie y descripciones breves: Gris Asfalto (#5B6470). Ratio 5.57:1 (AA).
+   - Enlaces en texto: Verde Ruta (#1E7A4F). Ratio 4.93:1 (AA).
+
+3. Botones y componentes interactivos:
+   - Botón primario (Acción principal / "Reservar"): 
+     Fondo Verde Ruta (#1E7A4F) con texto Blanco (#FFFFFF). Ratio 5.31:1 (Aprobado).
+   - Botón secundario / Destacados: 
+     Fondo Naranja Pedal (#F39A2B) con texto Azul Noche (#14213D). Ratio 7.20:1 (Aprobado).
+     *ADVERTENCIA AL CLIENTE:* Se rechaza el uso de texto blanco sobre Naranja Pedal porque solo
+     alcanza 2.22:1, violando el estándar de accesibilidad.
+
+4. Encabezados / Barras de navegación oscuras (Headers / Footers alternos):
+   - Fondo Azul Noche (#14213D) con texto Blanco (#FFFFFF). Ratio 15.97:1 (Aprobado).

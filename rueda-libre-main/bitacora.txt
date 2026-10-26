@@ -70,3 +70,20 @@ JUSTIFICACIÓN DE CONTROLES DEL FORMULARIO
 
 3. Comentarios (textarea):
    A diferencia de un campo de texto simple de una sola línea, textarea permite al cliente ingresar texto multilínea con saltos de renglón para aclaraciones o solicitudes especiales.
+
+
+========================================================================================================
+TABLA DE PRUEBAS DE VALIDACIÓN NATIVA
+========================================================================================================
+| # | Campo                | Dato de prueba       | Resultado esperado                                      | Resultado obtenido                                      |
+|---|----------------------|----------------------|---------------------------------------------------------|---------------------------------------------------------|
+| 1 | Nombre completo      | "Ju"                 | Bloquea envío: exige mínimo 3 caracteres (minlength)    | Bloqueado: aviso de longitud mínima mostrado            |
+| 2 | Documento            | "12345" (5 dígitos)  | Bloquea envío: exige entre 6 y 10 dígitos (pattern)     | Bloqueado: muestra title con formato esperado           |
+| 3 | Documento            | "1020304A" (letras) | Bloquea envío: solo acepta números (pattern)            | Bloqueado: rechaza caracteres no numéricos              |
+| 4 | Correo electrónico   | "usuario-sin-arroba" | Bloquea envío: exige formato con '@' (type="email")     | Bloqueado: solicita incluir '@' en la dirección         |
+| 5 | Celular              | "1234567890"         | Bloquea envío: debe comenzar por 3 (pattern)            | Bloqueado: no coincide con el patrón esperado           |
+| 6 | Celular              | "300123" (incompleto)| Bloquea envío: debe tener 10 dígitos exactos            | Bloqueado: muestra title de 10 dígitos y empezar por 3  |
+| 7 | Fecha de reserva     | "2026-10-31"         | Bloquea envío: fecha anterior al mínimo (min="2026-11-01")| Bloqueado: no permite seleccionar ni enviar día previo|
+| 8 | Cantidad bicicletas  | "7" (o "0")          | Bloquea envío: fuera del rango 1 a 6 (max="6")          | Bloqueado: valor debe ser menor o igual a 6             |
+| 9 | Políticas            | Desmarcado           | Bloquea envío: casilla obligatoria (required)           | Bloqueado: solicita marcar la casilla para continuar    |
+========================================================================================================

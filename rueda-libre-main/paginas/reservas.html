@@ -51,23 +51,26 @@
                 <fieldset>
                     <legend>Tus datos</legend>
                     <p><label for="nombre">Nombre completo</label>
-                        <input type="text" id="nombre" name="nombre" required>
+
+                        <input type="text" id="nombre" name="nombre" required minlength="3">
                     </p>
                     <p><label for="documento">Documento</label>
-                        <input type="text" id="documento" name="documento" required>
+                        <input type="text" id="documento" name="documento" required pattern="[0-9]{6,10}"
+                            title="El documento debe contener entre 6 y 10 dígitos numéricos">
                     </p>
                     <p><label for="correo">Correo electronico</label>
                         <input type="email" id="correo" name="correo" required>
                     </p>
                     <p><label for="celular">Celular</label>
-                        <input type="tel" id="celular" name="celular" required>
+                        <input type="tel" id="celular" name="celular" required pattern="3[0-9]{9}"
+                            title="El celular debe tener 10 dígitos y comenzar por 3 (ej: 3001234567)">
                     </p>
                 </fieldset>
 
                 <fieldset>
                     <legend>Tu alquiler</legend>
                     <p><label for="fecha">Fecha a reservar</label>
-                        <input type="date" id="fecha" name="fecha" required>
+                        <input type="date" id="fecha" name="fecha" required min="2026-11-01" max="2026-12-31">
                     </p>
                     <p>Tipo de bicicleta</p>
                     <input type="radio" id="bici-urbana" name="tipo_bicicleta" value="urbana" required>
@@ -78,7 +81,8 @@
                     <label for="bici-electrica">Eléctrica</label>
 
                     <p><label for="plan">Elige tu plan</label>
-                        <select id="plan" name="plan">
+                        <select id="plan" name="plan" required>
+                            <option value="">-- Elige un plan --</option>
                             <option value="1hora">1 hora</option>
                             <option value="mediodia">Medio dia (4 h)</option>
                             <option value="diacompleto">Dia completo</option>
@@ -86,7 +90,7 @@
                     </p>
                     <p>
                         <label for="cantidad">Cantidad de bicicletas:</label>
-                        <input type="number" id="cantidad" name="cantidad" min="1" max="10" required>
+                        <input type="number" id="cantidad" name="cantidad" min="1" max="6" required>
                     </p>
 
 
@@ -106,7 +110,7 @@
                     <legend>Confirmación</legend>
                     <p>
                         <label for="comentarios">Comentarios:</label>
-                        <textarea id="comentarios" name="comentarios" rows="4"></textarea>
+                        <textarea id="comentarios" name="comentarios" rows="4" maxlength="300"></textarea>
                     </p>
                     <p>
                         <input type="checkbox" id="politicas" name="politicas" required>

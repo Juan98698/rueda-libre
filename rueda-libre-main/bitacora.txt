@@ -57,3 +57,16 @@ ESQUEMA DE REGIONES SEMÁNTICAS (v0.2)
 en index.html Se integró el enlace de correo directamente en la información 
 de contacto del pie de página para mejorar la experiencia de usuario 
 y evitar enlaces duplicados al mismo destino mailto.
+
+
+========================================
+JUSTIFICACIÓN DE CONTROLES DEL FORMULARIO
+========================================
+1. Tipo de bicicleta (Radio buttons - input type="radio"):
+   Se eligieron botones de radio porque son opciones mutuamente excluyentes (el cliente solo puede elegir un tipo de bicicleta principal). Al compartir el mismo atributo name="tipo_bicicleta", el navegador garantiza que solo se seleccione una opción a la vez.
+
+2. Fecha del alquiler (input type="date"):
+   Se eligió el campo de tipo fecha para que el navegador despliegue un selector de calendario nativo y estandarizado, evitando errores de tipeo y formatos ambiguos por parte del cliente.
+
+3. Comentarios (textarea):
+   A diferencia de un campo de texto simple de una sola línea, textarea permite al cliente ingresar texto multilínea con saltos de renglón para aclaraciones o solicitudes especiales.

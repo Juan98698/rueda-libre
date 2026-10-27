@@ -1,0 +1,32 @@
+:root {
+    --color-crema: #FAF6EF;
+    --color-azul-noche: #14213D;
+    --color-verde: #1E7A4F;
+    --color-naranja: #F39A2B;
+    --color-gris: #5B6470;
+    --color-blanco: #FFFFFF;
+
+    --fuente-titulos: 'Montserrat', sans-serif;
+    --fuente-texto: 'Open Sans', sans-serif;
+
+    --espacio-sm: 0.5rem;
+    --espacio-md: 1rem;
+    --espacio-lg: 2rem;
+}
+
+/* El cuerpo hereda la fuente de texto, el color principal y el fondo */
+body {
+    font-family: var(--fuente-texto);
+    color: var(--color-azul-noche);
+    background-color: var(--color-crema);
+}
+
+/* Selector agrupado para que todos los encabezados tengan Montserrat */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--fuente-titulos);
+}

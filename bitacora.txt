@@ -165,3 +165,49 @@ MAPA DE USO DE COLOR (RECOMENDACIÓN TÉCNICA PARA EL CLIENTE)
 
 4. Encabezados / Barras de navegación oscuras (Headers / Footers alternos):
    - Fondo Azul Noche (#14213D) con texto Blanco (#FFFFFF). Ratio 15.97:1 (Aprobado).
+   
+
+
+
+   
+   ========================================================================================================
+COMPROBACIÓN DE HERENCIA EN DEVTOOLS (STYLES Y COMPUTED)
+========================================================================================================
+Objetivo de la prueba:
+Verificar en el navegador cómo viajan los estilos desde el elemento padre (<body>) hacia los elementos 
+hijos (<p>, encabezados) mediante el mecanismo natural de herencia en cascada de CSS.
+Herramientas utilizadas:
+- Google Chrome DevTools (Panel "Elements" -> subpaneles "Styles" y "Computed").
+- Elemento inspeccionado: etiqueta de párrafo <p> en index.html.
+--------------------------------------------------------------------------------------------------------
+1. PROPIEDAD QUE SÍ SE HEREDA: 'color' (o 'font-family')
+--------------------------------------------------------------------------------------------------------
+- Declaración en el padre (body):
+  color: var(--color-azul-noche);  /* #14213D */
+  font-family: var(--fuente-texto); /* 'Open Sans', sans-serif */
+- Evidencia en DevTools (Styles):
+  Al inspeccionar el <p>, la propiedad no está escrita directamente en su regla, sino agrupada 
+  bajo la sección "Inherited from body".
+- Valor en DevTools (Computed):
+  El navegador resuelve el valor computado final del texto del párrafo como rgb(20, 33, 61) 
+  y la tipografía renderizada como "Open Sans".
+- Justificación técnica:
+  Las propiedades relacionadas con el texto (color, tipografía, interlineado) se heredan por diseño 
+  en CSS. Esto asegura consistencia visual en todo el documento sin necesidad de repetir reglas 
+  en cada párrafo o lista.
+--------------------------------------------------------------------------------------------------------
+2. PROPIEDAD QUE NO SE HEREDA: 'background-color' (o 'margin' / 'padding')
+--------------------------------------------------------------------------------------------------------
+- Declaración en el padre (body):
+  background-color: var(--color-crema); /* #FAF6EF */
+- Evidencia en DevTools (Styles):
+  La propiedad 'background-color' NO aparece listada en la sección "Inherited from body" del párrafo <p>.
+- Valor en DevTools (Computed):
+  Al buscar 'background-color' en la pestaña Computed del <p>, su valor computado es:
+  rgba(0, 0, 0, 0)  (es decir: 'transparent').
+- Justificación técnica:
+  Las propiedades del modelo de caja (margin, padding, border) y los fondos (background-color) 
+  NO se heredan por defecto. Si un fondo se heredara, cada elemento hijo crearía una capa de color 
+  opaca redundante sobre la anterior. El párrafo se ve color crema únicamente porque su fondo es 
+  transparente y permite ver el fondo del elemento que está detrás (el <body>).
+========================================================================================================

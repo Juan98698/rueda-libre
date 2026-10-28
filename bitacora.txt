@@ -169,7 +169,7 @@ MAPA DE USO DE COLOR (RECOMENDACIÓN TÉCNICA PARA EL CLIENTE)
 
 
 
-   
+
    ========================================================================================================
 COMPROBACIÓN DE HERENCIA EN DEVTOOLS (STYLES Y COMPUTED)
 ========================================================================================================
@@ -210,4 +210,68 @@ Herramientas utilizadas:
   NO se heredan por defecto. Si un fondo se heredara, cada elemento hijo crearía una capa de color 
   opaca redundante sobre la anterior. El párrafo se ve color crema únicamente porque su fondo es 
   transparente y permite ver el fondo del elemento que está detrás (el <body>).
+========================================================================================================
+
+
+========================================================================================================
+RESOLUCIÓN DE CONFLICTO DE ESPECIFICIDAD Y ESTADOS DE INTERACCIÓN
+========================================================================================================
+
+1. DESCRIPCIÓN DEL CONFLICTO ENCONTRADO
+--------------------------------------------------------------------------------------------------------
+Un compañero intentó aplicar un estilo para destacar la página activa mediante las reglas:
+  #menu a { color: var(--color-gris); }
+  .activo { color: var(--color-verde); font-weight: 600; }
+
+Problema visual:
+Al cargar el sitio, el enlace con la clase "activo" no se mostraba verde; continuaba viéndose gris.
+En DevTools (panel Styles), la declaración 'color: var(--color-verde)' aparecía tachada con una línea.
+
+2. CÁLCULO TÉCNICO DE ESPECIFICIDAD (ID, CLASE, ELEMENTO)
+--------------------------------------------------------------------------------------------------------
+El algoritmo de cascada de CSS resuelve colisiones entre reglas mediante la tupla (a, b, c):
+- Columna 'a' (IDs): 100 puntos de peso.
+- Columna 'b' (Clases, atributos y pseudoclases): 10 puntos de peso.
+- Columna 'c' (Elementos/etiquetas y pseudoelementos): 1 punto de peso.
+
+Comparativa de los selectores en conflicto:
+- Selector '#menu a':
+  * IDs: 1 (#menu)
+  * Clases: 0
+  * Elementos: 1 (a)
+  * Vector de especificidad: (1, 0, 1) -> Peso: 101 puntos.
+
+- Selector '.activo':
+  * IDs: 0
+  * Clases: 1 (.activo)
+  * Elementos: 0
+  * Vector de especificidad: (0, 1, 0) -> Peso: 10 puntos.
+
+Diagnóstico:
+El selector '#menu a' gana por tener mayor especificidad ((1, 0, 1) > (0, 1, 0)) gracias a la 
+presencia del ID '#menu'. Por esta razón, el navegador descarta el color definido en '.activo'.
+
+3. SOLUCIÓN IMPLEMENTADA (SIN USAR !important)
+--------------------------------------------------------------------------------------------------------
+Se elevó la especificidad del selector activo vinculándolo al contexto del menú:
+  #menu a.activo { color: var(--color-verde); font-weight: 600; }
+
+- Nuevo vector de especificidad para el estado activo:
+  * IDs: 1 (#menu)
+  * Clases: 1 (.activo)
+  * Elementos: 1 (a)
+  * Vector: (1, 1, 1) -> Peso: 111 puntos.
+
+Resultado:
+(1, 1, 1) supera a (1, 0, 1), aplicando correctamente el color verde y la tipografía seminegrita
+sin recurrir a malas prácticas como '!important' o estilos en línea.
+
+4. ACCESIBILIDAD Y FOCO VISIBLE (WCAG 2.4.7)
+--------------------------------------------------------------------------------------------------------
+- Navegación (#menu a): se añadieron estados :hover (color azul noche y subrayado) y :focus con 
+  outline de 2px en verde ruta y outline-offset de 3px para usuarios de teclado.
+- Llamada a la acción (.boton-cta): fondo verde ruta (#1E7A4F) con texto blanco (#FFFFFF), 
+  ratio de contraste 5.31:1 (Cumple WCAG AA). Foco resaltado con outline naranja (#F39A2B).
+- Formulario de reservas: se garantizó foco visible en input, select y textarea con borde y outline 
+  contrastante al navegar con Tab.
 ========================================================================================================

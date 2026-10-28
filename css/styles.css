@@ -30,3 +30,61 @@ h5,
 h6 {
     font-family: var(--fuente-titulos);
 }
+
+/* Estado normal de los enlaces del menú */
+#menu a {
+    color: var(--color-gris);
+    text-decoration: none;
+    padding: var(--espacio-sm);
+    transition: color 0.2s ease;
+}
+
+/* Enlace activo de la página actual */
+#menu a.activo {
+    color: var(--color-verde);
+    font-weight: 600;
+}
+
+/* Interacción con mouse y teclado en el menú */
+#menu a:hover {
+    color: var(--color-azul-noche);
+    text-decoration: underline;
+}
+
+#menu a:focus {
+    color: var(--color-azul-noche);
+    outline: 2px solid var(--color-verde);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+/* Botón de llamada a la acción (CTA) */
+.boton-cta {
+    display: inline-block;
+    background-color: var(--color-verde);
+    color: var(--color-blanco);
+    padding: var(--espacio-sm) var(--espacio-md);
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+}
+
+.boton-cta:hover {
+    background-color: var(--color-azul-noche);
+    color: var(--color-blanco);
+}
+
+.boton-cta:focus {
+    outline: 3px solid var(--color-naranja);
+    outline-offset: 3px;
+}
+
+/* Foco accesible para campos de formulario */
+input:focus,
+select:focus,
+textarea:focus {
+    outline: 2px solid var(--color-verde);
+    outline-offset: 2px;
+    border-color: var(--color-verde);
+}

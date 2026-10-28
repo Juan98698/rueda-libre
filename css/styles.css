@@ -118,23 +118,13 @@ main {
 
 /* Portada / Encabezado de inicio con altura relativa a la ventana */
 header {
-    background-color: #000000;
+    background-color: var(--color-azul-noche);
     color: var(--color-crema);
     min-height: 50vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    display: block;
     text-align: center;
     padding: var(--espacio-lg) var(--espacio-md);
 }
-
-/* Portada / Encabezado con altura mínima en vh y centrado 
-header {
-    min-height: 50vh;
-    text-align: center;
-    padding: var(--espacio-lg) var(--espacio-md);
-}*/
 
 /* Tarjetas de servicios: agrupadas de a dos */
 section article {
@@ -209,4 +199,97 @@ td {
 /* Líneas impares con un suave fondo para guiar la vista */
 tbody tr:nth-child(even) {
     background-color: var(--color-crema);
+}
+
+/* 
+   ESTILOS DEL FORMULARIO (MODELO DE CAJA)
+ */
+/* 1. Separación entre grupos del formulario */
+fieldset {
+    border: 1px solid var(--color-gris);
+    border-radius: 6px;
+    padding: var(--espacio-md);
+    margin-bottom: var(--espacio-md);
+    background-color: var(--color-blanco);
+}
+
+legend {
+    font-family: var(--fuente-titulos);
+    font-weight: 700;
+    color: var(--color-azul-noche);
+    padding: 0 var(--espacio-sm);
+}
+
+/* 2. Cada etiqueta sobre su campo (display: block) */
+form label {
+    display: block;
+    margin-bottom: var(--espacio-sm);
+    font-weight: 600;
+    color: var(--color-azul-noche);
+}
+
+/* Excepción: las etiquetas de radio buttons y checkboxes deben ir al lado, no arriba */
+fieldset fieldset label,
+input[type="checkbox"]+label {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: 400;
+}
+
+/* 3. Campos a todo el ancho disponible con relleno en rem */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+input[type="number"],
+select,
+textarea {
+    width: 100%;
+    /* Todo el ancho disponible */
+    display: block;
+    padding: var(--espacio-sm);
+    /* Relleno cómodo en rem */
+    border: 1px solid var(--color-gris);
+    /* Solo bordes en px */
+    border-radius: 4px;
+    font-family: var(--fuente-texto);
+    margin-bottom: var(--espacio-md);
+}
+
+/* 4. Botones con relleno generoso usando la escala de variables */
+button[type="submit"],
+button[type="reset"] {
+    display: inline-block;
+    padding: var(--espacio-sm) var(--espacio-lg);
+    /* Relleno generoso */
+    font-family: var(--fuente-titulos);
+    font-weight: 700;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-right: var(--espacio-sm);
+    transition: background-color 0.2s ease;
+}
+
+/* Botón principal: verde con texto blanco */
+button[type="submit"] {
+    background-color: var(--color-verde);
+    color: var(--color-blanco);
+    border: 1px solid var(--color-verde);
+}
+
+button[type="submit"]:hover {
+    background-color: var(--color-azul-noche);
+    border-color: var(--color-azul-noche);
+}
+
+/* Botón secundario: neutro con borde */
+button[type="reset"] {
+    background-color: transparent;
+    color: var(--color-gris);
+    border: 1px solid var(--color-gris);
+}
+
+button[type="reset"]:hover {
+    background-color: var(--color-crema);
+    color: var(--color-azul-noche);
 }

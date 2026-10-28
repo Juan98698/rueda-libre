@@ -210,12 +210,11 @@ Herramientas utilizadas:
   NO se heredan por defecto. Si un fondo se heredara, cada elemento hijo crearía una capa de color 
   opaca redundante sobre la anterior. El párrafo se ve color crema únicamente porque su fondo es 
   transparente y permite ver el fondo del elemento que está detrás (el <body>).
-========================================================================================================
 
+   
 
-========================================================================================================
 RESOLUCIÓN DE CONFLICTO DE ESPECIFICIDAD Y ESTADOS DE INTERACCIÓN
-========================================================================================================
+
 
 1. DESCRIPCIÓN DEL CONFLICTO ENCONTRADO
 --------------------------------------------------------------------------------------------------------
@@ -274,4 +273,35 @@ sin recurrir a malas prácticas como '!important' o estilos en línea.
   ratio de contraste 5.31:1 (Cumple WCAG AA). Foco resaltado con outline naranja (#F39A2B).
 - Formulario de reservas: se garantizó foco visible en input, select y textarea con borde y outline 
   contrastante al navegar con Tab.
-========================================================================================================
+
+
+EXPERIMENTO DE MEDICIÓN DEL MODELO DE CAJA (BOX-SIZING) EN DEVTOOLS
+
+Elemento analizado:
+Etiqueta <article> (tarjeta de servicio) en index.html.
+Propiedades aplicadas:
+- width: 47%
+- padding: var(--espacio-md) (1rem = 16px por lado)
+- border: 1px solid var(--color-gris) (1px por lado)
+--------------------------------------------------------------------------------------------------------
+1. MEDICIÓN CON box-sizing: content-box (Comportamiento por defecto del navegador)
+--------------------------------------------------------------------------------------------------------
+Valores obtenidos en DevTools (pestaña Computed):
+- Content (ancho del contenido): 451.2px (equivalente al 47% del contenedor de ~960px)
+- Padding (izq + der): 16px + 16px = 32px
+- Border (izq + der): 1px + 1px = 2px
+- Ancho total ocupado en pantalla = 451.2px + 32px + 2px = 485.2px.
+Impacto visual observado:
+El padding y el borde se sumaron por fuera del ancho declarado. Debido a estos 34px adicionales, 
+las tarjetas exceden el espacio de la fila y la segunda tarjeta se desborda y cae a la siguiente línea.
+--------------------------------------------------------------------------------------------------------
+2. MEDICIÓN CON box-sizing: border-box (Reseteo universal aplicado)
+--------------------------------------------------------------------------------------------------------
+Valores obtenidos en DevTools (pestaña Computed):
+- Ancho total asignado a la caja: 451.2px (exactamente el 47% declarado)
+- Padding (izq + der): 16px + 16px = 32px (absorbidos internamente)
+- Border (izq + der): 1px + 1px = 2px (absorbidos internamente)
+- Content resultante disponible para el texto/imagen: 451.2px - 32px - 2px = 417.2px.
+Impacto visual observado:
+La caja respeta estrictamente el ancho asignado del 47%. Ambas tarjetas conviven perfectamente 
+en la misma fila sin desbordamiento ni saltos inesperados.

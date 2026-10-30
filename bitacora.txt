@@ -20,9 +20,9 @@ Notas y observaciones:
 - El código 200 indica que la solicitud fue exitosa y el servidor entregó el documento.
 
 
-========================================
+
 ESQUEMA DE REGIONES SEMÁNTICAS (v0.2)
-========================================
+
 
 1. index.html (Inicio)
    ├── HEADER (Encabezado)
@@ -63,9 +63,9 @@ de contacto del pie de página para mejorar la experiencia de usuario
 y evitar enlaces duplicados al mismo destino mailto.
 
 
-========================================
+
 JUSTIFICACIÓN DE CONTROLES DEL FORMULARIO
-========================================
+
 1. Tipo de bicicleta (Radio buttons - input type="radio"):
    Se eligieron botones de radio porque son opciones mutuamente excluyentes (el cliente solo puede elegir un tipo de bicicleta principal). Al compartir el mismo atributo name="tipo_bicicleta", el navegador garantiza que solo se seleccione una opción a la vez.
 
@@ -76,9 +76,7 @@ JUSTIFICACIÓN DE CONTROLES DEL FORMULARIO
    A diferencia de un campo de texto simple de una sola línea, textarea permite al cliente ingresar texto multilínea con saltos de renglón para aclaraciones o solicitudes especiales.
 
 
-========================================================================================================
 TABLA DE PRUEBAS DE VALIDACIÓN NATIVA
-========================================================================================================
 | # | Campo                | Dato de prueba       | Resultado esperado                                      | Resultado obtenido                                      |
 |---|----------------------|----------------------|---------------------------------------------------------|---------------------------------------------------------|
 | 1 | Nombre completo      | "Ju"                 | Bloquea envío: exige mínimo 3 caracteres (minlength)    | Bloqueado: aviso de longitud mínima mostrado            |
@@ -90,12 +88,12 @@ TABLA DE PRUEBAS DE VALIDACIÓN NATIVA
 | 7 | Fecha de reserva     | "2026-10-31"         | Bloquea envío: fecha anterior al mínimo (min="2026-11-01")| Bloqueado: no permite seleccionar ni enviar día previo|
 | 8 | Cantidad bicicletas  | "7" (o "0")          | Bloquea envío: fuera del rango 1 a 6 (max="6")          | Bloqueado: valor debe ser menor o igual a 6             |
 | 9 | Políticas            | Desmarcado           | Bloquea envío: casilla obligatoria (required)           | Bloqueado: solicita marcar la casilla para continuar    |
-========================================================================================================
 
 
-========================================================================================================
+
+
 AUDITORÍA DE ACCESIBILIDAD WEB (WCAG 2.1 - NIVEL AA)
-========================================================================================================
+
 
 Criterios auditados:
 - Texto alternativo en imágenes (WCAG 1.1.1 - Contenido no textual).
@@ -117,9 +115,9 @@ TABLA DE HALLAZGOS Y CORRECCIONES
 | 6 | reservas.html (Formulario)| 1.3.1 / 3.3.2 Instrucciones | Opciones de radio button para "tipo de bicicleta" sueltas sin agrupación semántica.| Se agruparon dentro de un <fieldset> con su <legend>Tipo de bicicleta</legend>, permitiendo que el lector de pantalla anuncie la pregunta.     |
 
 
-========================================================================================================
+
 EVALUACIÓN DE CONTRASTE DE COLOR (WCAG 2.1) Y MAPA DE USO
-========================================================================================================
+
 
 Parámetros normativos (Nivel AA):
 - Texto normal (< 18pt o < 14pt negrita): Ratio mínimo requerido de 4.5:1.
@@ -167,9 +165,9 @@ MAPA DE USO DE COLOR (RECOMENDACIÓN TÉCNICA PARA EL CLIENTE)
    - Fondo Azul Noche (#14213D) con texto Blanco (#FFFFFF). Ratio 15.97:1 (Aprobado).
 
 
-========================================================================================================
+
 COMPROBACIÓN DE HERENCIA EN DEVTOOLS (STYLES Y COMPUTED)
-========================================================================================================
+
 Objetivo de la prueba:
 Verificar en el navegador cómo viajan los estilos desde el elemento padre (<body>) hacia los elementos 
 hijos (<p>, encabezados) mediante el mecanismo natural de herencia en cascada de CSS.
@@ -209,9 +207,9 @@ Herramientas utilizadas:
   transparente y permite ver el fondo del elemento que está detrás (el <body>).
 
 
-========================================================================================================
+
 RESOLUCIÓN DE CONFLICTO DE ESPECIFICIDAD Y ESTADOS DE INTERACCIÓN
-========================================================================================================
+
 
 1. DESCRIPCIÓN DEL CONFLICTO ENCONTRADO
 --------------------------------------------------------------------------------------------------------
@@ -272,9 +270,9 @@ sin recurrir a malas prácticas como '!important' o estilos en línea.
   contrastante al navegar con Tab.
 
 
-========================================================================================================
+
 EXPERIMENTO DE MEDICIÓN DEL MODELO DE CAJA (BOX-SIZING) EN DEVTOOLS
-========================================================================================================
+
 
 Elemento analizado:
 Etiqueta <article> (tarjeta de servicio) en index.html.
@@ -306,9 +304,9 @@ La caja respeta estrictamente el ancho asignado del 47%. Ambas tarjetas conviven
 en la misma fila sin desbordamiento ni saltos inesperados.
 
 
-========================================================================================================
+
 MINIRETO 12: POSICIONAMIENTO, REVISIÓN FINAL Y LANZAMIENTO v1.0
-========================================================================================================
+
 
 Objetivo:
 Aplicar esquemas de posicionamiento CSS avanzado a componentes clave, consolidar la consistencia 
@@ -374,9 +372,9 @@ comentadas de acuerdo con los estándares de la industria y las directrices de N
   * Todos los interactivos cuentan con un anillo de enfoque (outline) claramente distinguible (WCAG 2.4.7).
 
 
-========================================================================================================
+
 MAPA DE CONSTRUCCIÓN DEL PRODUCTO FINAL (LOS 12 MINIRETOS DE LA SEMANA)
-========================================================================================================
+
 
 A continuación se resume cómo cada uno de los 12 MiniRetos aportó a la arquitectura, diseño y funcionalidad 
 del producto final Rueda Libre v1.0:
@@ -397,9 +395,9 @@ del producto final Rueda Libre v1.0:
 | Día 3        | 12. Rueda Libre v1.0: lanzamiento                    | Posicionamiento (relative, absolute, fixed), revisión final y publicación.   | Producto final de la semana        | Integra los 11 retos anteriores en el sitio web publicado y accesible.                                  |
 
 
-========================================================================================================
+
 BALANCE FINAL Y OPORTUNIDADES DE MEJORA PARA FUTURAS VERSIONES
-========================================================================================================
+
 
 Lo que se construyó y consolidó:
 - Un sitio web estático corporativo de 3 páginas coherentes, semánticamente impecables y visualmente atractivas.

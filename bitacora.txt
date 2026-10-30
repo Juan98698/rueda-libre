@@ -1,5 +1,5 @@
 ------------------------------------------------------------
-DESPLIEGUE EN LÍNEA (v0.2):
+DESPLIEGUE EN LÍNEA (v1.0 - Lanzamiento):
 - URL pública (GitHub Pages): https://juan98698.github.io/rueda-libre/
 - Repositorio GitHub: https://github.com/Juan98698/rueda-libre
 ------------------------------------------------------------
@@ -165,12 +165,9 @@ MAPA DE USO DE COLOR (RECOMENDACIÓN TÉCNICA PARA EL CLIENTE)
 
 4. Encabezados / Barras de navegación oscuras (Headers / Footers alternos):
    - Fondo Azul Noche (#14213D) con texto Blanco (#FFFFFF). Ratio 15.97:1 (Aprobado).
-   
 
 
-
-
-   ========================================================================================================
+========================================================================================================
 COMPROBACIÓN DE HERENCIA EN DEVTOOLS (STYLES Y COMPUTED)
 ========================================================================================================
 Objetivo de la prueba:
@@ -211,10 +208,10 @@ Herramientas utilizadas:
   opaca redundante sobre la anterior. El párrafo se ve color crema únicamente porque su fondo es 
   transparente y permite ver el fondo del elemento que está detrás (el <body>).
 
-   
 
+========================================================================================================
 RESOLUCIÓN DE CONFLICTO DE ESPECIFICIDAD Y ESTADOS DE INTERACCIÓN
-
+========================================================================================================
 
 1. DESCRIPCIÓN DEL CONFLICTO ENCONTRADO
 --------------------------------------------------------------------------------------------------------
@@ -275,7 +272,9 @@ sin recurrir a malas prácticas como '!important' o estilos en línea.
   contrastante al navegar con Tab.
 
 
+========================================================================================================
 EXPERIMENTO DE MEDICIÓN DEL MODELO DE CAJA (BOX-SIZING) EN DEVTOOLS
+========================================================================================================
 
 Elemento analizado:
 Etiqueta <article> (tarjeta de servicio) en index.html.
@@ -305,3 +304,117 @@ Valores obtenidos en DevTools (pestaña Computed):
 Impacto visual observado:
 La caja respeta estrictamente el ancho asignado del 47%. Ambas tarjetas conviven perfectamente 
 en la misma fila sin desbordamiento ni saltos inesperados.
+
+
+========================================================================================================
+MINIRETO 12: POSICIONAMIENTO, REVISIÓN FINAL Y LANZAMIENTO v1.0
+========================================================================================================
+
+Objetivo:
+Aplicar esquemas de posicionamiento CSS avanzado a componentes clave, consolidar la consistencia 
+arquitectural y visual entre las tres páginas y publicar la versión oficial 1.0 de Rueda Libre.
+
+--------------------------------------------------------------------------------------------------------
+1. DECISIONES TÉCNICAS DE POSICIONAMIENTO (RELATIVE, ABSOLUTE Y FIXED)
+--------------------------------------------------------------------------------------------------------
+
+A. Etiqueta destacada "Nuevo" (Servicio de bicicletas eléctricas):
+   - Selector padre: 'section article' con 'position: relative'.
+     * Justificación: Establece el bloque contenedor de referencia (containing block) local para sus 
+       hijos posicionados, evitando que los elementos absolutos busquen el elemento <html> y se escapen de la tarjeta.
+   - Selector hijo: '.etiqueta-nuevo' con 'position: absolute', 'top: 1rem', 'right: 1rem'.
+     * Justificación: Al asignarle 'position: absolute', el elemento se extrae del flujo normal del documento 
+       (out of flow). Por ello, flota en la esquina superior de la tarjeta sin empujar ni desplazar la imagen 
+       ni los párrafos hermanos, logrando una tarjeta compacta y alineada.
+   - Accesibilidad y contraste de la etiqueta:
+     * Fondo: Naranja Pedal (#F39A2B).
+     * Texto: Azul Noche (#14213D).
+     * Ratio resultante: 7.20:1 (supera el estándar más exigente WCAG AAA > 7:1). Se descartó texto blanco 
+       porque daba un contraste deficiente de 2.22:1 (inadmisible para accesibilidad).
+
+B. Botón flotante de atención "WhatsApp":
+   - Selector: '.boton-whatsapp' con 'position: fixed', 'bottom: 1.5rem', 'right: 1.5rem', 'z-index: 1000'.
+     * Justificación: A diferencia de 'absolute', 'position: fixed' ancla el enlace a la ventana gráfica 
+       (viewport) del navegador. De este modo, permanece siempre visible en la esquina inferior derecha 
+       mientras el usuario navega y hace scroll en cualquiera de las 3 páginas.
+     * Enlace seguro: href="https://wa.me/573000000000", target="_blank" con rel="noopener noreferrer" 
+       para proteger contra vulnerabilidades de tabnabbing y mejorar el rendimiento de la nueva pestaña.
+     * Foco y accesibilidad: Fondo Verde Ruta (#1E7A4F) con texto Blanco (#FFFFFF) (Ratio 5.31:1, cumple AA). 
+       Cuenta con estado :focus resaltado con borde/outline naranja contrastante al navegar con la tecla Tab.
+
+C. Prevención de solapamiento en el pie de página (Zona de seguridad):
+   - Problema potencial: Al hacer scroll hasta el final del documento, un botón con 'position: fixed' 
+     puede superponerse a los enlaces del footer (Google Maps o correo electrónico), impidiendo su lectura o clic.
+   - Solución técnica: Se añadió 'padding-bottom: 4.5rem;' al elemento <footer> en styles.css.
+     * Resultado: Se crea un colchón de espacio despejado de reserva en el fondo del documento, 
+       garantizando que todo el contenido termine antes del área de acción del botón flotante.
+
+--------------------------------------------------------------------------------------------------------
+2. CONSOLIDACIÓN DE ESTILOS Y ORGANIZACIÓN DE styles.css
+--------------------------------------------------------------------------------------------------------
+Se refactorizó la hoja de estilos externa agrupando selectores repetidos y estructurándola en 6 secciones 
+comentadas de acuerdo con los estándares de la industria y las directrices de Nodo Digital:
+1. Variables y Reseteo: Paleta institucional (:root) y modelo de caja universal (box-sizing: border-box).
+2. Estilos Base y Tipografía: Herencia de cuerpo (body), jerarquía tipográfica (h1 a h6) y contenedor <main>.
+3. Encabezado y Navegación: <header>, lista #menu, estados interactivos :hover y foco accesible :focus.
+4. Componentes y Layout: Botón CTA (.boton-cta), tarjetas de servicios, insignia (.etiqueta-nuevo), 
+   botón WhatsApp (.boton-whatsapp) y tablas estructuradas (caption, th, td, filas alternas).
+5. Formulario de Reservas: Fieldsets, legends, labels verticales, campos al 100%, estados :focus accesibles y botones.
+6. Pie de Página (Footer): Contraste institucional unificado y zona de seguridad inferior.
+
+--------------------------------------------------------------------------------------------------------
+3. EVIDENCIA DE AUDITORÍA FINAL EN DEVTOOLS
+--------------------------------------------------------------------------------------------------------
+- Panel Consola (Console): 0 errores 404 (todas las imágenes locales y fuentes de Google Fonts cargaron con código 200).
+- Panel Estilos (Styles):
+  * Inspección en 'span.etiqueta-nuevo': 'position: absolute' activo, anclado a 'section article' con 'position: relative'.
+  * Inspección en 'a.boton-whatsapp': 'position: fixed' activo sin declaraciones tachadas ni colisiones de especificidad.
+- Navegación con teclado (Tab order):
+  * Recorrido fluido: Menú de navegación -> Enlaces principales y CTA -> Enlaces del pie -> Botón flotante WhatsApp.
+  * Todos los interactivos cuentan con un anillo de enfoque (outline) claramente distinguible (WCAG 2.4.7).
+
+
+========================================================================================================
+MAPA DE CONSTRUCCIÓN DEL PRODUCTO FINAL (LOS 12 MINIRETOS DE LA SEMANA)
+========================================================================================================
+
+A continuación se resume cómo cada uno de los 12 MiniRetos aportó a la arquitectura, diseño y funcionalidad 
+del producto final Rueda Libre v1.0:
+
+| Sesión / Día | MiniReto                                             | Qué aporta                                                                   | Parte del producto que construye   | Cómo se conecta con los siguientes                                                                       |
+|--------------|------------------------------------------------------|------------------------------------------------------------------------------|------------------------------------|----------------------------------------------------------------------------------------------------------|
+| Día 1        | 1. Kilómetro 0: el repositorio y la página base      | Repositorio Git, estructura de carpetas, index.html base y bitácora.         | Cimientos del proyecto             | Todo el sitio vive en este repositorio y parte de este documento base.                                    |
+| Día 1        | 2. La vitrina de Rueda Libre                         | Contenido jerarquizado de la página de inicio con listas, imágenes y enlaces.| Página de Inicio                   | Sus enlaces se conectan con Tarifas (3) y se reorganizan con semántica (5).                              |
+| Día 1        | 3. Tarifas claras: tablas y rutas relativas          | Tablas de tarifas y recorridos, rutas relativas entre carpetas.               | Página de Tarifas y rutas          | Sus tablas se estilizan en el reto 11; sus enlaces alimentan el menú (4).                                |
+| Día 1        | 4. Rueda Libre v0.1: un sitio navegable              | Página de reservas inicial, menú y pie comunes.                              | Sitio navegable                    | Es la base que se vuelve semántica (5) y recibe el formulario (6).                                       |
+| Día 2        | 5. Estructura con significado                        | Regiones semánticas (header, nav, main, footer, section, article, aside).   | Estructura de todo el sitio        | Los selectores de CSS (9-12) se apoyan directamente en header, nav, main y footer.                      |
+| Día 2        | 6. El formulario de reservas                         | Formulario con fieldsets, controles semánticos y labels vinculados.          | Página de Reservas                 | Recibe validación nativa (7) y estilos del modelo de caja (10 y 11).                                     |
+| Día 2        | 7. Reservas sin errores: validación y teclado        | Reglas de validación nativa (required, pattern, min, max) y uso con teclado.| Formulario confiable               | Sus estados de foco se estilizan e integran en el reto 10.                                               |
+| Día 2        | 8. Rueda Libre v0.2 en línea: accesible y publicada  | Auditoría de accesibilidad WCAG 2.1, mapa de contrastes y publicación v0.2.  | Sitio publicado y paleta validada  | El mapa de color es la base directa de las variables CSS del reto 9.                                     |
+| Día 3        | 9. La identidad de Rueda Libre                       | Hoja externa styles.css, variables de color (:root), tipografías de Google.  | Identidad visual                   | Las variables se reutilizan consistentemente en todos los retos de estilo (10 a 12).                     |
+| Día 3        | 10. Navegación con estados y sin conflictos          | Pseudo-clases :hover / :focus, clase activa sin conflictos de especificidad. | Interacción visual                 | Los botones y estados se mantienen al ordenar el layout y modelo de caja (11).                           |
+| Día 3        | 11. Todo en su lugar: modelo de caja                 | Reseteo universal con border-box, tarjetas de servicios, espaciado relativo. | Orden y legibilidad                | Las tarjetas estructuradas reciben la etiqueta posicionada del reto 12.                                  |
+| Día 3        | 12. Rueda Libre v1.0: lanzamiento                    | Posicionamiento (relative, absolute, fixed), revisión final y publicación.   | Producto final de la semana        | Integra los 11 retos anteriores en el sitio web publicado y accesible.                                  |
+
+
+========================================================================================================
+BALANCE FINAL Y OPORTUNIDADES DE MEJORA PARA FUTURAS VERSIONES
+========================================================================================================
+
+Lo que se construyó y consolidó:
+- Un sitio web estático corporativo de 3 páginas coherentes, semánticamente impecables y visualmente atractivas.
+- Implementación de un sistema de diseño basado en variables CSS personalizadas, tipografía web legible y contrastes accesibles Nivel AA/AAA.
+- Navegabilidad completa sin ratón (100% operable por teclado con focos de alto contraste).
+- Flujo de posicionamiento profesional para destacar novedades comerciales y brindar atención inmediata al cliente.
+
+Aspectos a mejorar en la próxima versión (Rueda Libre v2.0):
+1. Diseño Adaptativo Móvil (Responsive Web Design):
+   - Implementar media queries (@media) para adaptar la grilla de tarjetas y menús a pantallas pequeñas de teléfonos inteligentes sin desbordamientos horizontales.
+   - Diseñar un menú desplegable interactivo ("hamburguesa") para dispositivos móviles.
+2. Interactividad y Cálculos Dinámicos con JavaScript:
+   - Calcular en tiempo real el valor total del alquiler en el formulario de reservas cuando el usuario cambia el tipo de bicicleta, duración o cantidad.
+   - Deshabilitar dinámicamente opciones de fechas u horarios ya ocupados.
+3. Procesamiento Real de Datos (Backend y API):
+   - Conectar el formulario a un servicio o API backend (como un webhook, Node.js o servicio de correos) para enviar un correo de confirmación de reserva al cliente de manera automática.
+4. Formatos Modernos de Imágenes:
+   - Convertir las imágenes PNG a formatos modernos más livianos como WebP o AVIF para acelerar el tiempo de carga del sitio en conexiones lentas.

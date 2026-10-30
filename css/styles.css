@@ -1,4 +1,7 @@
+/* 1. VARIABLES Y RESETEO */
+
 :root {
+    /* Paleta de colores institucional */
     --color-crema: #FAF6EF;
     --color-azul-noche: #14213D;
     --color-verde: #1E7A4F;
@@ -6,9 +9,11 @@
     --color-gris: #5B6470;
     --color-blanco: #FFFFFF;
 
+    /* Tipografías */
     --fuente-titulos: 'Montserrat', sans-serif;
     --fuente-texto: 'Open Sans', sans-serif;
 
+    /* Escala modular de espaciado */
     --espacio-sm: 0.5rem;
     --espacio-md: 1rem;
     --espacio-lg: 2rem;
@@ -21,14 +26,19 @@
     box-sizing: border-box;
 }
 
-/* El cuerpo hereda la fuente de texto, el color principal y el fondo */
+
+/* 2. ESTILOS BASE Y TIPOGRAFÍA
+El cuerpo hereda tipografía, color del texto y fondo cálido*/
+
+
 body {
     font-family: var(--fuente-texto);
     color: var(--color-azul-noche);
     background-color: var(--color-crema);
+    margin: 0;
 }
 
-/* Selector agrupado para que todos los encabezados tengan Montserrat */
+/* Jerarquía tipográfica unificada */
 h1,
 h2,
 h3,
@@ -36,6 +46,37 @@ h4,
 h5,
 h6 {
     font-family: var(--fuente-titulos);
+}
+
+/* Contenedor principal: ancho máximo y centrado con relleno */
+main {
+    max-width: 60rem;
+    margin: 0 auto;
+    padding: var(--espacio-lg) var(--espacio-md);
+}
+
+
+/*  3. ENCABEZADO Y NAVEGACIÓN */
+
+header {
+    background-color: var(--color-azul-noche);
+    color: var(--color-crema);
+    min-height: 50vh;
+    display: block;
+    text-align: center;
+    padding: var(--espacio-lg) var(--espacio-md);
+}
+
+/* Lista del menú de navegación */
+#menu {
+    list-style: none;
+    padding: 0;
+    margin: var(--espacio-md) 0;
+}
+
+#menu li {
+    display: inline-block;
+    margin-right: var(--espacio-sm);
 }
 
 /* Estado normal de los enlaces del menú */
@@ -54,18 +95,21 @@ h6 {
 
 /* Interacción con mouse y teclado en el menú */
 #menu a:hover {
-    color: var(--color-azul-noche);
+    color: var(--color-crema);
     text-decoration: underline;
 }
 
 #menu a:focus {
-    color: var(--color-azul-noche);
+    color: var(--color-crema);
     outline: 2px solid var(--color-verde);
     outline-offset: 3px;
     border-radius: 4px;
 }
 
-/* Botón de llamada a la acción (CTA) */
+
+/*  4. COMPONENTES Y LAYOUT */
+
+/* --- Botón de llamada a la acción (CTA) --- */
 .boton-cta {
     display: inline-block;
     background-color: var(--color-verde);
@@ -87,88 +131,91 @@ h6 {
     outline-offset: 3px;
 }
 
-/* Foco accesible para campos de formulario */
-input:focus,
-select:focus,
-textarea:focus {
-    outline: 2px solid var(--color-verde);
-    outline-offset: 2px;
-    border-color: var(--color-verde);
-}
-
-/* Quitar viñetas y eliminar márgenes por defecto de la lista */
-#menu {
-    list-style: none;
-    padding: 0;
-    margin: var(--espacio-md) 0;
-}
-
-/* Colocar cada elemento de la lista en fila */
-#menu li {
-    display: inline-block;
-    margin-right: var(--espacio-sm);
-}
-
-/* Contenedor principal: limitado en rem y centrado */
-main {
-    max-width: 60rem;
-    margin: 0 auto;
-    padding: var(--espacio-lg) var(--espacio-md);
-}
-
-/* Portada / Encabezado de inicio con altura relativa a la ventana */
-header {
-    background-color: var(--color-azul-noche);
-    color: var(--color-crema);
-    min-height: 50vh;
-    display: block;
-    text-align: center;
-    padding: var(--espacio-lg) var(--espacio-md);
-}
-
-/* Tarjetas de servicios: agrupadas de a dos */
+/* --- Tarjetas de servicios (MiniReto 11 y 12) --- */
 section article {
+    position: relative;
+    /* Marco de referencia para posicionamiento absoluto de .etiqueta-nuevo */
     display: inline-block;
     vertical-align: top;
     width: 47%;
-    /* Ancho perfecto para que quepan dos por fila */
     margin: 1%;
-    /* Separación entre tarjetas */
     background-color: var(--color-blanco);
     border: 1px solid var(--color-gris);
-    /* Solo bordes en px */
     border-radius: 8px;
     padding: var(--espacio-md);
-    /* Relleno con la escala en rem */
     margin-bottom: var(--espacio-md);
 }
 
-/* Imagen dentro de la tarjeta: controlada y sin desbordarse */
+/* Imagen dentro de la tarjeta */
 section article img {
     width: 100%;
-    /* 100% del ancho de la tarjeta (unidad %) */
     height: auto;
-    /* Altura compacta y uniforme en rem */
     object-fit: cover;
-    /* Encuadra la foto como portada sin deformarla */
     display: block;
     border-radius: 6px;
     margin-bottom: var(--espacio-sm);
 }
 
+/* --- Insignia 'Nuevo' (Posicionamiento Absoluto - MiniReto 12) --- */
+.etiqueta-nuevo {
+    position: absolute;
+    /* Extraído del flujo normal: no desplaza la imagen ni el texto */
+    top: 1rem;
+    right: 1rem;
+    background-color: var(--color-naranja);
+    color: var(--color-azul-noche);
+    /* Ratio 7.20:1 - Cumple WCAG AAA */
+    font-family: var(--fuente-titulos);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.25rem 0.6rem;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+    z-index: 2;
+}
+
+/* --- Botón flotante WhatsApp (Posicionamiento Fijo - MiniReto 12) --- */
+.boton-whatsapp {
+    position: fixed;
+    /* Anclado a la ventana gráfica (viewport) durante el scroll */
+    bottom: 1.5rem;
+    right: 1.5rem;
+    background-color: var(--color-verde);
+    color: var(--color-blanco);
+    /* Ratio 5.31:1 - Cumple WCAG AA */
+    font-family: var(--fuente-titulos);
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none;
+    padding: var(--espacio-sm) var(--espacio-md);
+    border-radius: 50px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    z-index: 1000;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.boton-whatsapp:hover {
+    background-color: var(--color-azul-noche);
+    transform: translateY(-2px);
+}
+
+.boton-whatsapp:focus {
+    outline: 3px solid var(--color-naranja);
+    outline-offset: 3px;
+}
+
+/* --- Tablas de tarifas y recorridos --- */
 table {
     width: 100%;
     border-collapse: collapse;
-    /* Une los bordes en una sola línea limpia */
     margin: var(--espacio-md) 0 var(--espacio-lg) 0;
     background-color: var(--color-blanco);
-    /* Fondo blanco para facilitar la lectura */
     border-radius: 6px;
     overflow: hidden;
-    /* Mantiene las esquinas limpias */
 }
 
-/* Título superior de la tabla */
 caption {
     font-size: 1.1rem;
     padding: var(--espacio-sm);
@@ -176,35 +223,28 @@ caption {
     text-align: left;
 }
 
-/* Encabezados de columna con color de marca y texto blanco */
 th {
     background-color: var(--color-azul-noche);
     color: var(--color-blanco);
     padding: var(--espacio-sm) var(--espacio-md);
-    /* Espaciado en rem */
     text-align: left;
     border: 1px solid var(--color-azul-noche);
-    /* Solo bordes en px */
     font-family: var(--fuente-titulos);
 }
 
-/* Celdas con datos */
 td {
     padding: var(--espacio-sm) var(--espacio-md);
-    /* Espaciado en rem */
     border: 1px solid var(--color-gris);
-    /* Solo bordes en px */
 }
 
-/* Líneas impares con un suave fondo para guiar la vista */
 tbody tr:nth-child(even) {
     background-color: var(--color-crema);
 }
 
-/* 
-   ESTILOS DEL FORMULARIO (MODELO DE CAJA)
- */
-/* 1. Separación entre grupos del formulario */
+
+/* 5. FORMULARIO DE RESERVAS */
+
+/* Agrupaciones y leyendas */
 fieldset {
     border: 1px solid var(--color-gris);
     border-radius: 6px;
@@ -220,7 +260,7 @@ legend {
     padding: 0 var(--espacio-sm);
 }
 
-/* 2. Cada etiqueta sobre su campo (display: block) */
+/* Etiquetas sobre campos */
 form label {
     display: block;
     margin-bottom: var(--espacio-sm);
@@ -228,7 +268,7 @@ form label {
     color: var(--color-azul-noche);
 }
 
-/* Excepción: las etiquetas de radio buttons y checkboxes deben ir al lado, no arriba */
+/* Excepción: radio buttons y checkboxes */
 fieldset fieldset label,
 input[type="checkbox"]+label {
     display: inline-block;
@@ -236,7 +276,7 @@ input[type="checkbox"]+label {
     font-weight: 400;
 }
 
-/* 3. Campos a todo el ancho disponible con relleno en rem */
+/* Controles de entrada de datos */
 input[type="text"],
 input[type="email"],
 input[type="tel"],
@@ -245,23 +285,28 @@ input[type="number"],
 select,
 textarea {
     width: 100%;
-    /* Todo el ancho disponible */
     display: block;
     padding: var(--espacio-sm);
-    /* Relleno cómodo en rem */
     border: 1px solid var(--color-gris);
-    /* Solo bordes en px */
     border-radius: 4px;
     font-family: var(--fuente-texto);
     margin-bottom: var(--espacio-md);
 }
 
-/* 4. Botones con relleno generoso usando la escala de variables */
+/* Foco visible y accesible en controles */
+input:focus,
+select:focus,
+textarea:focus {
+    outline: 2px solid var(--color-verde);
+    outline-offset: 2px;
+    border-color: var(--color-verde);
+}
+
+/* Botones del formulario */
 button[type="submit"],
 button[type="reset"] {
     display: inline-block;
     padding: var(--espacio-sm) var(--espacio-lg);
-    /* Relleno generoso */
     font-family: var(--fuente-titulos);
     font-weight: 700;
     border-radius: 6px;
@@ -270,7 +315,6 @@ button[type="reset"] {
     transition: background-color 0.2s ease;
 }
 
-/* Botón principal: verde con texto blanco */
 button[type="submit"] {
     background-color: var(--color-verde);
     color: var(--color-blanco);
@@ -282,7 +326,6 @@ button[type="submit"]:hover {
     border-color: var(--color-azul-noche);
 }
 
-/* Botón secundario: neutro con borde */
 button[type="reset"] {
     background-color: transparent;
     color: var(--color-gris);
@@ -292,4 +335,30 @@ button[type="reset"] {
 button[type="reset"]:hover {
     background-color: var(--color-crema);
     color: var(--color-azul-noche);
+}
+
+
+/*  6. PIE DE PÁGINA (FOOTER) */
+
+footer {
+    background-color: var(--color-azul-noche);
+    color: var(--color-crema);
+    text-align: center;
+    padding: var(--espacio-lg) var(--espacio-md) 4.5rem var(--espacio-md);
+    /* 4.5rem inferior: zona de seguridad para WhatsApp */
+    margin-top: var(--espacio-lg);
+}
+
+footer a {
+    color: var(--color-naranja);
+    text-decoration: underline;
+}
+
+footer a:hover {
+    color: var(--color-blanco);
+}
+
+footer a:focus {
+    outline: 2px solid var(--color-naranja);
+    outline-offset: 3px;
 }

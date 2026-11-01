@@ -220,14 +220,16 @@ section article img {
 }
 
 /* --- Tablas de tarifas y recorridos --- */
+/* --- Tablas de tarifas y recorridos --- */
+
+/* 1. Vista de PC: la tabla aprovecha el 100% del ancho y distribuye sus columnas */
 table {
-    display: block;
-    overflow-x: auto;
     width: 100%;
     border-collapse: collapse;
     margin: var(--espacio-md) 0 var(--espacio-lg) 0;
     background-color: var(--color-blanco);
     border-radius: 6px;
+    overflow: hidden;
 }
 
 caption {
@@ -235,11 +237,6 @@ caption {
     padding: var(--espacio-sm);
     color: var(--color-azul-noche);
     text-align: left;
-}
-
-th,
-td {
-    white-space: nowrap;
 }
 
 th {
@@ -258,6 +255,20 @@ td {
 
 tbody tr:nth-child(even) {
     background-color: var(--color-crema);
+}
+
+/* 2. Vista de Celular: solo si la pantalla mide menos de 650px, se vuelve deslizable */
+@media (max-width: 650px) {
+    table {
+        display: block;
+        overflow-x: auto;
+    }
+
+    th,
+    td {
+        white-space: nowrap;
+        /* Evita que las palabras se partan en celular */
+    }
 }
 
 

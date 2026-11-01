@@ -172,12 +172,10 @@ section article img {
 /* --- Insignia 'Nuevo' (Posicionamiento Absoluto - MiniReto 12) --- */
 .etiqueta-nuevo {
     position: absolute;
-    /* Extraído del flujo normal: no desplaza la imagen ni el texto */
     top: 1rem;
     right: 1rem;
     background-color: var(--color-naranja);
     color: var(--color-azul-noche);
-    /* Ratio 7.20:1 - Cumple WCAG AAA */
     font-family: var(--fuente-titulos);
     font-size: 0.75rem;
     font-weight: 700;
@@ -192,12 +190,10 @@ section article img {
 /* --- Botón flotante WhatsApp (Posicionamiento Fijo - MiniReto 12) --- */
 .boton-whatsapp {
     position: fixed;
-    /* Anclado a la ventana gráfica (viewport) durante el scroll */
     bottom: 1.5rem;
     right: 1.5rem;
     background-color: var(--color-verde);
     color: var(--color-blanco);
-    /* Ratio 5.31:1 - Cumple WCAG AA */
     font-family: var(--fuente-titulos);
     font-weight: 700;
     font-size: 0.95rem;
@@ -220,9 +216,7 @@ section article img {
 }
 
 /* --- Tablas de tarifas y recorridos --- */
-/* --- Tablas de tarifas y recorridos --- */
 
-/* 1. Vista de PC: la tabla aprovecha el 100% del ancho y distribuye sus columnas */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -267,9 +261,59 @@ tbody tr:nth-child(even) {
     th,
     td {
         white-space: nowrap;
-        /* Evita que las palabras se partan en celular */
+
     }
 }
+
+/* --- Sección Flota con CSS Grid y Flexbox --- */
+.cuadricula-flota {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: var(--espacio-md) 0 var(--espacio-lg) 0;
+}
+
+.tarjeta-bici {
+    width: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-blanco);
+    border: 1px solid var(--color-gris);
+    border-radius: 8px;
+    padding: var(--espacio-md);
+}
+
+.tarjeta-bici img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 6px;
+    margin-bottom: var(--espacio-sm);
+}
+
+.tarjeta-bici h3 {
+    margin: var(--espacio-sm) 0;
+    color: var(--color-azul-noche);
+}
+
+.tarjeta-bici p {
+    margin: 0 0 var(--espacio-sm) 0;
+}
+
+.tarjeta-bici .precio {
+    font-size: 1.1rem;
+    color: var(--color-verde);
+    margin-bottom: var(--espacio-md);
+}
+
+/* Alinea el botón siempre al fondo de la tarjeta */
+.tarjeta-bici .boton-cta {
+    margin-top: auto;
+    text-align: center;
+}
+
+
 
 
 /* 5. FORMULARIO DE RESERVAS */

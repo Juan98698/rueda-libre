@@ -446,3 +446,50 @@ CSS Flexbox para mejorar la distribución en pantallas anchas y la fluidez en pa
 - Comportamiento al estrechar la ventana (pantalla móvil < 600px):
   * Encabezado: Al agotarse el ancho, el menú pasa automáticamente debajo del nombre sin generar desbordamiento ni scroll horizontal.
   * Pie de página: Los bloques bajan progresivamente de línea gracias a 'flex-wrap: wrap' y 'gap', apilándose verticalmente con espaciado uniforme y manteniendo la legibilidad total del contenido.
+
+
+
+========================================================================================================
+MINIRETO: CUADRÍCULA DE FLOTA ADAPTABLE CON CSS GRID Y FLEXBOX
+========================================================================================================
+
+Objetivo:
+Construir una cuadrícula de tarjetas de producto adaptable y dinámica utilizando CSS Grid en dos 
+dimensiones (sin media queries) y alinear el contenido interno de cada tarjeta con Flexbox unidimensional.
+
+1. Decisiones técnicas implementadas:
+- Contenedor de la flota (.cuadricula-flota):
+  * Regla: 'display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;'
+  * Justificación: 
+    - 'repeat(auto-fit, ...)' calcula automáticamente cuántas columnas caben según el ancho disponible.
+    - 'minmax(280px, 1fr)' establece un ancho mínimo de 280px para evitar tarjetas aplastadas, y permite 
+      que se expandan proporcionalmente (1fr) para llenar el contenedor.
+    - 'gap: 1.5rem' genera separación uniforme horizontal y vertical sin márgenes asimétricos exteriores.
+    - No requiere media queries para adaptarse a distintos dispositivos.
+- Tarjeta individual (.tarjeta-bici):
+  * Regla: 'display: flex; flex-direction: column; width: 100%; margin: 0;'
+  * Box model: Fondo blanco, borde de 1px gris, border-radius de 8px y padding en rem (escala institucional).
+  * Imagen fluida: 'width: 100%; height: auto;' para respetar la relación de aspecto panorámica sin recortar las ruedas.
+- Alineación del botón de acción (.tarjeta-bici .boton-cta):
+  * Regla: 'margin-top: auto; text-align: center;'
+  * Justificación: Como las tarjetas en una fila de Grid tienen la misma altura pero descripciones de diferente 
+    longitud, 'margin-top: auto' en el eje vertical absorbe todo el espacio vacío superior y empuja el botón 
+    hacia la base de la tarjeta, logrando una alineación horizontal uniforme en toda la fila.
+- Comprobación del 7.° modelo (Tándem):
+  * Se agregó el modelo Tándem al HTML y la cuadrícula se reorganizó automáticamente de forma fluida, 
+    creando una nueva fila sin necesidad de modificar ni una sola línea de CSS.
+
+2. Registro de medición en DevTools (Modo Dispositivo):
+--------------------------------------------------------------------------------------------------------
+| Ancho probado | Columnas observadas | Justificación matemática / Comportamiento observado             |
+|:-------------:|:-------------------:|:-----------------------------------------------------------------|
+|   1280 px     |     3 columnas      | El contenedor <main> se limita a 960px (~928px útiles).          |
+|               |                     | Caben 3 tarjetas (3 * 280px + 2 * 24px = 888px <= 928px).        |
+|               |                     | Las 7 tarjetas se distribuyen: 3 en fila 1, 3 en fila 2, 1 en fila 3. |
+|    900 px     |     2 columnas      | Ancho útil disponible ~868px. Al no caber 3 columnas (888px),     |
+|               |                     | Grid desciende automáticamente a 2 columnas de ~422px cada una.  |
+|               |                     | Distribución: 2 en fila 1, 2 en fila 2, 2 en fila 3, 1 en fila 4.|
+|    500 px     |      1 columna      | Ancho útil disponible ~468px. 2 columnas requerirían 584px.      |
+|               |                     | La cuadrícula colapsa a 1 columna donde cada tarjeta ocupa el     |
+|               |                     | 100% del ancho, apiladas verticalmente y 100% legibles.          |
+--------------------------------------------------------------------------------------------------------

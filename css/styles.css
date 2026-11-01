@@ -55,29 +55,42 @@ main {
     padding: var(--espacio-lg) var(--espacio-md);
 }
 
+img {
+    max-width: 100%;
+    height: auto;
+}
 
 /*  3. ENCABEZADO Y NAVEGACIÓN */
 
 header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--espacio-md);
     background-color: var(--color-azul-noche);
     color: var(--color-crema);
-    min-height: 50vh;
-    display: block;
-    text-align: center;
-    padding: var(--espacio-lg) var(--espacio-md);
+    padding: var(--espacio-md) var(--espacio-lg);
+}
+
+/* Para que el título no tenga márgenes por defecto que desfasen la barra */
+header h1 {
+    margin: 0;
 }
 
 /* Lista del menú de navegación */
 #menu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--espacio-md);
     list-style: none;
     padding: 0;
-    margin: var(--espacio-md) 0;
+    margin: 0;
 }
 
-#menu li {
-    display: inline-block;
-    margin-right: var(--espacio-sm);
-}
+/*#menu li {
+   
+}*/
 
 /* Estado normal de los enlaces del menú */
 #menu a {
@@ -208,12 +221,13 @@ section article img {
 
 /* --- Tablas de tarifas y recorridos --- */
 table {
+    display: block;
+    overflow-x: auto;
     width: 100%;
     border-collapse: collapse;
     margin: var(--espacio-md) 0 var(--espacio-lg) 0;
     background-color: var(--color-blanco);
     border-radius: 6px;
-    overflow: hidden;
 }
 
 caption {
@@ -221,6 +235,11 @@ caption {
     padding: var(--espacio-sm);
     color: var(--color-azul-noche);
     text-align: left;
+}
+
+th,
+td {
+    white-space: nowrap;
 }
 
 th {
@@ -341,11 +360,14 @@ button[type="reset"]:hover {
 /*  6. PIE DE PÁGINA (FOOTER) */
 
 footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 1.5rem;
     background-color: var(--color-azul-noche);
     color: var(--color-crema);
-    text-align: center;
     padding: var(--espacio-lg) var(--espacio-md) 4.5rem var(--espacio-md);
-    /* 4.5rem inferior: zona de seguridad para WhatsApp */
     margin-top: var(--espacio-lg);
 }
 

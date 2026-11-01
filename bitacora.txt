@@ -416,3 +416,33 @@ Aspectos a mejorar en la próxima versión (Rueda Libre v2.0):
    - Conectar el formulario a un servicio o API backend (como un webhook, Node.js o servicio de correos) para enviar un correo de confirmación de reserva al cliente de manera automática.
 4. Formatos Modernos de Imágenes:
    - Convertir las imágenes PNG a formatos modernos más livianos como WebP o AVIF para acelerar el tiempo de carga del sitio en conexiones lentas.
+
+
+
+
+MINIRETO: ENCABEZADO Y PIE FLEXIBLES CON FLEXBOX
+
+Objetivo:
+Modernizar el layout unidimensional del encabezado, menú de navegación y pie de página utilizando 
+CSS Flexbox para mejorar la distribución en pantallas anchas y la fluidez en pantallas pequeñas.
+1. Decisiones técnicas implementadas:
+- Menú de navegación (#menu):
+  * Se sustituyó el modelo antiguo de 'display: inline-block' y 'margin-right' por 'display: flex' y 'gap: var(--espacio-md)'.
+  * Justificación: 'gap' elimina los márgenes residuales asimétricos en el último elemento y los espacios fantasma del HTML. 
+    Se agregó 'flex-wrap: wrap' para permitir que los enlaces bajen de renglón si la pantalla es reducida.
+- Encabezado (header):
+  * Se aplicó 'display: flex', 'justify-content: space-between' y 'align-items: center'.
+  * Justificación: Distribuye el nombre de la marca en un extremo y el menú en el opuesto, nivelando ambos elementos 
+    en su eje vertical medio (eje cruzado). Con 'flex-wrap: wrap', el menú baja ordenadamente bajo el título en pantallas móviles.
+- Pie de página (footer):
+  * Se estructuraron tres bloques independientes (marca, contacto y horario de atención).
+  * Se aplicó 'display: flex', 'justify-content: space-between' y 'align-items: flex-start'.
+  * Justificación: 'align-items: flex-start' garantiza que las cabeceras de los tres bloques inicien exactamente 
+    en la misma línea superior, a pesar de que el bloque de horario tiene 4 renglones y el de contacto solo 2.
+2. Resultados de la prueba de redimensionamiento de ventana (Responsividad):
+- Comportamiento en pantalla ancha (> 768px):
+  * Encabezado: Marca a la izquierda y menú a la derecha en una sola fila compacta.
+  * Pie de página: Tres columnas equilibradas horizontalmente a todo lo ancho del pie.
+- Comportamiento al estrechar la ventana (pantalla móvil < 600px):
+  * Encabezado: Al agotarse el ancho, el menú pasa automáticamente debajo del nombre sin generar desbordamiento ni scroll horizontal.
+  * Pie de página: Los bloques bajan progresivamente de línea gracias a 'flex-wrap: wrap' y 'gap', apilándose verticalmente con espaciado uniforme y manteniendo la legibilidad total del contenido.

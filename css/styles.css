@@ -121,6 +121,20 @@ header h1 {
 
 
 /*  4. COMPONENTES Y LAYOUT */
+.portada {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: var(--espacio-lg);
+}
+
+.portada-imagen img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+}
 
 /* --- Botón de llamada a la acción (CTA) --- */
 .boton-cta {
@@ -313,12 +327,82 @@ tbody tr:nth-child(even) {
     text-align: center;
 }
 
+/* --- Galería Nuestras Rutas (Boceto 3 columnas en una fila con Grid) --- */
+.galeria-rutas {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* 3 columnas de igual proporción en fr */
+    gap: 1.5rem;
+    margin: var(--espacio-md) 0 var(--espacio-lg) 0;
+}
+
+.tarjeta-ruta {
+    width: 100%;
+    /* Llena su columna asignada */
+    margin: 0;
+    background-color: var(--color-blanco);
+    border: 1px solid var(--color-gris);
+    border-radius: 8px;
+    padding: var(--espacio-md);
+    text-align: center;
+}
+
+.tarjeta-ruta img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    display: block;
+    margin-bottom: var(--espacio-sm);
+}
+
+.tarjeta-ruta h3 {
+    margin: var(--espacio-sm) 0;
+    color: var(--color-azul-noche);
+}
+
+.tarjeta-ruta .nivel {
+    margin: 0;
+    color: var(--color-verde);
+}
 
 
 
 /* 5. FORMULARIO DE RESERVAS */
 
-/* Agrupaciones y leyendas */
+/* --- Layout de Reservas en proporción 2:1 (CSS Grid) --- */
+.contenedor-reservas {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    align-items: start;
+    margin-top: var(--espacio-md);
+}
+
+.info-contacto-reservas {
+    background-color: var(--color-blanco);
+    border: 1px solid var(--color-gris);
+    border-radius: 6px;
+    padding: var(--espacio-md);
+}
+
+.info-contacto-reservas h2 {
+    font-size: 1.2rem;
+    margin-top: 0;
+}
+
+/* --- Fila de dos campos cortos relacionados (Flexbox 1D) --- */
+.fila-campos {
+    display: flex;
+    gap: 1rem;
+}
+
+.fila-campos p {
+    flex: 1;
+    /* Cada campo toma la mitad exacta de la fila */
+}
+
+
+
 fieldset {
     border: 1px solid var(--color-gris);
     border-radius: 6px;

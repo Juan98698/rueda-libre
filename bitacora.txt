@@ -493,3 +493,111 @@ dimensiones (sin media queries) y alinear el contenido interno de cada tarjeta c
 |               |                     | La cuadrícula colapsa a 1 columna donde cada tarjeta ocupa el     |
 |               |                     | 100% del ancho, apiladas verticalmente y 100% legibles.          |
 --------------------------------------------------------------------------------------------------------
+
+
+
+========================================================================================================
+MINIRETO: LAYOUT GENERAL DE ESCRITORIO CON GRID Y FLEXBOX (NODO DIGITAL)
+========================================================================================================
+
+Objetivo:
+Construir el layout general de las páginas combinando CSS Grid (para estructuras bidimensionales rígidas 
+definidas en unidades 'fr') y Flexbox (para componentes unidimensionales basados en el flujo de contenido), 
+siguiendo fielmente el boceto de escritorio de Nodo Digital.
+
+Criterio fundamental de diseño:
+- CSS Grid (2D / Bidimensional): Se emplea cuando la prioridad es la estructura y las proporciones del contenedor 
+  (columnas y filas explícitas con 'fr'), independientemente de la cantidad o tamaño del contenido interno.
+- Flexbox (1D / Unidimensional): Se emplea cuando los elementos fluyen linealmente en una sola dirección 
+  (fila o columna) y su tamaño depende principalmente del contenido o necesitan distribuirse a lo largo de un eje.
+
+
+REGISTRO DE LAS 6 DECISIONES DE LAYOUT:
+
+1. Portada de Inicio (Hero):
+   - Sistema elegido: CSS Grid (2D).
+   - Regla CSS:
+     .portada {
+         display: grid;
+         grid-template-columns: 1fr 1fr;
+         align-items: center;
+         gap: 2rem;
+     }
+   - Justificación (2D vs 1D):
+     Se utilizó CSS Grid porque se requería una división rígida en dos columnas exactamente iguales (50% y 50% 
+     usando '1fr 1fr'), donde el bloque de texto y la imagen del amanecer se reparten el espacio disponible 
+     sin depender de la longitud del texto. 'align-items: center' permite alinear verticalmente el bloque de 
+     texto justo en el centro óptico de la fotografía contigua.
+
+2. Galería de Rutas Guiadas (Nuestras Rutas):
+   - Sistema elegido: CSS Grid (2D).
+   - Regla CSS:
+     .galeria-rutas {
+         display: grid;
+         grid-template-columns: repeat(3, 1fr);
+         gap: 1.5rem;
+     }
+   - Justificación (2D vs 1D):
+     El boceto de diseño exigía estrictamente tres tarjetas en una sola fila. Con CSS Grid y la función 
+     'repeat(3, 1fr)', el navegador garantiza 3 columnas simétricas con unidades fraccionarias ('fr'). 
+     Además, las tarjetas dentro de la cuadrícula adoptan de forma natural la misma altura en la fila, 
+     brindando orden visual sin trucos de márgenes o alturas fijas.
+
+3. Distribución de Reservas (Formulario e Información 2:1):
+   - Sistema elegido: CSS Grid (2D).
+   - Regla CSS:
+     .contenedor-reservas {
+         display: grid;
+         grid-template-columns: 2fr 1fr;
+         gap: 2rem;
+         align-items: start;
+     }
+   - Justificación (2D vs 1D):
+     Se utilizó CSS Grid porque el layout del boceto demandaba una relación asimétrica estricta de dos tercios 
+     para el formulario y un tercio para la barra lateral de contacto y horario ('2fr 1fr'). Las unidades 'fr' 
+     calculan matemáticamente esta proporción exacta sobre el ancho total disponible. Se complementó con 
+     'align-items: start' para evitar que el aside de contacto se deforme o estire forzosamente para igualar 
+     la gran altura del formulario.
+
+4. Fila de Campos Cortos Relacionados en el Formulario (Documento y Celular):
+   - Sistema elegido: Flexbox (1D).
+   - Regla CSS:
+     .fila-campos {
+         display: flex;
+         gap: 1rem;
+     }
+     .fila-campos p {
+         flex: 1;
+     }
+   - Justificación (2D vs 1D):
+     Se eligió Flexbox porque es una relación estrictamente lineal (1 dimensión: fila horizontal). Son únicamente 
+     dos campos de entrada que deben convivir en el mismo renglón. Con 'flex: 1' cada campo se reparte el 50% 
+     del ancho disponible dentro del fieldset y 'gap: 1rem' mantiene una separación limpia entre ellos, 
+     resultando mucho más semántico, simple y ligero que inicializar una cuadrícula Grid interna.
+
+5. Encabezado Principal (<header>):
+   - Sistema elegido: Flexbox (1D).
+   - Regla CSS:
+     header {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+     }
+   - Justificación (2D vs 1D):
+     Se eligió Flexbox porque los elementos de navegación habitan a lo largo de un solo eje horizontal (eje principal). 
+     'justify-content: space-between' empuja naturalmente la marca/logo al extremo izquierdo y el bloque de 
+     navegación al extremo derecho, adaptándose de forma elástica a la longitud de los títulos y menús.
+
+6. Pie de Página (<footer>):
+   - Sistema elegido: Flexbox (1D).
+   - Regla CSS:
+     footer {
+         display: flex;
+         justify-content: space-between;
+         align-items: flex-start;
+         gap: 1.5rem;
+     }
+   - Justificación (2D vs 1D):
+     Se eligió Flexbox porque organiza tres bloques de contenido textual (marca/ubicación, enlaces directos y créditos) 
+     en un flujo horizontal continuo. 'align-items: flex-start' asegura que los tres bloques inicien parejos en la 
+     línea superior, respetando las diferentes alturas de sus líneas de texto sin forzar cajones rígidos.

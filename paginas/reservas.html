@@ -35,108 +35,125 @@
 
     <main>
         <img src="../img/PortadaRuedaLibre.png" alt="Logo de Rueda Libre" width="300">
-        <p>Para reservar una bicicleta o recorrido guiado,
-            contactanos directamente a nuestro correo electronico.</p>
-        <a href="mailto:hola@ruedalibre.example">hola@ruedalibre.example</a>
 
-        <aside>
-            <h2> Horario de atencion</h2>
-            <dl>
-                <dt><strong>Lunes a Viernes</strong></dt>
-                <dd>6:00am - 6:00pm</dd>
-                <dt><strong>Sabados</strong></dt>
-                <dd>7:00am - 5:00pm</dd>
-                <dt><strong>Domingos y Festivos</strong></dt>
-                <dd>8:00am - 4:00pm</dd>
-            </dl>
-        </aside>
-        <section>
-            <h2> Formulario de reserva</h2>
-            <form action="#" method="post">
-                <fieldset>
-                    <legend>Tus datos</legend>
-                    <p><label for="nombre">Nombre completo</label>
+        <!-- Contenedor 2:1 con CSS Grid -->
+        <div class="contenedor-reservas">
 
-                        <input type="text" id="nombre" name="nombre" required minlength="3">
-                    </p>
-                    <p><label for="documento">Documento</label>
-                        <input type="text" id="documento" name="documento" required pattern="[0-9]{6,10}"
-                            title="El documento debe contener entre 6 y 10 dígitos numéricos">
-                    </p>
-                    <p><label for="correo">Correo electronico</label>
-                        <input type="email" id="correo" name="correo" required>
-                    </p>
-                    <p><label for="celular">Celular</label>
-                        <input type="tel" id="celular" name="celular" required pattern="3[0-9]{9}"
-                            title="El celular debe tener 10 dígitos y comenzar por 3 (ej: 3001234567)">
-                    </p>
-                </fieldset>
-
-                <fieldset>
-                    <legend>Tu alquiler</legend>
-                    <p><label for="fecha">Fecha a reservar</label>
-                        <input type="date" id="fecha" name="fecha" required min="2026-11-01" max="2026-12-31">
-                    </p>
+            <!-- Columna 1 (Izquierda - 2fr): Todo el Formulario completo -->
+            <section class="seccion-formulario">
+                <h2>Formulario de reserva</h2>
+                <form action="#" method="post">
 
                     <fieldset>
-                        <legend>Tipo de bicicleta</legend>
-                        <input type="radio" id="bici-urbana" name="tipo_bicicleta" value="urbana" required>
-                        <label for="bici-urbana">Urbana</label>
-                        <input type="radio" id="bici-montana" name="tipo_bicicleta" value="montana">
-                        <label for="bici-montana">Montaña</label>
-                        <input type="radio" id="bici-electrica" name="tipo_bicicleta" value="electrica">
-                        <label for="bici-electrica">Eléctrica</label>
+                        <legend>Tus datos</legend>
+                        <p>
+                            <label for="nombre">Nombre completo</label>
+                            <input type="text" id="nombre" name="nombre" required minlength="3">
+                        </p>
+
+                        <!-- Fila con dos campos cortos relacionados (Flexbox) -->
+                        <div class="fila-campos">
+                            <p>
+                                <label for="documento">Documento</label>
+                                <input type="text" id="documento" name="documento" required pattern="[0-9]{6,10}"
+                                    title="El documento debe contener entre 6 y 10 dígitos numéricos">
+                            </p>
+                            <p>
+                                <label for="celular">Celular</label>
+                                <input type="tel" id="celular" name="celular" required pattern="3[0-9]{9}"
+                                    title="El celular debe tener 10 dígitos y comenzar por 3 (ej: 3001234567)">
+                            </p>
+                        </div>
+
+                        <p>
+                            <label for="correo">Correo electronico</label>
+                            <input type="email" id="correo" name="correo" required>
+                        </p>
                     </fieldset>
 
                     <fieldset>
-                        <p><label for="plan">Elige tu plan</label>
-                            <select id="plan" name="plan" required>
-                                <option value="">-- Elige un plan --</option>
-                                <option value="1hora">1 hora</option>
-                                <option value="mediodia">Medio dia (4 h)</option>
-                                <option value="diacompleto">Dia completo</option>
-                            </select>
-                        </p>
+                        <legend>Tu alquiler</legend>
                         <p>
-                            <label for="cantidad">Cantidad de bicicletas:</label>
-                            <input type="number" id="cantidad" name="cantidad" min="1" max="6" required>
+                            <label for="fecha">Fecha a reservar</label>
+                            <input type="date" id="fecha" name="fecha" required min="2026-11-01" max="2026-12-31">
                         </p>
 
+                        <fieldset>
+                            <legend>Tipo de bicicleta</legend>
+                            <input type="radio" id="bici-urbana" name="tipo_bicicleta" value="urbana" required>
+                            <label for="bici-urbana">Urbana</label>
+                            <input type="radio" id="bici-montana" name="tipo_bicicleta" value="montana">
+                            <label for="bici-montana">Montaña</label>
+                            <input type="radio" id="bici-electrica" name="tipo_bicicleta" value="electrica">
+                            <label for="bici-electrica">Eléctrica</label>
+                        </fieldset>
 
-                        <p>
-                            <label for="recorrido">Recorrido guiado (Opcional)</label>
-                            <select id="recorrido" name="recorrido">
-                                <option value="ninguno">Ninguno</option>
-                                <option value="rio-parques">Río y parques (12 km, 2 h, Fácil)</option>
-                                <option value="sabores-barrio">Sabores de Barrio (18 km, 3 h, Medio)</option>
-                                <option value="reto-las-palmas">Reto Las Palmas (25 km, 4 h, Difícil)</option>
-                            </select>
-                        </p>
-
+                        <fieldset>
+                            <p>
+                                <label for="plan">Elige tu plan</label>
+                                <select id="plan" name="plan" required>
+                                    <option value="">-- Elige un plan --</option>
+                                    <option value="1hora">1 hora</option>
+                                    <option value="mediodia">Medio dia (4 h)</option>
+                                    <option value="diacompleto">Dia completo</option>
+                                </select>
+                            </p>
+                            <p>
+                                <label for="cantidad">Cantidad de bicicletas:</label>
+                                <input type="number" id="cantidad" name="cantidad" min="1" max="6" required>
+                            </p>
+                            <p>
+                                <label for="recorrido">Recorrido guiado (Opcional)</label>
+                                <select id="recorrido" name="recorrido">
+                                    <option value="ninguno">Ninguno</option>
+                                    <option value="rio-parques">Río y parques (12 km, 2 h, Fácil)</option>
+                                    <option value="sabores-barrio">Sabores de Barrio (18 km, 3 h, Medio)</option>
+                                    <option value="reto-las-palmas">Reto Las Palmas (25 km, 4 h, Difícil)</option>
+                                </select>
+                            </p>
+                        </fieldset>
                     </fieldset>
 
-                </fieldset>
-                <fieldset>
-                    <legend>Confirmación</legend>
-                    <p>
-                        <label for="comentarios">Comentarios:</label>
-                        <textarea id="comentarios" name="comentarios" rows="4" maxlength="300"></textarea>
-                    </p>
-                    <p>
-                        <input type="checkbox" id="politicas" name="politicas" required>
-                        <label for="politicas">Acepto los terminos y condiciones:</label>
-                    </p>
-                    <p>
-                        <button type="submit">Confirmar reserva</button>
-                        <button type="reset">Cancelar</button>
-                    </p>
-                </fieldset>
+                    <fieldset>
+                        <legend>Confirmación</legend>
+                        <p>
+                            <label for="comentarios">Comentarios:</label>
+                            <textarea id="comentarios" name="comentarios" rows="4" maxlength="300"></textarea>
+                        </p>
+                        <p>
+                            <input type="checkbox" id="politicas" name="politicas" required>
+                            <label for="politicas">Acepto los terminos y condiciones:</label>
+                        </p>
+                        <p>
+                            <button type="submit">Confirmar reserva</button>
+                            <button type="reset">Cancelar</button>
+                        </p>
+                    </fieldset>
 
-            </form>
-        </section>
+                </form>
+            </section>
+
+            <!-- Columna 2 (Derecha - 1fr): Información de contacto y horario -->
+            <aside class="info-contacto-reservas">
+                <h2>Contacto directo</h2>
+                <p>Para reservar una bicicleta o recorrido guiado, contáctanos directamente a nuestro correo
+                    electrónico.</p>
+                <a href="mailto:hola@ruedalibre.example">hola@ruedalibre.example</a>
+
+                <h2>Horario de atención</h2>
+                <dl>
+                    <dt><strong>Lunes a Viernes</strong></dt>
+                    <dd>6:00 a. m. - 6:00 p. m.</dd>
+                    <dt><strong>Sábados</strong></dt>
+                    <dd>7:00 a. m. - 5:00 p. m.</dd>
+                    <dt><strong>Domingos y Festivos</strong></dt>
+                    <dd>8:00 a. m. - 4:00 p. m.</dd>
+                </dl>
+            </aside>
+
+        </div> <!-- Fin de .contenedor-reservas -->
 
     </main>
-
     <footer>
         <div>
             <strong>Rueda Libre</strong><br>

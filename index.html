@@ -31,16 +31,24 @@
         </nav>
     </header>
     <main>
-        <img src="img/PortadaRuedaLibre.png" alt="vista trasera de una bicileta de montaña color negra, 
-            sobre una colina con la ciudad de fondo en amanecer" width="300">
-        <p>Bienvenido al sitio web de rueda libre, <br>
-            aqui podras encontrar todo lo que necesitas para alquilar una bicicleta.
-            <a href="#Encuentranos">Ir a la ubicacion</a>
-            <a href="paginas/reservas.html" class="boton-cta"><strong>Reservar ahora</strong></a>
-        </p>
-        <nav>
-            <a href="paginas/tarifas.html">Ver Tarifas y Recorridos</a>
-        </nav>
+        <section class="portada">
+            <div class="portada-texto">
+                <p>Bienvenido al sitio web de rueda libre, <br>
+                    aquí podrás encontrar todo lo que necesitas para alquilar una bicicleta.
+                </p>
+                <p>
+                    <a href="#Encuentranos">Ir a la ubicación</a>
+                    <a href="paginas/reservas.html" class="boton-cta"><strong>Reservar ahora</strong></a>
+                </p>
+                <nav>
+                    <a href="paginas/tarifas.html">Ver Tarifas y Recorridos</a>
+                </nav>
+            </div>
+            <div class="portada-imagen">
+                <img src="img/PortadaRuedaLibre.png" alt="Bicicleta de montaña con vista a Medellín al amanecer">
+            </div>
+        </section>
+
         <section>
             <h2>Quienes somos? </h2>
             <img src="img/bicicleta.png" alt="Bicicleta de montaña negra con suspensión lista para alquiler"
@@ -77,6 +85,32 @@
                     por el cliente </em></p>
 
         </section>
+        <!-- Galería de 3 rutas en una fila -->
+        <section class="seccion-rutas">
+            <h2>Nuestras rutas</h2>
+            <div class="galeria-rutas">
+
+                <article class="tarjeta-ruta">
+                    <img src="img/RioParques.png" alt="Ruta Río y parques">
+                    <h3>Río y parques</h3>
+                    <p class="nivel">Nivel: <strong>Fácil</strong></p>
+                </article>
+
+                <article class="tarjeta-ruta">
+                    <img src="img/SaboresBarrio.png" alt="Ruta Sabores de Barrio">
+                    <h3>Sabores de Barrio</h3>
+                    <p class="nivel">Nivel: <strong>Medio</strong></p>
+                </article>
+
+                <article class="tarjeta-ruta">
+                    <img src="img/RetoPalmas.png" alt="Ruta Reto Las Palmas">
+                    <h3>Reto Las Palmas</h3>
+                    <p class="nivel">Nivel: <strong>Difícil</strong></p>
+                </article>
+
+            </div>
+        </section>
+
         <section class="seccion-flota">
             <h2>Nuestra flota</h2>
             <div class="cuadricula-flota">

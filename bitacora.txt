@@ -601,3 +601,75 @@ REGISTRO DE LAS 6 DECISIONES DE LAYOUT:
      Se eligió Flexbox porque organiza tres bloques de contenido textual (marca/ubicación, enlaces directos y créditos) 
      en un flujo horizontal continuo. 'align-items: flex-start' asegura que los tres bloques inicien parejos en la 
      línea superior, respetando las diferentes alturas de sus líneas de texto sin forzar cajones rígidos.
+
+
+
+========================================================================================================
+MINIRETO: REORGANIZACIÓN MOBILE-FIRST Y MEDIA QUERIES (VERSIÓN 1.5)
+========================================================================================================
+
+Objetivo:
+Reorganizar la arquitectura CSS de todo el sitio bajo el enfoque Mobile-First, definiendo el diseño base 
+en una sola columna para dispositivos móviles (sin media queries) y aplicando mejoras progresivas 
+mediante '@media (min-width: 768px)' para tablets y '@media (min-width: 1200px)' para escritorios.
+
+
+1. REGISTRO DE PRUEBAS EN DEVTOOLS (MODO DISPOSITIVO):
+
+--------------------------------------------------------------------------------------------------------
+| Ancho probado | Encabezado / Menú    | Portada / Rutas / Flota    | Reservas / Formulario   | Tablas de Tarifas |
+|:-------------:|:--------------------:|:--------------------------:|:-----------------------:|:-----------------:|
+|    360 px     | En columna centrado: | 1 columna apilada en todo. | 1 columna total.        | 100% legibles sin |
+|   (Celular)   | Título arriba y menú | Rutas en 1 columna (1fr).  | Campos Documento y      | scroll horizontal |
+|               | debajo con enlaces   | Flota en 1 columna fluida  | Celular apilados en     | (padding y fuente |
+|               | centrados y táctiles.| (1fr, ancho 100%).         | columna (ancho 100%).   | optimizados).     |
+|---------------|----------------------|----------------------------|-------------------------|-------------------|
+|    768 px     | Horizontal elástico: | Portada en 2 col (1fr 1fr).| 1 columna amplia para el| Fuente a 1rem y   |
+|   (Tablet)    | Título a la izquierda| Rutas en 3 col en una fila | formulario; Documento y | padding estándar. |
+|               | y menú a la derecha  | (repeat(3, 1fr)). Flota    | Celular en la misma     | Rellenos cómodos  |
+|               | (space-between).     | en 2 columnas (~360px c/u).| fila (flex-direction:row| sin desbordamiento|
+|---------------|----------------------|----------------------------|-------------------------|-------------------|
+|   1280 px     | Horizontal holgado:  | Portada con gap de 3rem.   | Layout 2:1 del boceto:  | Presentación de   |
+| (Escritorio)  | Distribución limpia y| Galería con gap de 2rem.   | Formulario 2fr y Aside  | alta jerarquía con|
+|               | márgenes amplios en  | Flota en 3 columnas        | 1fr con gap de 3rem     | tablas centradas  |
+|               | pantalla completa.   | equilibradas (~280px c/u). | (start alineado).       | y ordenadas.      |
+--------------------------------------------------------------------------------------------------------
+
+
+2. TRES PROBLEMAS RESPONSIVE IDENTIFICADOS Y RESUELTOS:
+
+- Problema 1: Desplazamiento horizontal molesto en las tablas de tarifas en celulares (360 px).
+  * Causa: En versiones anteriores se configuró '@media (max-width: 650px)' con 'white-space: nowrap' y 
+    'overflow-x: auto'. Aunque permitía deslizar la tabla, el cliente reportó que 7 de cada 10 usuarios 
+    navegan en celular y la experiencia de desplazarse de lado resultaba incómoda e impedía ver precios rápidamente.
+  * Solución Mobile-First: Se eliminó el 'white-space: nowrap' y la media query max-width. En el CSS base móvil 
+    se ajustó el relleno de las celdas a 'padding: 0.4rem 0.25rem' y el tamaño de fuente a '0.8rem' ('0.75rem' en th). 
+    Con esto, las tablas de 4 y 5 columnas caben perfectamente dentro de los 360 px sin desbordamiento ni scroll lateral. 
+    Posteriormente, en '@media (min-width: 768px)' se restaura la fuente a 1rem y el padding holgado.
+
+- Problema 2: Colisión y desalineación del encabezado y pie de página en pantallas pequeñas.
+  * Causa: El encabezado ('header') y el pie ('footer') utilizaban 'justify-content: space-between' en el CSS base. 
+    En 360 px, el nombre de la empresa chocaba horizontalmente con los enlaces del menú y los tres bloques del pie 
+    se envolvían asimétricamente hacia la izquierda generando desbalance visual.
+  * Solución Mobile-First: En el CSS base móvil se aplicó 'flex-direction: column', 'align-items: center' y 
+    'text-align: center'. Esto coloca el título arriba y el menú debajo centrado en el celular, y los bloques 
+    del pie ordenados en una columna limpia. En '@media (min-width: 768px)', se recupera la distribución horizontal 
+    del MiniReto 1 con 'flex-direction: row' y 'justify-content: space-between'.
+
+- Problema 3: Portada, rutas y campos de formulario aplastados en columnas microscópicas.
+  * Causa: Los layouts de portada ('1fr 1fr'), galería de rutas ('repeat(3, 1fr)'), reservas ('2fr 1fr') y la 
+    fila de campos ('flex: 1') estaban definidos de forma fija en el CSS base. En 360 px, las rutas quedaban en 
+    tres columnas de menos de 100 px cada una, y los campos Documento y Celular quedaban en menos de 130 px, 
+    haciendo que los controles fueran difíciles de tocar y leer.
+  * Solución Mobile-First: En los estilos base móvil todo se reestructuró a 1 sola columna ('1fr') y '.fila-campos' 
+    se colocó en 'flex-direction: column' con ancho del 100%. Las divisiones multicolumna se delegaron a las 
+    media queries con min-width: a 768 px la portada pasa a 2 columnas, las rutas a 3 columnas y los campos a fila; 
+    y a 1200 px se activa la relación 2:1 en el formulario de reservas.
+
+
+3. CRITERIOS TÉCNICOS CUMPLIDOS:
+- Enfoque Mobile-First riguroso: Base móvil sin media queries, progresiones ascendentes con '@media (min-width: ...)'.
+- Imágenes 100% fluidas con 'max-width: 100%; height: auto; display: block;'.
+- Cero scroll horizontal a 360 px verificado en DevTools.
+- Transiciones de layout consistentes en los breakpoints de 768 px (tablet) y 1200 px (escritorio).
+- Publicación de la versión v1.5 en GitHub Pages: https://juan98698.github.io/rueda-libre/

@@ -64,10 +64,12 @@ img {
 
 header {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
+    text-align: center;
     flex-wrap: wrap;
-    gap: var(--espacio-md);
+    gap: var(--espacio-sm);
     background-color: var(--color-azul-noche);
     color: var(--color-crema);
     padding: var(--espacio-md) var(--espacio-lg);
@@ -82,7 +84,8 @@ header h1 {
 #menu {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--espacio-md);
+    justify-content: center;
+    gap: var(--espacio-sm);
     list-style: none;
     padding: 0;
     margin: 0;
@@ -123,10 +126,11 @@ header h1 {
 /*  4. COMPONENTES Y LAYOUT */
 .portada {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     align-items: center;
-    gap: 2rem;
+    gap: 1.5rem;
     margin-bottom: var(--espacio-lg);
+    text-align: center;
 }
 
 .portada-imagen img {
@@ -162,10 +166,9 @@ header h1 {
 section article {
     position: relative;
     /* Marco de referencia para posicionamiento absoluto de .etiqueta-nuevo */
-    display: inline-block;
-    vertical-align: top;
-    width: 47%;
-    margin: 1%;
+    display: block;
+    width: 100%;
+    margin: 0 0 var(--espacio-md) 0;
     background-color: var(--color-blanco);
     border: 1px solid var(--color-gris);
     border-radius: 8px;
@@ -229,7 +232,7 @@ section article img {
     outline-offset: 3px;
 }
 
-/* --- Tablas de tarifas y recorridos --- */
+/* --- Tablas de tarifas y recorridos (Base Móvil: sin scroll lateral) --- */
 
 table {
     width: 100%;
@@ -237,12 +240,13 @@ table {
     margin: var(--espacio-md) 0 var(--espacio-lg) 0;
     background-color: var(--color-blanco);
     border-radius: 6px;
-    overflow: hidden;
+    font-size: 0.8rem;
+    /* Tamaño compacto y legible en celular */
 }
 
 caption {
-    font-size: 1.1rem;
-    padding: var(--espacio-sm);
+    font-size: 1rem;
+    padding: var(--espacio-sm) 0;
     color: var(--color-azul-noche);
     text-align: left;
 }
@@ -250,33 +254,29 @@ caption {
 th {
     background-color: var(--color-azul-noche);
     color: var(--color-blanco);
-    padding: var(--espacio-sm) var(--espacio-md);
-    text-align: left;
+    padding: 0.4rem 0.25rem;
+    /* Relleno reducido para que quepan todas las columnas */
+    text-align: center;
     border: 1px solid var(--color-azul-noche);
     font-family: var(--fuente-titulos);
+    font-size: 0.75rem;
 }
 
 td {
-    padding: var(--espacio-sm) var(--espacio-md);
+    padding: 0.4rem 0.25rem;
     border: 1px solid var(--color-gris);
+    text-align: center;
+}
+
+/* Alinea a la izquierda la primera columna (nombres) para mejor lectura */
+th:first-child,
+td:first-child {
+    text-align: left;
+    padding-left: 0.4rem;
 }
 
 tbody tr:nth-child(even) {
     background-color: var(--color-crema);
-}
-
-/* 2. Vista de Celular: solo si la pantalla mide menos de 650px, se vuelve deslizable */
-@media (max-width: 650px) {
-    table {
-        display: block;
-        overflow-x: auto;
-    }
-
-    th,
-    td {
-        white-space: nowrap;
-
-    }
 }
 
 /* --- Sección Flota con CSS Grid y Flexbox --- */
@@ -330,8 +330,7 @@ tbody tr:nth-child(even) {
 /* --- Galería Nuestras Rutas (Boceto 3 columnas en una fila con Grid) --- */
 .galeria-rutas {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    /* 3 columnas de igual proporción en fr */
+    grid-template-columns: 1fr;
     gap: 1.5rem;
     margin: var(--espacio-md) 0 var(--espacio-lg) 0;
 }
@@ -372,7 +371,7 @@ tbody tr:nth-child(even) {
 /* --- Layout de Reservas en proporción 2:1 (CSS Grid) --- */
 .contenedor-reservas {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 1fr;
     gap: 2rem;
     align-items: start;
     margin-top: var(--espacio-md);
@@ -390,18 +389,16 @@ tbody tr:nth-child(even) {
     margin-top: 0;
 }
 
-/* --- Fila de dos campos cortos relacionados (Flexbox 1D) --- */
+/* --- Fila de campos (Base Móvil: apilados verticalmente) --- */
 .fila-campos {
     display: flex;
-    gap: 1rem;
+    flex-direction: column;
+    gap: 0;
 }
 
 .fila-campos p {
-    flex: 1;
-    /* Cada campo toma la mitad exacta de la fila */
+    width: 100%;
 }
-
-
 
 fieldset {
     border: 1px solid var(--color-gris);
@@ -497,12 +494,11 @@ button[type="reset"]:hover {
 
 
 /*  6. PIE DE PÁGINA (FOOTER) */
-
 footer {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
     gap: 1.5rem;
     background-color: var(--color-azul-noche);
     color: var(--color-crema);
@@ -522,4 +518,86 @@ footer a:hover {
 footer a:focus {
     outline: 2px solid var(--color-naranja);
     outline-offset: 3px;
+}
+
+/* --- TABLET Y PANTALLAS MEDIANAS (Desde 768px en adelante) --- */
+@media (min-width: 768px) {
+    header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        text-align: left;
+        padding: var(--espacio-md) var(--espacio-lg);
+    }
+
+    #menu {
+        justify-content: flex-end;
+        gap: var(--espacio-md);
+    }
+
+    .portada {
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        text-align: left;
+        gap: 2rem;
+    }
+
+    .galeria-rutas {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+    }
+
+    section article {
+        display: inline-block;
+        vertical-align: top;
+        width: 47%;
+        margin: 1%;
+    }
+
+    .fila-campos {
+        flex-direction: row;
+        gap: 1rem;
+    }
+
+    .fila-campos p {
+        flex: 1;
+    }
+
+    table {
+        font-size: 1rem;
+    }
+
+    th,
+    td {
+        padding: var(--espacio-sm) var(--espacio-md);
+    }
+
+    th:first-child,
+    td:first-child {
+        text-align: left;
+    }
+
+    footer {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+        text-align: left;
+    }
+}
+
+/* --- ESCRITORIO (Desde 1200px en adelante) --- */
+@media (min-width: 1200px) {
+    .contenedor-reservas {
+        grid-template-columns: 2fr 1fr;
+        gap: 3rem;
+        align-items: start;
+    }
+
+    .portada {
+        gap: 3rem;
+    }
+
+    .galeria-rutas {
+        gap: 2rem;
+    }
 }

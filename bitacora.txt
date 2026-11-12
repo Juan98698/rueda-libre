@@ -857,3 +857,78 @@ e) Integración del botón y arquitectura semántica:
 - Tamaños: 'w-full', 'max-w-2xl', 'h-auto', 'aspect-[3/2]'.
 - Tipografía y Colores: 'text-2xl', 'text-3xl', 'text-xs', 'text-base', 'font-extrabold', 'font-bold', 'font-semibold', 
                        'text-white', 'text-slate-100', 'text-slate-400', 'text-emerald-400', 'text-amber-400', 'text-rose-400'.
+
+
+
+========================================================================================================
+MINIRETO: KIT DE COMPONENTES COMPLETO Y REGLAS DEL SISTEMA (RUEDA NOCTURNA)
+========================================================================================================
+
+Objetivo:
+Completar la librería de componentes del Design System para la campaña "Rueda Nocturna" (botones, cards, 
+alertas y campos de formulario) en una sola página de referencia ('nocturna/componentes.html'), 
+garantizando consistencia visual mediante las "Reglas del Kit" y una estricta accesibilidad semántica.
+
+
+1. LAS REGLAS DEL KIT (DESIGN SYSTEM RULES):
+
+a) Regla de Radios de Borde ('rounded-*'):
+   - Componentes interactivos y medianos (Botones, Alertas, Inputs, Bloques de métricas): 'rounded-xl' (12 px).
+     Garantiza una curvatura suave y moderna sin llegar a ser circular.
+   - Contenedores grandes (Cards de producto, bloques contenedores de formulario): 'rounded-2xl' (16 px).
+     Brinda jerarquía estructural envolvente.
+   - Píldoras de estado y badges: 'rounded-full' (totalmente redondeadas).
+
+b) Regla de Escala de Espaciado y Relleno:
+   - Controles interactivos (Botones e Inputs): Relleno vertical 'py-3' y horizontal 'px-6' (botones) o 'px-4' (inputs).
+     Esto asegura que cualquier elemento cliqueable o táctil supere los 44 px de altura mínima recomendada 
+     por las directrices WCAG para dedos en dispositivos móviles.
+   - Relleno interno de tarjetas y superficies: 'p-6' en móviles escalando a 'md:p-8' en pantallas medianas.
+   - Separación vertical entre elementos y secciones: 'space-y-4' para textos, 'space-y-6' para bloques, 
+     y 'space-y-16' para división entre secciones del kit.
+
+c) Regla Cromática y de Superficies (Tema Nocturno):
+   - Lienzo base del documento: 'bg-slate-950' (el azul-noche más profundo de la paleta).
+   - Superficie de tarjetas y cajas: 'bg-slate-900' con bordes 'border-slate-800' y 'border-slate-700'.
+   - Colores semánticos con contraste garantizado:
+     * Acción principal y éxito: Esmeralda ('emerald-500', 'emerald-400').
+     * Advertencias y urgencia: Ámbar ('amber-400').
+     * Información del sistema: Azul cielo ('sky-400', 'sky-300').
+     * Dificultades altas / Alertas críticas: Rosa-Rojo ('rose-400').
+
+d) Regla de Accesibilidad de Foco (Keyboard Navigation):
+   - Todo control interactivo comparte la misma firma de foco:
+     'focus:outline-none focus:ring-2 focus:ring-[color] focus:ring-offset-2 focus:ring-offset-slate-900'.
+   - Al navegar con 'Tab', se apaga el contorno tosco del navegador y se dibuja un anillo nítido separado por 
+     2 px del fondo oscuro, cumpliendo WCAG 2.4.7 (Foco visible).
+
+
+2. DETALLE DE LOS COMPONENTES CONSTRUIDOS:
+
+a) Botones (3 variantes):
+   - Principal (Primary): 'bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold shadow-lg shadow-emerald-500/20'
+   - Secundario (Secondary): 'bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold'
+   - Contorno (Outline): 'bg-transparent hover:bg-slate-800/60 text-emerald-400 border border-emerald-500/50 hover:border-emerald-400'
+
+b) Card de Ruta:
+   - Imagen con proporción fija 'aspect-[3/2]' (cero recorte en posters 1536x1024), etiqueta de nivel por color y texto, 
+     ficha técnica semántica en <dl> y pie en <footer> con precio y botón principal.
+
+c) Alertas del Sistema (3 variantes):
+   - Todas utilizan fondo suave al 10% ('bg-[color]/10'), borde perimetral sutil ('border-[color]/20') y un borde 
+     lateral izquierdo reforzado de 4px ('border-l-4 border-l-[color]').
+   - Accesibilidad semántica:
+     * Alerta de Éxito: 'role="status"' para anunciar la confirmación de forma no intrusiva a lectores de pantalla.
+     * Alerta de Advertencia: 'role="alert"' para lectura prioritaria.
+     * Alerta de Información: 'role="region" aria-label="Información de la ruta"'.
+
+d) Campos de Formulario (Inputs):
+   - Correo electrónico y Celular estructurados con etiquetas visibles asociadas explícitamente (<label for="..."> con <input id="...">).
+   - Textos de ayuda descriptivos vinculados mediante 'aria-describedby'.
+   - 'placeholder-slate-500', fondo 'bg-slate-950', borde 'border-slate-700' y anillo de foco visible esmeralda.
+
+
+3. VERIFICACIÓN Y PUBLICACIÓN:
+- 'nocturna/componentes.html' enlaza 'src/output.css' sin CDN ni errores 404.
+- Totalmente navegable por teclado y adaptado para dispositivos móviles y pantallas grandes.
+- URL en vivo: https://juan98698.github.io/rueda-libre/nocturna/componentes.html

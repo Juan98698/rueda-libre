@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kit de Componentes | Rueda Nocturna</title>
+    <!-- Enlace al CSS compilado por la CLI -->
+    <link rel="stylesheet" href="src/output.css">
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen p-4 md:p-12">
+
+    <div class="w-full max-w-4xl mx-auto space-y-16">
+
+        <!-- Encabezado de la página de componentes -->
+        <header class="border-b border-slate-800 pb-8 text-center md:text-left space-y-3">
+            <p class="text-xs font-semibold uppercase tracking-wider text-emerald-400">
+                Design System &middot; Rueda Libre
+            </p>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-white tracking-tight">
+                Kit de Componentes
+            </h1>
+            <p class="text-slate-400 text-base md:text-lg max-w-2xl">
+                Librería visual para la campaña Rueda Nocturna: botones, cards, alertas y controles de formulario diseñados con utilidades atómicas de Tailwind CSS.
+            </p>
+        </header>
+
+        <main class="space-y-16">
+
+            <section id="botones" class="space-y-6">
+                <header class="space-y-1">
+                    <h2 class="text-2xl font-bold text-white tracking-tight">1. Botones</h2>
+                    <p class="text-slate-400 text-sm">Tres variantes para jerarquía de acciones con estados :hover y foco accesible (:focus:ring-*).</p>
+                </header>
+
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 md:p-8 flex flex-wrap items-center gap-4">
+                    <!-- Botón Principal -->
+                    <a href="#" class="inline-block bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-6 py-3 rounded-xl text-sm uppercase tracking-wider transition duration-200 shadow-lg shadow-emerald-500/20 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 focus:ring-offset-slate-900">
+                        Inscríbete (Primary)
+                    </a>
+
+                    <!-- Botón Secundario -->
+                    <a href="#" class="inline-block bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold px-6 py-3 rounded-xl text-sm uppercase tracking-wider transition duration-200 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-900">
+                        Ver rutas (Secondary)
+                    </a>
+
+                    <!-- Botón de Contorno -->
+                    <a href="#" class="inline-block bg-transparent hover:bg-slate-800/60 text-emerald-400 border border-emerald-500/50 hover:border-emerald-400 font-semibold px-6 py-3 rounded-xl text-sm uppercase tracking-wider transition duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 focus:ring-offset-slate-900">
+                        Alquilar bici (Outline)
+                    </a>
+                </div>
+            </section>
+
+            <section id="cards" class="space-y-6">
+                <header class="space-y-1">
+                    <h2 class="text-2xl font-bold text-white tracking-tight">2. Card de Ruta</h2>
+                    <p class="text-slate-400 text-sm">Tarjeta con imagen en relación de aspecto uniforme (3:2), etiqueta de nivel, ficha técnica y acción integrada.</p>
+                </header>
+
+                <div class="max-w-xl">
+                    <article class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-xl transition duration-300 hover:border-slate-700 hover:shadow-2xl hover:shadow-emerald-500/10">
+                        <img src="../img/LucesDelCentro.png" alt="Ruta nocturna Luces del Centro" class="w-full h-auto aspect-[3/2] object-cover block">
+                        
+                        <div class="p-6 md:p-8 space-y-5">
+                            <p class="inline-block bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">
+                                Nivel: Fácil
+                            </p>
+                            <h3 class="text-2xl font-bold text-white tracking-tight">Luces del Centro</h3>
+                            
+                            <dl class="grid grid-cols-3 gap-2 py-3 border-y border-slate-800 text-center">
+                                <div>
+                                    <dt class="text-xs text-slate-400 uppercase tracking-wider font-medium">Distancia</dt>
+                                    <dd class="text-base font-bold text-slate-100">10 km</dd>
+                                </div>
+                                <div>
+                                    <dt class="text-xs text-slate-400 uppercase tracking-wider font-medium">Duración</dt>
+                                    <dd class="text-base font-bold text-slate-100">2 h</dd>
+                                </div>
+                                <div>
+                                    <dt class="text-xs text-slate-400 uppercase tracking-wider font-medium">Salida</dt>
+                                    <dd class="text-base font-bold text-slate-100">Sede RL</dd>
+                                </div>
+                            </dl>
+
+                            <footer class="flex items-center justify-between pt-2">
+                                <p class="text-xs text-slate-400 uppercase tracking-wider">
+                                    Precio por persona
+                                    <span class="block text-2xl font-extrabold text-emerald-400">$55.000</span>
+                                </p>
+                                <a href="#" class="inline-block bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-6 py-3 rounded-xl text-sm uppercase tracking-wider transition duration-200 shadow-lg shadow-emerald-500/20 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 focus:ring-offset-slate-900">
+                                    Inscríbete
+                                </a>
+                            </footer>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+           
+            <section id="alertas" class="space-y-6">
+                <header class="space-y-1">
+                    <h2 class="text-2xl font-bold text-white tracking-tight">3. Alertas</h2>
+                    <p class="text-slate-400 text-sm">Mensajes de retroalimentación con fondo sutil, borde lateral reforzado (border-l-4) y roles de accesibilidad.</p>
+                </header>
+
+                <div class="space-y-4">
+
+                    <aside role="region" aria-label="Información de la ruta" class="bg-sky-500/10 border border-sky-500/20 border-l-4 border-l-sky-400 rounded-xl p-5 space-y-1">
+                        <h3 class="text-base font-bold text-sky-200 flex items-center gap-2">
+                            <span>ℹ️</span> Punto de encuentro
+                        </h3>
+                        <p class="text-sm text-sky-300 leading-relaxed">
+                            Recuerda llegar 15 minutos antes a la sede de Rueda Libre para ajustar tu bicicleta, luces LED y equipo de seguridad.
+                        </p>
+                    </aside>
+
+                    <aside role="status" class="bg-emerald-500/10 border border-emerald-500/20 border-l-4 border-l-emerald-400 rounded-xl p-5 space-y-1">
+                        <h3 class="text-base font-bold text-emerald-200 flex items-center gap-2">
+                            <span>✅</span> ¡Inscripción confirmada!
+                        </h3>
+                        <p class="text-sm text-emerald-300 leading-relaxed">
+                            Hemos reservado tu cupo para la ruta nocturna. Te enviamos el comprobante y recomendaciones a tu correo electrónico.
+                        </p>
+                    </aside>
+
+                    <aside role="alert" class="bg-amber-500/10 border border-amber-500/20 border-l-4 border-l-amber-400 rounded-xl p-5 space-y-1">
+                        <h3 class="text-base font-bold text-amber-200 flex items-center gap-2">
+                            <span>⚠️</span> Cupos limitados
+                        </h3>
+                        <p class="text-sm text-amber-300 leading-relaxed">
+                            Quedan únicamente 4 bicicletas eléctricas disponibles para la ruta nocturna de este jueves. Te sugerimos confirmar pronto.
+                        </p>
+                    </aside>
+
+                </div>
+            </section>
+
+            <section id="formularios" class="space-y-6">
+                <header class="space-y-1">
+                    <h2 class="text-2xl font-bold text-white tracking-tight">4. Campos de Formulario (Inputs)</h2>
+                    <p class="text-slate-400 text-sm">Controles de entrada con etiquetas asociadas (&lt;label for&gt;), texto de ayuda accesible y anillo de foco visible.</p>
+                </header>
+
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 md:p-8 max-w-xl space-y-6">
+
+                    <!-- Campo 1: Correo electrónico -->
+                    <div class="space-y-2">
+                        <label for="correo" class="block text-sm font-semibold text-slate-200">
+                            Correo electrónico <span class="text-emerald-400" aria-hidden="true">*</span>
+                        </label>
+                        <input 
+                            type="email" 
+                            id="correo" 
+                            name="correo" 
+                            placeholder="tu.nombre@ejemplo.com"
+                            aria-describedby="correo-ayuda"
+                            required
+                            class="w-full bg-slate-950 border border-slate-700 text-slate-100 placeholder-slate-500 rounded-xl px-4 py-3 text-sm transition duration-200 focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-400/30 focus:ring-offset-2 focus:ring-offset-slate-900"
+                        >
+                        <p id="correo-ayuda" class="text-xs text-slate-400">
+                            Te enviaremos la confirmación del recorrido y la guía digital a este correo.
+                        </p>
+                    </div>
+
+                    <!-- Campo 2: Teléfono Celular -->
+                    <div class="space-y-2">
+                        <label for="celular" class="block text-sm font-semibold text-slate-200">
+                            Número de Celular <span class="text-emerald-400" aria-hidden="true">*</span>
+                        </label>
+                        <input 
+                            type="tel" 
+                            id="celular" 
+                            name="celular" 
+                            placeholder="300 123 4567"
+                            aria-describedby="celular-ayuda"
+                            required
+                            class="w-full bg-slate-950 border border-slate-700 text-slate-100 placeholder-slate-500 rounded-xl px-4 py-3 text-sm transition duration-200 focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-400/30 focus:ring-offset-2 focus:ring-offset-slate-900"
+                        >
+                        <p id="celular-ayuda" class="text-xs text-slate-400">
+                            Para contactarte en caso de cambios climáticos o imprevistos de última hora.
+                        </p>
+                    </div>
+
+                </div>
+            </section>
+
+        </main>
+
+        <footer class="border-t border-slate-800 pt-8 text-center text-xs text-slate-500">
+            Kit de Componentes &middot; Rueda Libre v1.6 &middot; Construido con Tailwind CSS CLI
+        </footer>
+
+    </div>
+
+</body>
+</html>

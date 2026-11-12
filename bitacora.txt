@@ -805,3 +805,55 @@ d) Accesibilidad con Teclado (Foco visible):
 3. VERIFICACIÓN DE CONTROL DE VERSIONES (GIT):
 - 'node_modules/' correctamente excluido por '.gitignore' (no se sube al repositorio).
 - 'src/output.css' incluido en el seguimiento de Git (necesario para el despliegue en GitHub Pages).
+
+
+
+========================================================================================================
+MINIRETO: COMPONENTE CARD DE RUTAS NOCTURNAS CON UTILIDADES TAILWIND
+========================================================================================================
+
+Objetivo:
+Construir el componente card reutilizable para las tres rutas de la campaña "Rueda Nocturna", 
+empleando únicamente utilidades atómicas de Tailwind CSS para bordes, sombras, espaciado, 
+tipografía, colores y tamaños, reutilizando el botón del kit de componentes.
+
+
+1. DECISIONES TÉCNICAS Y CRITERIOS DE CUMPLIMIENTO:
+
+a) Alto uniforme de imagen y relación de aspecto (Cero recorte):
+   - Las tres fotografías de los recorridos poseen una resolución nativa de 1536 x 1024 píxeles (proporción 3:2).
+   - Se aplicó 'w-full h-auto aspect-[3/2] object-cover block', logrando que las tres cards mantengan una 
+     altura uniforme idéntica en cualquier pantalla, sin recortar la cabecera del póster ni los textos 
+     inferiores ("¡Únete al recorrido!").
+
+b) Reacción al mouse sin desplazar el contenido:
+   - Para evitar el salto o desplazamiento brusco de píxeles (jitter) provocado por 'hover:-translate-y-*' o 
+     cambios de ancho de borde, se implementó una transición suave de 300 ms en el color del borde y en la sombra:
+     'transition duration-300 hover:border-slate-700 hover:shadow-2xl hover:shadow-[color]/10'.
+   - El contenido interior permanece 100% estable y la card reacciona con un resplandor ambiental temático.
+
+c) Accesibilidad en niveles de dificultad (Criterio WCAG 1.4.1 - No dependencia del color):
+   - Para usuarios con daltonismo o baja visión, la dificultad no se comunica solo por el color del fondo.
+   - Cada píldora incluye el texto explícito: "Nivel: Fácil", "Nivel: Medio" y "Nivel: Difícil", complementado 
+     con códigos cromáticos semánticos:
+     * Fácil: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20'
+     * Medio: 'bg-amber-500/10 text-amber-400 border-amber-500/20'
+     * Difícil: 'bg-rose-500/10 text-rose-400 border-rose-500/20'
+
+d) Jerarquía tipográfica en datos técnicos (<dl>):
+   - Nombre de la métrica (Distancia, Duración, Salida): 'text-xs text-slate-400 uppercase tracking-wider font-medium' (pequeño y secundario).
+   - Valor numérico: 'text-base font-bold text-slate-100' (destacado de alto contraste).
+
+e) Integración del botón y arquitectura semántica:
+   - Se estructuró cada card como un <article> independiente, cuerpo con padding, metadatos en <dl> 
+     y pie de tarjeta en <footer> conteniendo el precio destacado ('text-2xl font-extrabold') y el botón 
+     principal con anillo de foco accesible ('focus:ring-*').
+
+
+2. COMPROBACIÓN DE UTILIDADES TAILWIND REQUERIDAS:
+- Bordes: 'border', 'border-slate-800', 'hover:border-slate-700', 'border-y', 'rounded-2xl', 'rounded-xl', 'rounded-full'.
+- Sombras: 'shadow-xl', 'hover:shadow-2xl', 'hover:shadow-emerald-500/10', 'hover:shadow-amber-500/10', 'hover:shadow-rose-500/10'.
+- Espaciado: 'p-6', 'md:p-8', 'space-y-5', 'space-y-8', 'py-3', 'px-6', 'px-3', 'py-1', 'gap-2', 'gap-4', 'pt-2'.
+- Tamaños: 'w-full', 'max-w-2xl', 'h-auto', 'aspect-[3/2]'.
+- Tipografía y Colores: 'text-2xl', 'text-3xl', 'text-xs', 'text-base', 'font-extrabold', 'font-bold', 'font-semibold', 
+                       'text-white', 'text-slate-100', 'text-slate-400', 'text-emerald-400', 'text-amber-400', 'text-rose-400'.

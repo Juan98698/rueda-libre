@@ -673,3 +673,72 @@ mediante '@media (min-width: 768px)' para tablets y '@media (min-width: 1200px)'
 - Cero scroll horizontal a 360 px verificado en DevTools.
 - Transiciones de layout consistentes en los breakpoints de 768 px (tablet) y 1200 px (escritorio).
 - Publicación de la versión v1.5 en GitHub Pages: https://juan98698.github.io/rueda-libre/
+
+
+
+========================================================================================================
+MINIRETO: PROTOTIPADO RÁPIDO CON TAILWIND CSS PLAY CDN (CAMPAÑA RUEDA NOCTURNA)
+========================================================================================================
+
+Objetivo:
+Crear un prototipo rápido y funcional de la sección principal para la nueva campaña "Rueda Nocturna" 
+utilizando exclusivamente el Play CDN de Tailwind CSS y utilidades atómicas, sin hojas de estilo externas, 
+sin la etiqueta <style>, sin atributos style="" en línea y sin clases de Bootstrap.
+
+
+1. COMPARATIVA DE ENFOQUES: CONSTRUCCIÓN DEL BOTÓN (BOOTSTRAP VS TAILWIND)
+
+a) Enfoque con Bootstrap (Semana 2 - Basado en Componentes):
+   - Código utilizado:
+     <a href="#" class="btn btn-primary">Inscríbete</a>
+   - Cómo funciona:
+     Bootstrap provee componentes "empaquetados". La clase '.btn' define el display, box model, padding 
+     base, alineación y cursor; mientras que '.btn-primary' inyecta el color azul corporativo predeterminado, 
+     el borde y los estilos para los estados :hover y :active.
+   - Ventaja y limitación:
+     Es inmediato de implementar, pero produce una interfaz estandarizada ("look Bootstrap"). Si el equipo 
+     de diseño solicita un padding personalizado, un interletraje específico o un verde esmeralda con sombra 
+     brillante para la noche, se hace obligatorio redactar reglas CSS externas para sobreescribir la 
+     especificidad del framework.
+
+b) Enfoque con Tailwind CSS (Semana Actual - Utility-First):
+   - Código utilizado:
+     <a href="#" class="inline-block bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-8 py-3.5 rounded-xl text-base tracking-wide uppercase transition duration-200 shadow-lg shadow-emerald-500/20">
+         Inscríbete
+     </a>
+   - Cómo funciona:
+     No existe una clase mágica llamada '.btn'. En su lugar, el botón se construye ensamblando piezas 
+     atómicas de propósito único:
+     * 'inline-block': Permite que el enlace <a> adquiera dimensiones, rellenos y márgenes propios de un botón.
+     * 'bg-emerald-500 hover:bg-emerald-400': Define el color de fondo base y su cambio interactivo al pasar el cursor.
+     * 'text-slate-950 font-bold': Aplica contraste tipográfico oscuro sobre el fondo verde brillante con peso 700.
+     * 'px-8 py-3.5': Establece un relleno horizontal de 2rem y vertical de 0.875rem (proporción táctil ideal).
+     * 'rounded-xl': Redondea las esquinas con un radio de 0.75rem.
+     * 'uppercase tracking-wide': Transforma el texto a mayúsculas y abre el espacio entre letras para legibilidad.
+     * 'transition duration-200': Suaviza la transición de color durante 200 milisegundos.
+     * 'shadow-lg shadow-emerald-500/20': Añade una sombra difuminada con tinte verde neón que refuerza el concepto nocturno.
+
+
+2. DIFERENCIA CLAVE ENTRE UN FRAMEWORK DE COMPONENTES Y UNO UTILITY-FIRST
+
+- Framework de Componentes (Alto nivel / Opinado - Ej: Bootstrap):
+  Ofrece abstracciones ya construidas (botones, tarjetas, barras de navegación, modales). El desarrollador 
+  adopta las decisiones de diseño que el framework ya tomó por él. Es ideal para tableros administrativos 
+  o proyectos rápidos donde la originalidad visual no es prioridad.
+
+- Framework Utility-First (Bajo nivel / No opinado - Ej: Tailwind CSS):
+  No impone ninguna decisión estética previa ni componentes cerrados. En lugar de cajas prediseñadas, 
+  entrega un sistema de diseño primitivo (escalas de espaciado, paletas cromáticas, tipografías y Flexbox/Grid) 
+  directamente en el HTML. Permite diseñar prototipos completamente a medida y con identidad de marca 
+  única a la velocidad de la luz, sin escribir una sola línea de CSS personalizado ni lidiar con nombres de clases BEM.
+
+
+3. UTILIDADES EMPLEADAS EN EL PROTOTIPO (FAMILIAS DE REQUISITOS):
+- Espaciado: 'p-4', 'p-8', 'md:p-12', 'px-3', 'py-1', 'px-8', 'py-3.5', 'my-6', 'mx-auto', 'space-y-6', 'gap-4'.
+- Tamaños: 'w-full', 'max-w-2xl', 'max-w-lg', 'max-w-md', 'min-h-screen'.
+- Colores: 'bg-slate-950', 'bg-slate-900', 'bg-slate-800/60', 'bg-amber-400/10', 'bg-emerald-500', 
+           'hover:bg-emerald-400', 'text-slate-100', 'text-white', 'text-slate-300', 'text-slate-400', 
+           'text-slate-950', 'text-amber-400', 'text-emerald-400', 'border-slate-800', 'border-slate-700/50'.
+- Tipografía: 'text-4xl', 'md:text-5xl', 'text-lg', 'md:text-xl', 'text-2xl', 'text-xs', 'text-base', 
+             'font-extrabold', 'font-bold', 'font-semibold', 'leading-tight', 'leading-relaxed', 
+             'tracking-tight', 'tracking-wide', 'tracking-wider', 'uppercase'.

@@ -742,3 +742,66 @@ b) Enfoque con Tailwind CSS (Semana Actual - Utility-First):
 - Tipografía: 'text-4xl', 'md:text-5xl', 'text-lg', 'md:text-xl', 'text-2xl', 'text-xs', 'text-base', 
              'font-extrabold', 'font-bold', 'font-semibold', 'leading-tight', 'leading-relaxed', 
              'tracking-tight', 'tracking-wide', 'tracking-wider', 'uppercase'.
+
+
+
+========================================================================================================
+MINIRETO: CONFIGURACIÓN DE TAILWIND CSS CLI Y LIBRERÍA DE BOTONES (RUEDA NOCTURNA)
+========================================================================================================
+
+Objetivo:
+Migrar del prototipo con Play CDN a un entorno de desarrollo profesional con Tailwind CLI (@tailwindcss/cli), 
+verificar el mecanismo de purga/árbol de compilación (tree-shaking) y construir los componentes de botón 
+con variantes Principal, Secundaria y de Contorno con estados interactivos (:hover y foco accesible con teclado).
+
+
+1. EXPERIMENTO DE COMPILACIÓN EN SRC/OUTPUT.CSS (CLASE USADA VS NO USADA):
+
+a) Búsqueda de clase utilizada: 'bg-emerald-500'
+   - Resultado: Encontrada exitosamente en la línea 301 de 'src/output.css'.
+   - Definición generada:
+     .bg-emerald-500 {
+         background-color: var(--color-emerald-500, oklch(0.696 0.17 162.48));
+     }
+
+b) Búsqueda de clase no utilizada: 'bg-pink-500'
+   - Resultado: 0 coincidencias en 'src/output.css' (completamente ausente).
+
+c) ¿Por qué ocurre esto? (Justificación técnica):
+   Tailwind CLI incorpora un motor de compilación Just-In-Time (JIT) / Tree-shaking. En lugar de generar 
+   una hoja de estilos monolítica con las decenas de miles de utilidades posibles (lo que pesaría más de 3 MB 
+   como ocurre con el Play CDN o frameworks tradicionales), la CLI escanea el código fuente de los archivos HTML 
+   ('index.html'), extrae exclusivamente los nombres de clase que realmente fueron escritos por el desarrollador 
+   y emite código CSS única y exclusivamente para esas clases detectadas.
+   
+   Por esta razón, 'bg-emerald-500' existe porque se usa en el botón principal, mientras que 'bg-pink-500' 
+   es purgada y nunca viaja al navegador del usuario, reduciendo el peso final del CSS a solo ~17 KB.
+
+
+2. LIBRERÍA DE BOTONES: LAS TRES VARIANTES Y SUS ESTADOS
+
+a) Botón Principal (Primary):
+   - Uso: Acción de conversión primaria ("Inscríbete").
+   - Clases clave: 'bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold shadow-lg shadow-emerald-500/20'
+   - Estado Focus accesible: 'focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 focus:ring-offset-slate-900'
+
+b) Botón Secundario (Secondary):
+   - Uso: Acción de exploración ("Ver rutas").
+   - Clases clave: 'bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold'
+   - Estado Focus accesible: 'focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-900'
+
+c) Botón de Contorno (Outline):
+   - Uso: Acción complementaria o informativa ("Alquilar bici").
+   - Clases clave: 'bg-transparent hover:bg-slate-800/60 text-emerald-400 border border-emerald-500/50 hover:border-emerald-400 font-semibold'
+   - Estado Focus accesible: 'focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 focus:ring-offset-slate-900'
+
+d) Accesibilidad con Teclado (Foco visible):
+   Al navegar con la tecla 'Tab', el navegador suele dibujar un borde tosco y poco contrastado. Con 'focus:outline-none' 
+   se retira el contorno nativo y se reemplaza por 'focus:ring-2' y 'focus:ring-offset-2 focus:ring-offset-slate-900', 
+   creando un anillo iluminado nítido con separación de 2px respecto al botón oscuro, cumpliendo los criterios 
+   WCAG 2.4.7 (Foco visible).
+
+
+3. VERIFICACIÓN DE CONTROL DE VERSIONES (GIT):
+- 'node_modules/' correctamente excluido por '.gitignore' (no se sube al repositorio).
+- 'src/output.css' incluido en el seguimiento de Git (necesario para el despliegue en GitHub Pages).

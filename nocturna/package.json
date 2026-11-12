@@ -1,0 +1,16 @@
+{
+  "name": "nocturna",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tailwindcss -i src/input.css -o src/output.css --watch",
+    "build": "tailwindcss -i src/input.css -o src/output.css"
+  },
+  "keywords": [],
+  "type": "commonjs",
+  "dependencies": {
+    "@tailwindcss/cli": "^4.3.5",
+    "tailwindcss": "^4.3.5"
+  }
+}

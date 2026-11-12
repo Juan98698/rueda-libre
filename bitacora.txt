@@ -932,3 +932,79 @@ d) Campos de Formulario (Inputs):
 - 'nocturna/componentes.html' enlaza 'src/output.css' sin CDN ni errores 404.
 - Totalmente navegable por teclado y adaptado para dispositivos móviles y pantallas grandes.
 - URL en vivo: https://juan98698.github.io/rueda-libre/nocturna/componentes.html
+
+
+
+========================================================================================================
+MINIRETO: LAYOUT COMPLETO DE LA LANDING CON UTILIDADES TAILWIND (RUEDA NOCTURNA)
+========================================================================================================
+
+Objetivo:
+Construir la estructura completa de la landing page 'Rueda Nocturna' en 'nocturna/index.html' utilizando
+etiquetas HTML5 semánticas, utilidades de layout de Tailwind CSS (Flexbox y Grid), contenedores unificados
+para consistencia visual, sistema de navegación por anclas y componentes reutilizados directamente del kit.
+
+
+1. ARQUITECTURA SEMÁNTICA Y ESTRUCTURA DE LA PÁGINA:
+
+- <header> principal fijo/adherente ('sticky top-0 z-50') con fondo semitransparente con desenfoque 
+  ('backdrop-blur-md') para mantener visible la navegación al hacer scroll.
+- <main> como contenedor único de las secciones temáticas ('space-y-24 py-12 md:py-20').
+- Secciones estructuradas con identificadores únicos para navegación por anclas:
+  * <section id="inicio">: Hero principal con banner destacado, título, métricas en <dl> y botones de acción.
+  * <section id="rutas">: Cuadrícula de 3 columnas en escritorio con las cards de las rutas nocturnas.
+  * <section id="como-funciona">: Proceso de 4 pasos implementado semánticamente como lista ordenada (<ol> / <li>).
+  * <section id="inscripcion">: Franja de registro con alerta y formulario de captura accesible.
+- <footer> al pie con información de marca, navegación y dirección física (<address>).
+
+
+2. CONTENEDOR UNIFICADO (COHERENCIA VISUAL):
+
+Todas las secciones comparten exactamente el mismo contenedor centrado y acolchado horizontal:
+'max-w-6xl mx-auto px-4 sm:px-6 lg:px-8'
+- 'max-w-6xl': Delimita el ancho máximo a 1152 px en pantallas anchas, evitando líneas de texto excesivamente largas.
+- 'mx-auto': Centra horizontalmente el bloque dentro de la ventana del navegador.
+- 'px-4 sm:px-6 lg:px-8': Relleno lateral adaptativo que impide que el contenido toque los bordes en pantallas móviles o intermedias.
+
+
+3. JUSTIFICACIÓN DE DECISIÓN DE LAYOUT: GRID VS FLEX EN "¿CÓMO FUNCIONA?":
+
+Para la sección de 4 pasos ("Elige tu ruta", "Inscríbete", "Recoge tu equipo", "Rueda"), se evaluaron dos alternativas:
+
+A) Alternativa Flexbox ('flex flex-wrap'):
+   - Enfoque unidimensional donde los elementos crecen o encogen según su contenido.
+   - Desventaja: Si un paso tiene más texto que otro, el ancho de cada tarjeta tiende a variar o, al quebrar línea,
+     las tarjetas inferiores pueden quedar desalineadas con respecto a la fila superior sin un ancho rígido manual.
+
+B) Decisión tomada: CSS Grid ('grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6'):
+   - Justificación:
+     1. División estricta y simétrica: Cada paso representa una etapa cronológica de igual importancia (25% exacto de ancho en escritorio).
+        CSS Grid garantiza que las 4 columnas tengan exactamente el mismo ancho sin depender de la longitud del texto.
+     2. Altura uniforme automática: Por defecto, los ítems de un Grid se estiran a la misma altura de la fila ('stretch'),
+        logrando tarjetas visualmente idénticas y alineadas.
+     3. Responsividad predecible: Se adapta con fluidez de 1 columna (móvil) a 2 columnas ('sm:grid-cols-2' en tablets)
+        y a 4 columnas ('lg:grid-cols-4' en escritorio).
+     4. Semántica óptima: Se estructuró dentro de un contenedor <ol> (ordered list) con elementos <li>,
+        comunicando a las tecnologías de asistencia una secuencia ordenada del 1 al 4.
+
+
+4. DETALLE DE DISTRIBUCIÓN DE OTRAS SECCIONES:
+
+- Encabezado (<header>):
+  * 'flex items-center justify-between': Separa el logo (extremo izquierdo) de la navegación y botón de acción (extremo derecho).
+  * 'hidden md:flex': Oculta los enlaces de texto en pantallas pequeñas para priorizar el botón de acción principal ("Inscríbete").
+
+- Rutas (<section id="rutas">):
+  * 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6': Distribución en 3 columnas iguales en escritorio para alojar
+    las tres rutas oficiales (Luces del Centro, Miradores de la Ciudad, Luna en Las Palmas).
+  * Cards envueltas en <article> con flex vertical ('flex flex-col justify-between') para mantener alineados los botones al pie.
+
+- Pie de página (<footer>):
+  * 'flex flex-col md:flex-row justify-between items-start gap-8': Distribuye 3 bloques independientes en una fila en escritorio
+    (Identidad/Marca, Menú de enlaces rápidos, Sede/Horarios) con alineación superior limpia.
+
+
+5. REUTILIZACIÓN DE COMPONENTES DEL KIT:
+- Todos los botones, cards, alertas e inputs fueron tomados íntegramente de 'nocturna/componentes.html',
+  respetando radios ('rounded-xl' y 'rounded-2xl'), colores de superficie ('bg-slate-900', 'bg-slate-950'),
+  anillos de foco visible y directrices de accesibilidad WCAG.

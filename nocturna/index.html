@@ -4,58 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rueda Nocturna | Tailwind CLI</title>
-    <!-- Enlace al CSS compilado por la CLI (no usamos CDN) -->
     <link rel="stylesheet" href="src/output.css">
 </head>
 <body class="bg-slate-950 text-slate-100 flex min-h-screen items-center justify-center p-4">
 
-    <!-- Sección Principal de la Campaña Rueda Nocturna -->
-    <section class="w-full max-w-2xl bg-slate-900 border border-slate-800 rounded-2xl p-8 md:p-12 text-center shadow-2xl space-y-6">
+    <main class="w-full max-w-2xl bg-slate-900 border border-slate-800 rounded-2xl p-8 md:p-12 text-center shadow-2xl space-y-6">
 
-        <!-- 1. Etiqueta de Campaña -->
-        <div>
-            <span class="inline-block bg-amber-400/10 text-amber-400 border border-amber-400/20 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">
+        <header class="space-y-4">
+            <p class="inline-block bg-amber-400/10 text-amber-400 border border-amber-400/20 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">
                 Nuevo &middot; Jueves a sábado
-            </span>
-        </div>
+            </p>
 
-        <!-- 2. Título Principal (Único H1) -->
-        <h1 class="text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-tight">
-            Rueda Nocturna
-        </h1>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-tight">
+                Rueda Nocturna
+            </h1>
 
-        <p class="text-slate-300 text-lg md:text-xl leading-relaxed max-w-lg mx-auto">
-            Descubre Medellín en bici cuando se encienden las luces
-        </p>
+            <p class="text-slate-300 text-lg md:text-xl leading-relaxed max-w-lg mx-auto">
+                Descubre Medellín en bici cuando se encienden las luces
+            </p>
+        </header>
 
-        <div class="grid grid-cols-2 gap-4 max-w-md mx-auto my-6">
+        <dl class="grid grid-cols-2 gap-4 max-w-md mx-auto my-6">
             <div class="bg-slate-800/60 border border-slate-700/50 p-4 rounded-xl">
-                <p class="text-2xl font-bold text-white">3 rutas</p>
-                <p class="text-xs text-slate-400 uppercase tracking-wide">Guiadas</p>
+                <dd class="text-2xl font-bold text-white">3 rutas</dd>
+                <dt class="text-xs text-slate-400 uppercase tracking-wide">Guiadas</dt>
             </div>
             <div class="bg-slate-800/60 border border-slate-700/50 p-4 rounded-xl">
-                <p class="text-2xl font-bold text-emerald-400">Desde $55.000</p>
-                <p class="text-xs text-slate-400 uppercase tracking-wide">Por persona</p>
+                <dd class="text-2xl font-bold text-emerald-400">Desde $55.000</dd>
+                <dt class="text-xs text-slate-400 uppercase tracking-wide">Por persona</dt>
             </div>
-        </div>
+        </dl>
 
-        <div class="flex flex-wrap items-center justify-center gap-3 pt-2">
-            
+        <nav aria-label="Acciones de la campaña" class="flex flex-wrap items-center justify-center gap-3 pt-2">
             <a href="#" class="inline-block bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-6 py-3 rounded-xl text-sm uppercase tracking-wider transition duration-200 shadow-lg shadow-emerald-500/20 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 focus:ring-offset-slate-900">
                 Inscríbete
             </a>
-
             <a href="#" class="inline-block bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold px-6 py-3 rounded-xl text-sm uppercase tracking-wider transition duration-200 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-900">
                 Ver rutas
             </a>
-
             <a href="#" class="inline-block bg-transparent hover:bg-slate-800/60 text-emerald-400 border border-emerald-500/50 hover:border-emerald-400 font-semibold px-6 py-3 rounded-xl text-sm uppercase tracking-wider transition duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 focus:ring-offset-slate-900">
                 Alquilar bici
             </a>
+        </nav>
 
-        </div>
-
-    </section>
+    </main>
 
 </body>
 </html>

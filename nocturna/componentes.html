@@ -260,6 +260,55 @@
                 </div>
             </section>
 
+            <!-- SECCIÓN 5: CARDS DE PLANES (PRICING) -->
+            <section id="planes-kit" class="space-y-6">
+                <header class="space-y-1">
+                    <h2 class="text-2xl font-bold text-azul-noche dark:text-white tracking-tight font-montserrat">5. Cards de Planes y Precios</h2>
+                    <p class="text-gris-asfalto dark:text-crema/80 text-sm font-open-sans">Estructura con Box Model estricto (p-6/p-8), distribución vertical con Flexbox (justify-between y mt-auto para alineación de botones) y destaque relativo para la opción preferente.</p>
+                </header>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl pt-2">
+                    <!-- Card Estándar -->
+                    <article class="w-full bg-white dark:bg-black/40 border border-gris-asfalto/20 dark:border-gris-asfalto/40 rounded-2xl p-6 sm:p-8 shadow-md flex flex-col justify-between">
+                        <div class="space-y-4">
+                            <span class="inline-block bg-gris-asfalto/10 dark:bg-gris-asfalto/20 text-gris-asfalto dark:text-crema/80 text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full font-montserrat">
+                                Plan Estándar
+                            </span>
+                            <h3 class="text-xl font-bold text-azul-noche dark:text-white font-montserrat">Individual</h3>
+                            <p class="text-2xl font-extrabold text-azul-noche dark:text-white font-montserrat">$55.000 <span class="text-xs font-normal text-gris-asfalto dark:text-crema/70 font-open-sans">/ persona</span></p>
+                            <ul class="flex flex-col gap-2.5 text-sm text-gris-asfalto dark:text-crema/80 list-none p-0 m-0 font-open-sans">
+                                <li class="flex items-center gap-2"><span class="text-verde-ruta font-bold">&#10003;</span> Bicicleta y casco</li>
+                                <li class="flex items-center gap-2"><span class="text-verde-ruta font-bold">&#10003;</span> Luces LED y chaleco</li>
+                            </ul>
+                        </div>
+                        <footer class="pt-6 mt-6 border-t border-gris-asfalto/15 dark:border-gris-asfalto/30">
+                            <a href="#" class="btn-secondary w-full text-center py-2.5 text-xs">Elegir plan</a>
+                        </footer>
+                    </article>
+
+                    <!-- Card Destacada -->
+                    <article class="w-full relative bg-crema/40 dark:bg-azul-noche/70 border-2 border-verde-ruta dark:border-amarillo-farol rounded-2xl p-6 sm:p-8 shadow-xl flex flex-col justify-between">
+                        <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-amarillo-farol text-azul-noche font-montserrat font-bold text-xs uppercase tracking-wider px-3 py-0.5 rounded-full shadow border border-amarillo-farol/80 whitespace-nowrap">
+                            Más elegido
+                        </span>
+                        <div class="space-y-4">
+                            <span class="inline-block bg-verde-ruta/15 dark:bg-amarillo-farol/20 text-verde-ruta dark:text-amarillo-farol text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full font-montserrat">
+                                Destacado
+                            </span>
+                            <h3 class="text-xl font-bold text-azul-noche dark:text-white font-montserrat">Pareja</h3>
+                            <p class="text-2xl font-extrabold text-verde-ruta dark:text-amarillo-farol font-montserrat">$99.000 <span class="text-xs font-normal text-gris-asfalto dark:text-crema/70 font-open-sans">/ 2 personas</span></p>
+                            <ul class="flex flex-col gap-2.5 text-sm text-azul-noche dark:text-crema list-none p-0 m-0 font-open-sans">
+                                <li class="flex items-center gap-2"><span class="text-verde-ruta dark:text-amarillo-farol font-bold">&#10003;</span> Todo lo del plan Individual</li>
+                                <li class="flex items-center gap-2"><span class="text-verde-ruta dark:text-amarillo-farol font-bold">&#10003;</span> Foto del recorrido y snack</li>
+                            </ul>
+                        </div>
+                        <footer class="pt-6 mt-6 border-t border-gris-asfalto/15 dark:border-gris-asfalto/30">
+                            <a href="#" class="btn-primary w-full text-center py-2.5 text-xs">Elegir plan</a>
+                        </footer>
+                    </article>
+                </div>
+            </section>
+
         </main>
 
         <footer class="border-t border-gris-asfalto/20 dark:border-gris-asfalto/40 pt-8 text-center text-xs text-gris-asfalto dark:text-crema/60 font-open-sans">

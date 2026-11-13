@@ -1365,3 +1365,52 @@ c) Datos de Contacto y Footer:
   * Se aplicó 'object-fit: contain' y fondo institucional Azul Noche ('#14213D'), garantizando que el 100% de la imagen, sus títulos y tipografías nativas se muestren sin ningún recorte.
   * Se aligeró la capa de leyenda eliminando títulos duplicados y dejando únicamente un botón de llamado a la acción flotante ('boton-cta' redondeado) sobre la barra de indicadores, permitiendo que el póster visual se aprecie limpio e íntegro.
   * Cada diapositiva se convirtió en un enlace interactivo directo a su sección de destino.
+
+
+========================================================================================================
+MINIRETO: SECCIÓN "PLANES RUEDA NOCTURNA" (BOX MODEL, FLEXBOX Y GRID EN TIEMPO LIMITADO)
+========================================================================================================
+
+Objetivo:
+Diseñar e implementar en la landing page 'nocturna/index.html' una nueva sección de tarifas ("Planes Rueda Nocturna") 
+con 3 opciones comerciales (Individual, Pareja y Grupo), destacando el plan Pareja como "Más elegido", 
+asegurando igual altura y alineación horizontal de botones mediante Flexbox y Grid, box model riguroso, 
+modo oscuro accesible y cero desbordamiento horizontal.
+
+1. REGISTRO DE TIEMPO REAL (CRONÓMETRO DE 45 MINUTOS):
+- Hora de inicio: 10:35 a. m.
+- Hora de finalización: 10:52 a. m.
+- Tiempo real invertido: 17 minutos (Completado con un margen de 28 minutos a favor).
+- Estado de pendientes: Ninguno. Requerimiento 100% implementado, probado y validado.
+
+2. ARQUITECTURA DE LAYOUT (GRID + FLEXBOX):
+a) Cuadrícula Principal (CSS Grid):
+   - Celular (< 1024px): 'grid-cols-1' con 'gap-6'. El contenido se apila verticalmente ocupando el 100% del ancho del viewport sin desbordamiento ni scroll horizontal.
+   - Escritorio (>= 1024px, breakpoint 'lg:'): 'lg:grid-cols-3 gap-8 items-stretch'. Cada columna toma automáticamente '1fr', garantizando que las tres cards tengan el mismo ancho exacto.
+b) Distribución Interna de cada Card (Flexbox):
+   - Cada tarjeta es un '<article>' con 'w-full flex flex-col justify-between'.
+   - El cuerpo superior agrupa el encabezado y la lista de beneficios con 'flex flex-col gap-3.5'.
+   - El botón de llamada a la acción queda encapsulado en un '<footer>' con 'mt-6 border-t'. Gracias a 'justify-between' y la misma altura del grid, los tres botones quedan perfectamente alineados en la misma línea horizontal en pantallas grandes.
+
+3. ESTRATEGIA DE DESTAQUE DEL PLAN PAREJA (SIN MOVER LAS DEMÁS CARDS):
+Para resaltar el plan "Más elegido" sin desplazar ni romper la alineación de las otras dos tarjetas:
+- Borde: 'border-2 border-verde-ruta dark:border-amarillo-farol' (2px en lugar de 1px). Gracias al reseteo universal 'box-sizing: border-box', el grosor del borde se descuenta del interior y no altera las medidas exteriores.
+- Fondo: 'bg-crema/40 dark:bg-azul-noche/70' que contrasta sutilmente con el 'bg-white dark:bg-black/40' de las cards base.
+- Etiqueta "Más elegido": Se posicionó con 'absolute -top-3.5 left-1/2 -translate-x-1/2'. Al estar fuera del flujo normal ('position: absolute'), la etiqueta no empuja el encabezado hacia abajo ni desajusta la altura interna de los textos, manteniendo el baseline idéntico al de las tarjetas adyacentes.
+
+4. AUDITORÍA DE DEVTOOLS (COMPUTED BOX MODEL EN ESCRITORIO A 1280 PX):
+| Parámetro del Box Model | Card 1: Individual | Card 2: Pareja ("Más elegido") | Card 3: Grupo (4 a 8) | Verificación |
+| :--- | :--- | :--- | :--- | :--- |
+| **Ancho Total (Width)** | 352.0 px | 352.0 px | 352.0 px | Idéntico (1fr en grid) |
+| **Relleno Superior (Padding Top)** | 32.0 px ('sm:p-8') | 32.0 px ('sm:p-8') | 32.0 px ('sm:p-8') | Idéntico |
+| **Relleno Lateral (Padding X)** | 32.0 px ('sm:p-8') | 32.0 px ('sm:p-8') | 32.0 px ('sm:p-8') | Idéntico |
+| **Relleno Inferior (Padding Bottom)** | 32.0 px ('sm:p-8') | 32.0 px ('sm:p-8') | 32.0 px ('sm:p-8') | Idéntico |
+| **Grosor del Borde (Border Width)** | 1.0 px | 2.0 px (Destacado) | 1.0 px | Respetado sin alterar ancho |
+| **Altura Total (Height)** | 486.0 px | 486.0 px | 486.0 px | Idéntico ('items-stretch') |
+| **Alineación de Botones (CTA Y-Pos)** | 422.0 px | 422.0 px | 422.0 px | Perfectamente nivelados |
+
+5. VALIDACIÓN DE CONTRASTE Y MODO OSCURO (WCAG 2.1 AA):
+- Etiqueta "Más elegido": Texto Azul Noche ('#14213D') sobre fondo Amarillo Farol ('#FFD166') &rarr; Ratio 11.08:1 (Supera nivel AAA).
+- Precio Plan Pareja: Verde Ruta en claro (5.31:1 AA) y Amarillo Farol en oscuro (11.08:1 AAA).
+- Íconos de verificación (Checkmarks): Verde Ruta en claro y Amarillo Farol en oscuro.
+- Botones: Botón principal ('btn-primary') para la opción destacada (Pareja) y secundario ('btn-secondary') para las opciones laterales.

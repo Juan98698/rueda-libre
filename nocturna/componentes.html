@@ -148,48 +148,106 @@
             <!-- SECCIÓN 4: FORMULARIOS -->
             <section id="formularios" class="space-y-6">
                 <header class="space-y-1">
-                    <h2 class="text-2xl font-bold text-azul-noche dark:text-white tracking-tight font-montserrat">4. Campos de Formulario (Inputs)</h2>
-                    <p class="text-gris-asfalto dark:text-crema/80 text-sm font-open-sans">Controles de entrada con etiquetas asociadas (&lt;label for&gt;), texto de ayuda accesible y anillo de foco visible.</p>
+                    <h2 class="text-2xl font-bold text-azul-noche dark:text-white tracking-tight font-montserrat">4. Campos de Formulario (Inputs, Selects, Radios y Casillas)</h2>
+                    <p class="text-gris-asfalto dark:text-crema/80 text-sm font-open-sans">Controles de entrada con etiquetas asociadas (&lt;label for&gt;), validación nativa (required, pattern, min/max), texto de ayuda accesible y anillo de foco visible.</p>
                 </header>
 
                 <div class="bg-white dark:bg-black/40 border border-gris-asfalto/20 dark:border-gris-asfalto/40 rounded-2xl p-6 md:p-8 max-w-xl space-y-6 shadow-md">
 
-                    <!-- Campo 1: Correo electrónico -->
+                    <!-- Campo 1: Texto con minlength -->
                     <div class="space-y-2">
-                        <label for="correo" class="block text-sm font-semibold text-azul-noche dark:text-crema font-montserrat">
-                            Correo electrónico <span class="text-verde-ruta dark:text-amarillo-farol" aria-hidden="true">*</span>
+                        <label for="comp-nombre" class="block text-sm font-semibold text-azul-noche dark:text-crema font-montserrat">
+                            Nombre completo <span class="text-verde-ruta dark:text-amarillo-farol" aria-hidden="true">*</span>
                         </label>
                         <input 
-                            type="email" 
-                            id="correo" 
-                            name="correo" 
-                            placeholder="tu.nombre@ejemplo.com"
-                            aria-describedby="correo-ayuda"
+                            type="text" 
+                            id="comp-nombre" 
+                            name="nombre" 
+                            placeholder="Ej. Juan Manuel Pérez"
+                            minlength="3"
                             required
                             class="w-full bg-crema dark:bg-azul-noche/80 border border-gris-asfalto/40 dark:border-gris-asfalto/50 text-azul-noche dark:text-crema placeholder-gris-asfalto/60 dark:placeholder-crema/40 rounded-xl px-4 py-3 text-sm transition duration-200 focus:outline-none focus:border-verde-ruta dark:focus:border-amarillo-farol focus:ring-2 focus:ring-verde-ruta/30 dark:focus:ring-amarillo-farol/30 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-azul-noche font-open-sans"
                         >
-                        <p id="correo-ayuda" class="text-xs text-gris-asfalto dark:text-crema/70 font-open-sans">
-                            Te enviaremos la confirmación del recorrido y la guía digital a este correo.
-                        </p>
                     </div>
 
-                    <!-- Campo 2: Teléfono Celular -->
+                    <!-- Campo 2: Teléfono Celular con Pattern -->
                     <div class="space-y-2">
-                        <label for="celular" class="block text-sm font-semibold text-azul-noche dark:text-crema font-montserrat">
+                        <label for="comp-celular" class="block text-sm font-semibold text-azul-noche dark:text-crema font-montserrat">
                             Número de Celular <span class="text-verde-ruta dark:text-amarillo-farol" aria-hidden="true">*</span>
                         </label>
                         <input 
                             type="tel" 
-                            id="celular" 
+                            id="comp-celular" 
                             name="celular" 
-                            placeholder="300 123 4567"
-                            aria-describedby="celular-ayuda"
+                            placeholder="3001234567"
+                            pattern="3[0-9]{9}"
+                            maxlength="10"
+                            title="Debe tener exactamente 10 dígitos y comenzar por 3"
                             required
                             class="w-full bg-crema dark:bg-azul-noche/80 border border-gris-asfalto/40 dark:border-gris-asfalto/50 text-azul-noche dark:text-crema placeholder-gris-asfalto/60 dark:placeholder-crema/40 rounded-xl px-4 py-3 text-sm transition duration-200 focus:outline-none focus:border-verde-ruta dark:focus:border-amarillo-farol focus:ring-2 focus:ring-verde-ruta/30 dark:focus:ring-amarillo-farol/30 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-azul-noche font-open-sans"
                         >
-                        <p id="celular-ayuda" class="text-xs text-gris-asfalto dark:text-crema/70 font-open-sans">
-                            Para contactarte en caso de cambios climáticos o imprevistos de última hora.
-                        </p>
+                    </div>
+
+                    <!-- Campo 3: Select Desplegable -->
+                    <div class="space-y-2">
+                        <label for="comp-ruta" class="block text-sm font-semibold text-azul-noche dark:text-crema font-montserrat">
+                            Ruta nocturna <span class="text-verde-ruta dark:text-amarillo-farol" aria-hidden="true">*</span>
+                        </label>
+                        <select 
+                            id="comp-ruta" 
+                            name="ruta" 
+                            required
+                            class="w-full bg-crema dark:bg-azul-noche/80 border border-gris-asfalto/40 dark:border-gris-asfalto/50 text-azul-noche dark:text-crema rounded-xl px-4 py-3 text-sm transition duration-200 focus:outline-none focus:border-verde-ruta dark:focus:border-amarillo-farol focus:ring-2 focus:ring-verde-ruta/30 dark:focus:ring-amarillo-farol/30 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-azul-noche font-open-sans cursor-pointer"
+                        >
+                            <option value="" disabled selected class="bg-crema dark:bg-azul-noche text-azul-noche dark:text-crema">Selecciona una ruta</option>
+                            <option value="centro" class="bg-crema dark:bg-azul-noche text-azul-noche dark:text-crema">Luces del Centro (Fácil)</option>
+                            <option value="miradores" class="bg-crema dark:bg-azul-noche text-azul-noche dark:text-crema">Miradores de la Ciudad (Medio)</option>
+                            <option value="palmas" class="bg-crema dark:bg-azul-noche text-azul-noche dark:text-crema">Luna en Las Palmas (Difícil)</option>
+                        </select>
+                    </div>
+
+                    <!-- Campo 4: Número con Min/Max -->
+                    <div class="space-y-2">
+                        <label for="comp-acompanantes" class="block text-sm font-semibold text-azul-noche dark:text-crema font-montserrat">
+                            Acompañantes (0 a 3) <span class="text-verde-ruta dark:text-amarillo-farol" aria-hidden="true">*</span>
+                        </label>
+                        <input 
+                            type="number" 
+                            id="comp-acompanantes" 
+                            name="acompanantes" 
+                            min="0" 
+                            max="3" 
+                            value="0"
+                            required
+                            class="w-full bg-crema dark:bg-azul-noche/80 border border-gris-asfalto/40 dark:border-gris-asfalto/50 text-azul-noche dark:text-crema rounded-xl px-4 py-3 text-sm transition duration-200 focus:outline-none focus:border-verde-ruta dark:focus:border-amarillo-farol focus:ring-2 focus:ring-verde-ruta/30 dark:focus:ring-amarillo-farol/30 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-azul-noche font-open-sans"
+                        >
+                    </div>
+
+                    <!-- Campo 5: Opciones Radio -->
+                    <fieldset class="border-0 p-0 m-0 space-y-2">
+                        <legend class="block text-sm font-semibold text-azul-noche dark:text-crema font-montserrat">
+                            ¿Bicicleta propia? <span class="text-verde-ruta dark:text-amarillo-farol" aria-hidden="true">*</span>
+                        </legend>
+                        <div class="flex flex-wrap items-center gap-6 pt-1">
+                            <label class="inline-flex items-center gap-2 text-sm text-azul-noche dark:text-crema cursor-pointer font-open-sans">
+                                <input type="radio" name="comp_bici" value="si" required class="w-4 h-4 accent-verde-ruta dark:accent-amarillo-farol cursor-pointer">
+                                <span>Sí</span>
+                            </label>
+                            <label class="inline-flex items-center gap-2 text-sm text-azul-noche dark:text-crema cursor-pointer font-open-sans">
+                                <input type="radio" name="comp_bici" value="no" required class="w-4 h-4 accent-verde-ruta dark:accent-amarillo-farol cursor-pointer">
+                                <span>No</span>
+                            </label>
+                        </div>
+                    </fieldset>
+
+                    <!-- Campo 6: Casilla de Verificación (Checkbox) -->
+                    <div class="pt-2">
+                        <label class="inline-flex items-start gap-3 cursor-pointer">
+                            <input type="checkbox" id="comp-condiciones" name="condiciones" required class="mt-1 w-4 h-4 accent-verde-ruta dark:accent-amarillo-farol rounded cursor-pointer">
+                            <span class="text-xs sm:text-sm text-gris-asfalto dark:text-crema/80 font-open-sans">
+                                Acepto los términos y condiciones de la rodada. <span class="text-verde-ruta dark:text-amarillo-farol" aria-hidden="true">*</span>
+                            </span>
+                        </label>
                     </div>
 
                 </div>

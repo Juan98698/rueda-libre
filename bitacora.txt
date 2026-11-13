@@ -1231,3 +1231,55 @@ Se recomienda de manera definitiva migrar la próxima versión de todo el sitio 
   1. Identidad de Marca: Rueda Libre vende una experiencia emocional y turística en Medellín (rodadas nocturnas, luces, paisajes). La identidad no puede parecer una plantilla corporativa genérica de Bootstrap; requiere la elegancia de Azul Noche, la energía de Amarillo Farol y la frescura de Verde Ruta.
   2. Rendimiento Móvil: Como la campaña se difunde en redes sociales, el 85%+ de las visitas provienen de teléfonos celulares. Pasar de 57.7 KB a 6.5 KB en el payload de red disminuye la tasa de rebote en conexiones móviles.
   3. Mantenibilidad: La adopción de '@layer components' con clases puntuales como '.btn-primary' demostró que es posible mantener un HTML limpio y legible sin renunciar a la flexibilidad atómica de Tailwind.
+
+
+================================================================================
+SESIÓN: FORMULARIO DE INSCRIPCIÓN COMPLETO, ACCESIBLE Y VALIDADO
+Fecha: 2026-11-13
+Tiempo límite: 40 minutos | Tiempo real empleado: 22 minutos (07:35 - 07:57)
+Estado de entrega: 100% completado (0 pendientes)
+================================================================================
+
+1. CRONÓMETRO Y GESTIÓN DEL TIEMPO:
+- Hora de inicio: 07:35:00
+- Hora de finalización: 07:57:00
+- Tiempo total ejecutado: 22 minutos (dentro del presupuesto de 40 minutos).
+
+2. MAPEO DE DATOS REQUERIDOS, CONTROLES Y REGLAS DE VALIDACIÓN:
+
+| Dato Requerido | Control HTML Seleccionado | Reglas de Validación Aplicadas | Justificación de Semántica y Accesibilidad |
+| :--- | :--- | :--- | :--- |
+| **Nombre Completo** | '<input type="text">' | 'required', 'minlength="3"' | Texto libre con longitud mínima para evitar nombres incompletos. |
+| **Correo Electrónico** | '<input type="email">' | 'required', validación nativa RFC | Teclado móvil optimizado con '@' y punto; descripción accesible con 'aria-describedby'. |
+| **Número de Celular** | '<input type="tel">' | 'required', 'pattern="3[0-9]{9}"', 'maxlength="10"', 'title' explicativo | Dispara teclado numérico en celulares. Exige 10 dígitos y que inicie obligatoriamente por 3 (estándar colombiano). |
+| **Ruta Nocturna** | '<select>' | 'required', opción inicial deshabilitada ('disabled selected value=""') | Permite elegir exactamente 1 de las 3 opciones oficiales sin ambigüedades. |
+| **Día de Salida** | '<select>' | 'required', opción inicial deshabilitada | Restringe la selección a Jueves, Viernes o Sábado a las 7:00 p. m. |
+| **Acompañantes** | '<input type="number">' | 'required', 'min="0"', 'max="3"', 'value="0"' | Control numérico estricto que restringe entre 0 (solo el titular) y máximo 3 cupos adicionales. |
+| **Nivel de Experiencia** | '<select>' | 'required', opción inicial deshabilitada | Clasificación precisa en Principiante, Intermedio o Avanzado para asignación de guías. |
+| **Bicicleta Propia** | Grupo de radios ('<input type="radio">') | 'required', valor "si" o "no" | Opciones mutuamente excluyentes en '<fieldset>' secundario con foco claro. |
+| **Aceptación Condiciones** | Casilla ('<input type="checkbox">') | 'required' | Casilla contractual obligatoria para habilitar el envío del formulario. |
+
+3. ESTRUCTURA SEMÁNTICA IMPLEMENTADA:
+El formulario se dividió en 3 conjuntos semánticos mediante elementos '<fieldset>' con títulos '<legend>' accesibles y visualmente destacados con el diseño de marca:
+- Grupo 1 ('1. Datos del Ciclista'): Nombre, Correo y Celular.
+- Grupo 2 ('2. Selección de la Experiencia'): Ruta, Día de salida, Número de acompañantes y Nivel de experiencia.
+- Grupo 3 ('3. Bicicleta y Términos'): Radio buttons de bicicleta propia y casilla de aceptación de términos y condiciones.
+- Botón de Envío: Encapsulado en el '<footer>' del formulario como '.btn-primary' adaptativo a ancho completo en móvil y 'sm:w-auto' en escritorio.
+
+4. BATERÍA DE PRUEBAS REALIZADAS:
+- Prueba 1 (Formulario vacío):
+  * Al hacer clic en "Confirmar inscripción" sin rellenar datos, el navegador bloquea inmediatamente el submit y resalta el primer campo ('#nombre') con el mensaje nativo: "Completa este campo".
+- Prueba 2 (Datos inválidos):
+  * Nombre con 2 caracteres ("Al"): Bloquea con advertencia de 'minlength="3"'.
+  * Celular "2001234567" o "30012": Bloquea por 'pattern="3[0-9]{9}"' y despliega el mensaje configurado en el atributo 'title'.
+  * Acompañantes = "4" o "-1": Bloquea por violación de 'min="0" max="3"'.
+  * Checkbox desmarcado: Impide el envío hasta aceptar los términos y condiciones.
+- Prueba 3 (Envío con datos válidos):
+  * Todos los campos son validados positivamente y el formulario procesa el post correctamente.
+- Prueba 4 (Navegación exclusiva con teclado):
+  * Recorrido secuencial fluido con tecla 'Tab' y 'Shift + Tab'.
+  * Desplegables ('<select>') operables con flechas del teclado y tecla 'Enter'.
+  * Opciones de radio seleccionables con flechas izquierda/derecha.
+  * Checkbox activable con barra espaciadora.
+  * Botón accionable con tecla 'Enter'.
+  * Anillo de foco nítido y accesible en todo momento ('focus:ring-2 focus:ring-verde-ruta dark:focus:ring-amarillo-farol').

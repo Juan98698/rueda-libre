@@ -1008,3 +1008,92 @@ B) Decisión tomada: CSS Grid ('grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 g
 - Todos los botones, cards, alertas e inputs fueron tomados íntegramente de 'nocturna/componentes.html',
   respetando radios ('rounded-xl' y 'rounded-2xl'), colores de superficie ('bg-slate-900', 'bg-slate-950'),
   anillos de foco visible y directrices de accesibilidad WCAG.
+
+
+================================================================================
+SESIÓN: ADAPTACIÓN RESPONSIVE MOBILE-FIRST EN RUEDA NOCTURNA (LANDING)
+Fecha: 2026-11-13
+Objetivo: Adaptar la landing a móvil, tablet y escritorio con enfoque Mobile-First en Tailwind CSS.
+================================================================================
+
+1. DIAGNÓSTICO INICIAL EN 360 PX (AUDITORÍA DE ELEMENTOS ROTOS / DEFICIENTES):
+Al inspeccionar la versión previa en DevTools simulando un viewport móvil de 360 px de ancho, se detectaron los siguientes problemas:
+- Encabezado rígido y apretado:
+  * El contenedor poseía altura fija ('h-20' / 80 px) y dirección horizontal forzada ('flex justify-between').
+  * En 360 px, los elementos convivían forzadamente en una sola fila muy estrecha, con riesgo de desborde y sin aire vertical para interactuar.
+- Distribución de Rutas desfasada:
+  * La sección de rutas utilizaba 'md:grid-cols-2', lo que obligaba a pantallas entre 640 px y 767 px a mantenerse en 1 sola columna, desaprovechando el breakpoint 'sm'.
+- Tipografía desproporcionada (Escala visual rígida):
+  * El H1 del Hero ('text-4xl md:text-5xl') y los H2 ('text-3xl md:text-4xl') consumían demasiado espacio vertical en 360 px, empujando métricas y botones por debajo del primer pantallazo ("above the fold").
+- Rellenos (paddings) y separaciones excesivas:
+  * Rellenos de tarjetas 'p-8 md:p-12' consumían 64 px de padding horizontal sobre un ancho total de 360 px (dejando solo 296 px útiles).
+  * La separación 'space-y-24' (96 px) entre secciones creaba huecos visuales excesivos durante el desplazamiento en celulares.
+- Acciones del Hero:
+  * Los botones con 'flex-wrap' quedaban asimétricos y difíciles de accionar con el pulgar en un smartphone.
+
+
+2. REESCRITURA DE CLASES EN CLAVE MOBILE-FIRST (POR QUÉ Y PARA QUÉ):
+El enfoque Mobile-First de Tailwind CSS consiste en definir estilos base sin prefijo (orientados a pantallas desde 0 px) y aplicar prefijos progresivos ('sm:', 'md:', 'lg:') mediante min-width media queries a medida que crece el viewport.
+
+- Encabezado (<header>):
+  * Clases aplicadas: 'py-3.5 md:py-0 md:h-20 flex flex-col md:flex-row items-center md:justify-between gap-3 md:gap-0'
+  * Por qué: En móvil (360 px), el espacio horizontal es escaso para mantener el logo y los botones en una sola fila sin forzar colisiones.
+  * Para qué: 'flex-col' apila verticalmente el logo sobre el botón CTA ("Inscríbete") con separación limpia ('gap-3'). Al llegar a 'md' (768 px), 'md:flex-row' y 'md:h-20' restablecen la barra horizontal tradicional de escritorio con altura fija de 80 px.
+  * Navegación: Los enlaces se ocultan en móvil con 'hidden' (sin prefijo) y reaparecen desde 'md' con 'md:flex items-center gap-6'. El botón "Inscríbete" permanece visible en todos los tamaños como llamada a la acción principal.
+
+- Rutas (<section id="rutas">):
+  * Clases aplicadas: 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'
+  * Por qué: Una tarjeta de ruta con imagen, métricas y botón requiere al menos ~280-300 px de ancho para ser legible.
+  * Para qué:
+    - Móvil (< 640 px): 1 columna ('grid-cols-1') para scroll vertical continuo sin overflow horizontal.
+    - Tablet / Intermedio (≥ 640 px): 2 columnas ('sm:grid-cols-2') aprovechando el espacio horizontal disponible.
+    - Escritorio (≥ 1024 px): 3 columnas ('lg:grid-cols-3') alineando las 3 rutas oficiales en una sola fila comparativa.
+
+- Pasos "¿Cómo funciona?" (<section id="como-funciona">):
+  * Clases aplicadas: 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6'
+  * Por qué: 4 pasos cronológicos no pueden coexistir en pantallas angostas sin comprimir el texto a un estado ilegible.
+  * Para qué:
+    - Móvil (< 640 px): 1 columna ('grid-cols-1') que refleja la lectura cronológica natural paso a paso.
+    - Tablet (≥ 640 px): 2 columnas ('sm:grid-cols-2') en cuadrícula simétrica 2x2.
+    - Escritorio (≥ 1024 px): 4 columnas ('lg:grid-cols-4') en fila horizontal completa de izquierda a derecha.
+
+- Tipografía y Espaciados Escalonados:
+  * Título H1: 'text-3xl sm:text-4xl lg:text-5xl' (proporción óptima sin corte abrupto de palabras).
+  * Títulos H2: 'text-2xl sm:text-3xl lg:text-4xl'.
+  * Rellenos de tarjetas: 'p-6 sm:p-8 lg:p-12' (más área de lectura en móvil; holgura en escritorio).
+  * Espaciado vertical entre secciones: 'space-y-16 sm:space-y-20 lg:space-y-24 py-8 sm:py-12 lg:py-20'.
+  * Acciones del Hero: 'flex flex-col sm:flex-row items-stretch sm:items-center' (botones de ancho táctil en celular, fila centrada en tablets y computadores).
+
+
+3. TABLA DE VERIFICACIÓN EN MODO DISPOSITIVO (DEVTOOLS):
+
+| Ancho (px) | Dispositivo Referencia | Encabezado | Rutas | Pasos | Tipografía H1/H2 | Scroll Horizontal | Estado |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **360 px** | Móvil pequeño (Galaxy S8 / SE) | Apilado ('flex-col'), enlaces ocultos ('hidden'), botón CTA visible | 1 columna ('grid-cols-1') | 1 columna ('grid-cols-1') | text-3xl / text-2xl (lectura cómoda) | **No** (0 px de overflow) | **Aprobado** |
+| **768 px** | Tablet vertical (iPad mini / 768px 'md') | En fila ('md:flex-row'), navegación y botón visibles | 2 columnas ('sm:grid-cols-2') | 2 columnas ('sm:grid-cols-2') | text-4xl / text-3xl (equilibrado) | **No** (0 px de overflow) | **Aprobado** |
+| **1024 px** | Tablet horizontal / Laptop ('lg') | En fila con altura fija 'h-20', distribución fluida | 3 columnas ('lg:grid-cols-3') | 4 columnas ('lg:grid-cols-4') | text-5xl / text-4xl (destacado) | **No** (0 px de overflow) | **Aprobado** |
+| **1280 px** | Pantalla escritorio ('xl') | Fila completa centrada en 'max-w-6xl' | 3 columnas simétricas con tarjetas alineadas | 4 columnas simétricas en fila completa | text-5xl / text-4xl (máximo impacto) | **No** (0 px de overflow) | **Aprobado** |
+
+
+================================================================================
+OPTIMIZACIÓN SEMÁNTICA: REDUCCIÓN DE DIVS Y ACCESIBILIDAD HTML5
+Fecha: 2026-11-13
+================================================================================
+
+1. ¿SON NECESARIOS LOS DIVS SEGÚN EL ESTÁNDAR W3C/WHATWG?
+- El elemento <div> no posee semántica intrínseca; representa un contenedor genérico.
+- La especificación de HTML5 indica que debe usarse como "último recurso", cuando no existe ningún elemento semántico (<header>, <nav>, <main>, <article>, <section>, <aside>, <footer>, <figure>, <ul>, <ol>, <fieldset>, <address>, <p>) que represente fielmente el contenido.
+- Casos donde el <div> es totalmente legítimo y necesario:
+  a) 'Styling Hooks' de maquetación: Wrappers centrados con ancho delimitado ('max-w-6xl mx-auto') dentro de componentes de ancho completo (como <header> o <footer> fijos). Asignar etiquetas semánticas a simples cajas de centrado genera "sectionitis" y ensucia el árbol de accesibilidad.
+  b) Agrupamiento en listas de descripción (<dl>): Desde HTML 5.2, el <div> está oficialmente admitido y estandarizado para envolver pares de <dt> y <dd> para facilitar cuadrículas CSS (Grid/Flexbox).
+
+2. REFUNDACIÓN SEMÁNTICA APLICADA EN LA LANDING:
+- Navegación principal: Se sustituyó el <div> contenedor de anclas por un menú semántico <ul class="hidden md:flex ..."> con elementos <li>.
+- Sección Rutas: La cuadrícula principal pasó de <div> a un catálogo en lista <ul class="grid ..."> donde cada tarjeta es un ítem <li> que envuelve un <article>. Las imágenes se encapsularon en <figure>.
+- Hero de Campaña: El bloque central se transformó en un <article> autocontenido dentro de <section id="inicio">.
+- Formulario de Registro:
+  * El agrupador de campos cambió de <div> a <fieldset class="border-0 p-0 m-0 grid ..."> con un <legend class="sr-only"> accesible.
+  * Cada campo se estructuró semánticamente mediante <p class="space-y-2"> y el botón de confirmación se integró en el <footer> del formulario.
+- Pie de página (Footer):
+  * Los bloques de información y dirección física se organizaron en elementos <section> y <address>.
+  * El texto de derechos reservados se migró a un elemento semántico <p><small>...</small></p>.

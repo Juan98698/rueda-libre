@@ -117,14 +117,21 @@ Todas las pruebas en tiempo límite fueron superadas con holgura:
 
 ## 📸 Capturas de Pantalla del Ecosistema
 
-### 1. Vista de Escritorio (Landing Rueda Nocturna a 1280 px)
-La cuadrícula organiza las rutas en 3 columnas y la sección de planes en 3 tarjetas de igual altura con botones perfectamente alineados.
+### 1. Vista de Escritorio y Modo Oscuro (Landing Rueda Nocturna a 1280 px)
+La interfaz implementa el tema de marca nocturno en Azul Noche (`#14213D`) con detalles en Amarillo Farol (`#FFD166`), organizando las rutas y planes en cuadrículas de 3 columnas con botones perfectamente nivelados.
 
-### 2. Vista de Celular (Mobile First a 360 px)
-Todo el contenido fluye verticalmente en una columna fluida sin scroll horizontal ni desbordamientos táctiles.
+<p align="center">
+  <img src="img/capturas/escritorio-dark.png" alt="Vista de Escritorio en Modo Oscuro de Rueda Nocturna" width="900">
+</p>
 
-### 3. Modo Oscuro Accesible (`prefers-color-scheme: dark`)
-Fondo en Azul Noche (`#14213D`), tarjetas translúcidas con backdrop blur y acentos en Amarillo Farol (`#FFD166`) con contraste WCAG AAA.
+### 2. Vista de Celular (Mobile First - Despliegue Real en Producción)
+Todo el contenido se adapta de forma fluida a pantallas táctiles de teléfonos inteligentes (360 px), sin scroll horizontal, con menú sintetizado, jerarquía visual clara y botones táctiles de fácil pulsación.
+
+<p align="center">
+  <img src="img/capturas/celular-hero.jpg" alt="Vista Móvil de la Portada y Menú de Rueda Nocturna" width="340">
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="img/capturas/celular-rutas.jpg" alt="Vista Móvil de las Tarjetas de Rutas Nocturnas" width="340">
+</p>
 
 
 ---

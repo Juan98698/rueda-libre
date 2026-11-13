@@ -16,24 +16,29 @@
     <header class="sticky top-0 z-50 bg-crema/90 dark:bg-azul-noche/90 backdrop-blur-md border-b border-gris-asfalto/20 dark:border-gris-asfalto/40 transition-colors duration-200">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 md:py-0 md:h-20 flex flex-col md:flex-row items-center md:justify-between gap-3 md:gap-0">
             
-            <!-- Logo de la campaña -->
-            <a href="#inicio" class="flex items-center gap-2 text-xl font-extrabold text-azul-noche dark:text-white tracking-tight hover:text-verde-ruta dark:hover:text-amarillo-farol transition font-montserrat">
+            <!-- Logo de la campaña (Enlace al inicio del sitio principal) -->
+            <a href="../index.html" class="flex items-center gap-2 text-xl font-extrabold text-azul-noche dark:text-white tracking-tight hover:text-verde-ruta dark:hover:text-amarillo-farol transition font-montserrat" title="Volver al inicio de Rueda Libre">
                 <span class="text-2xl" aria-hidden="true">🚲</span>
                 <span>Rueda Nocturna</span>
             </a>
 
-            <!-- Navegación con anclas y Botón del Kit -->
-            <nav aria-label="Navegación principal" class="flex items-center gap-4 sm:gap-6">
+            <!-- Navegación con anclas y Botones del Kit -->
+            <nav aria-label="Navegación principal" class="flex items-center gap-3 sm:gap-6">
                 <ul class="hidden md:flex items-center gap-6 list-none p-0 m-0">
-                    <li><a href="#inicio" class="text-sm font-medium text-gris-asfalto dark:text-crema/80 hover:text-azul-noche dark:hover:text-amarillo-farol transition">Inicio</a></li>
+                    <li><a href="../index.html" class="text-sm font-medium text-gris-asfalto dark:text-crema/80 hover:text-azul-noche dark:hover:text-amarillo-farol transition">Sitio Principal</a></li>
                     <li><a href="#rutas" class="text-sm font-medium text-gris-asfalto dark:text-crema/80 hover:text-azul-noche dark:hover:text-amarillo-farol transition">Rutas</a></li>
                     <li><a href="#como-funciona" class="text-sm font-medium text-gris-asfalto dark:text-crema/80 hover:text-azul-noche dark:hover:text-amarillo-farol transition">¿Cómo funciona?</a></li>
                     <li><a href="#inscripcion" class="text-sm font-medium text-gris-asfalto dark:text-crema/80 hover:text-azul-noche dark:hover:text-amarillo-farol transition">Inscripción</a></li>
                 </ul>
 
-                <a href="#inscripcion" class="btn-primary px-4 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm">
-                    Inscríbete
-                </a>
+                <div class="flex items-center gap-2 sm:gap-3">
+                    <a href="../paginas/reservas.html" class="btn-secondary px-3 sm:px-4 py-2 sm:py-2.5 text-xs sm:text-sm">
+                        Reserva tu bici
+                    </a>
+                    <a href="#inscripcion" class="btn-primary px-3 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm">
+                        Inscríbete
+                    </a>
+                </div>
             </nav>
 
         </div>
@@ -74,8 +79,8 @@
                     <a href="#rutas" class="btn-secondary px-6 py-3 text-sm">
                         Ver rutas
                     </a>
-                    <a href="../paginas/tarifas.html" class="btn-outline px-6 py-3 text-sm">
-                        Alquilar bici
+                    <a href="../paginas/reservas.html" class="btn-outline px-6 py-3 text-sm">
+                        Reserva tu bici
                     </a>
                 </nav>
             </article>
@@ -539,7 +544,7 @@
             
             <!-- Bloque 1: Marca y Propósito -->
             <section class="space-y-3 max-w-xs">
-                <a href="#inicio" class="flex items-center gap-2 text-lg font-extrabold text-azul-noche dark:text-white tracking-tight font-montserrat">
+                <a href="../index.html" class="flex items-center gap-2 text-lg font-extrabold text-azul-noche dark:text-white tracking-tight font-montserrat" title="Volver al inicio de Rueda Libre">
                     <span aria-hidden="true">🚲</span>
                     <span>Rueda Libre</span>
                 </a>
@@ -552,7 +557,8 @@
             <nav aria-label="Navegación del pie" class="space-y-3">
                 <p class="text-xs font-bold uppercase tracking-wider text-azul-noche dark:text-white font-montserrat">Navegación</p>
                 <ul class="space-y-2 text-sm text-gris-asfalto dark:text-crema/70 list-none p-0 m-0 font-open-sans">
-                    <li><a href="#inicio" class="hover:text-verde-ruta dark:hover:text-amarillo-farol transition">Inicio</a></li>
+                    <li><a href="../index.html" class="hover:text-verde-ruta dark:hover:text-amarillo-farol transition">Sitio Principal</a></li>
+                    <li><a href="../paginas/reservas.html" class="hover:text-verde-ruta dark:hover:text-amarillo-farol transition">Reserva tu bici</a></li>
                     <li><a href="#rutas" class="hover:text-verde-ruta dark:hover:text-amarillo-farol transition">Rutas nocturnas</a></li>
                     <li><a href="#como-funciona" class="hover:text-verde-ruta dark:hover:text-amarillo-farol transition">¿Cómo funciona?</a></li>
                     <li><a href="#inscripcion" class="hover:text-verde-ruta dark:hover:text-amarillo-farol transition">Inscripción</a></li>
@@ -561,11 +567,13 @@
 
             <!-- Bloque 3: Sede y Horarios -->
             <section class="space-y-3 text-sm text-gris-asfalto dark:text-crema/80 font-open-sans">
-                <p class="text-xs font-bold uppercase tracking-wider text-azul-noche dark:text-white font-montserrat">Punto de Partida</p>
+                <p class="text-xs font-bold uppercase tracking-wider text-azul-noche dark:text-white font-montserrat">Sede y Contacto</p>
                 <address class="not-italic space-y-1">
                     <p class="text-azul-noche dark:text-crema font-medium">Sede Principal Rueda Libre</p>
                     <p>Medellín, Colombia</p>
-                    <p class="text-verde-ruta dark:text-amarillo-farol font-semibold">Salidas: Jueves a Sábado &middot; 7:00 p. m.</p>
+                    <p><a href="mailto:hola@ruedalibre.example" class="hover:underline">hola@ruedalibre.example</a></p>
+                    <p><a href="https://www.google.com/maps/place/Riwi/@6.2191063,-75.5861898,17z" target="_blank" rel="noopener noreferrer" class="hover:underline text-verde-ruta dark:text-amarillo-farol font-medium">Encuéntranos en Google Maps</a></p>
+                    <p class="text-verde-ruta dark:text-amarillo-farol font-semibold pt-1">Salidas Nocturnas: Jueves a Sábado &middot; 7:00 p. m.</p>
                 </address>
             </section>
 

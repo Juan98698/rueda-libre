@@ -1283,3 +1283,85 @@ El formulario se dividió en 3 conjuntos semánticos mediante elementos '<fields
   * Checkbox activable con barra espaciadora.
   * Botón accionable con tecla 'Enter'.
   * Anillo de foco nítido y accesible en todo momento ('focus:ring-2 focus:ring-verde-ruta dark:focus:ring-amarillo-farol').
+
+
+========================================================================================================
+MINIRETO: INTEGRACIÓN DE LA LANDING (TAILWIND) CON EL SITIO PRINCIPAL (BOOTSTRAP V2.0)
+========================================================================================================
+
+Objetivo:
+Integrar la landing page de la campaña "Rueda Nocturna" (Tailwind CSS) con el sitio web institucional 
+"Rueda Libre v2.0" (Bootstrap) mediante una navegación cruzada bidireccional, rutas relativas seguras para 
+GitHub Pages y una identidad visual perfectamente coherente (colores de marca, fuentes y pie de página).
+
+1. REGISTRO DE TIEMPO REAL (CRONÓMETRO DE 40 MINUTOS):
+- Hora de inicio: 07:42 a. m.
+- Hora de finalización: 07:58 a. m.
+- Tiempo real invertido: 16 minutos (Completado holgadamente dentro del límite de 40 minutos).
+- Estado de pendientes: Ninguno. Todos los requerimientos técnicos y criterios de cumplimiento fueron superados al 100%.
+
+2. IMPLEMENTACIÓN EN EL SITIO V2.0 (BOOTSTRAP):
+a) Barra de Navegación Global (Navbar):
+   - Se incorporó el enlace a la nueva campaña "Rueda Nocturna" en el menú de navegación de las tres páginas principales:
+     * 'index.html': Enlace relativo directo 'nocturna/index.html'.
+     * 'paginas/tarifas.html': Enlace relativo con salto de carpeta '../nocturna/index.html'.
+     * 'paginas/reservas.html': Enlace relativo con salto de carpeta '../nocturna/index.html'.
+b) Carrusel Destacado con Cuarta Diapositiva:
+   - Se implementó en 'index.html' el carrusel interactivo de Bootstrap 5.3 ('#carruselDestacados') con 4 diapositivas y controles accesibles:
+     * Diapositiva 1: Alquiler de Bicicletas ('img/PortadaRuedaLibre.png') -> Enlace a 'paginas/reservas.html'.
+     * Diapositiva 2: Nuestras Rutas Urbanas ('img/RioParques.png') -> Enlace a 'paginas/tarifas.html'.
+     * Diapositiva 3: Recorridos Guiados ('img/RecorridoGuiado.png') -> Enlace a 'paginas/tarifas.html#recorridos'.
+     * Diapositiva 4 (Campaña Rueda Nocturna): Imagen nocturna ('img/LunaEnLasPalmas.png') con llamado a la acción destacado en Amarillo Farol que conduce directamente a la landing 'nocturna/index.html'.
+
+3. IMPLEMENTACIÓN EN LA LANDING (TAILWIND CSS):
+a) Retorno al Sitio Principal:
+   - El logo en el header y en el footer de la landing se configuró con 'href="../index.html"' para permitir a los usuarios regresar al home institucional con un solo clic.
+   - En el menú de escritorio ('md:flex') del header y en los enlaces rápidos del pie se incluyó el ítem "Sitio Principal".
+b) Llamado a la Acción hacia Reservas ("Reserva tu bici"):
+   - Se añadió el botón secundario del kit "Reserva tu bici" en el header principal junto a "Inscríbete" ('href="../paginas/reservas.html"').
+   - Se integró el botón con variante '.btn-outline' en las acciones principales del Hero ('#inicio') para captar al usuario que busca alquiler tradicional.
+   - Se agregó en el menú de navegación rápida del pie de página.
+c) Kit de Componentes ('nocturna/componentes.html'):
+   - Se incorporó barra de navegación de retorno hacia la landing ('index.html'), el sitio principal ('../index.html') y reservas ('../paginas/reservas.html').
+
+4. MATRIZ DE RUTAS RELATIVAS Y VALIDACIÓN DE ENLACES (0 ERRORES 404):
+| Desde Archivo | Destino Solicitado | Ruta Relativa Utilizada | Estado Local (5500) | Estado GitHub Pages |
+| :--- | :--- | :--- | :--- | :--- |
+| 'index.html' | Landing Campaña | 'nocturna/index.html' | 200 OK | 200 OK |
+| 'index.html' (Carrusel Slide 4) | Landing Campaña | 'nocturna/index.html' | 200 OK | 200 OK |
+| 'paginas/tarifas.html' | Landing Campaña | '../nocturna/index.html' | 200 OK | 200 OK |
+| 'paginas/reservas.html' | Landing Campaña | '../nocturna/index.html' | 200 OK | 200 OK |
+| 'nocturna/index.html' (Logo) | Inicio Sitio | '../index.html' | 200 OK | 200 OK |
+| 'nocturna/index.html' (Header CTA) | Página Reservas | '../paginas/reservas.html' | 200 OK | 200 OK |
+| 'nocturna/index.html' (Hero CTA) | Página Reservas | '../paginas/reservas.html' | 200 OK | 200 OK |
+| 'nocturna/index.html' (Footer) | Inicio Sitio | '../index.html' | 200 OK | 200 OK |
+| 'nocturna/index.html' (Footer) | Reservas | '../paginas/reservas.html' | 200 OK | 200 OK |
+| 'nocturna/componentes.html' | Landing Campaña | 'index.html' | 200 OK | 200 OK |
+| 'nocturna/componentes.html' | Inicio Sitio | '../index.html' | 200 OK | 200 OK |
+
+Total enlaces relativos analizados: 42. Enlaces rotos: 0 (Cero errores 404).
+Total imágenes verificadas: 27. Imágenes rotas: 0.
+
+5. AUDITORÍA DE IDENTIDAD VISUAL Y COHERENCIA DE MARCA:
+a) Códigos de Color Unificados:
+   - Se sincronizaron las variables corporativas en 'css/styles.css' (CSS / Bootstrap) y en 'nocturna/src/input.css' (@theme de Tailwind):
+     * Crema: '#FAF6EF' (--color-crema / --bs-light)
+     * Azul Noche: '#14213D' (--color-azul-noche / --bs-dark / --bs-info)
+     * Verde Ruta: '#1E7A4F' (--color-verde / --bs-primary / --bs-success)
+     * Naranja Pedal: '#F39A2B' (--color-naranja / --bs-danger)
+     * Gris Asfalto: '#5B6470' (--color-gris / --bs-secondary)
+     * Amarillo Farol: '#FFD166' (--color-amarillo-farol / --bs-warning)
+b) Tipografías Institucionales:
+   - Ambos entornos cargan las familias oficiales desde Google Fonts:
+     * Montserrat ('wght@400;700') para todos los títulos ('<h1>' a '<h6>').
+     * Open Sans ('wght@400;600') para párrafos, listas, formularios y pies de página.
+c) Datos de Contacto y Footer:
+   - Ambos productos comunican los mismos datos oficiales: Medellín (Colombia), correo 'hola@ruedalibre.example', enlace a Google Maps y horarios de atención coordinados.
+
+6. REFINAMIENTO DE LAYOUT EN PORTADA (SOLUCIÓN A DUPLICIDAD Y FORMATO RECTANGULAR 3:2):
+- Diagnóstico: Al colocar el carrusel en formato cuadrado (1:1), las imágenes horizontales de rutas y campañas (1536x1024 px) sufrían cortes en los extremos laterales, perdiendo textos nativos de los pósters ("Luna en las Palmas", "Recorridos Guiados"). Además, las cajas de leyenda oscuras cubrían el arte central.
+- Solución aplicada:
+  * Se configuró el carrusel en modo **rectangular panorámico (aspect-ratio: 3 / 2)**, que corresponde con precisión matemática a la relación 1.5 de las imágenes (1536 / 1024 = 1.5).
+  * Se aplicó 'object-fit: contain' y fondo institucional Azul Noche ('#14213D'), garantizando que el 100% de la imagen, sus títulos y tipografías nativas se muestren sin ningún recorte.
+  * Se aligeró la capa de leyenda eliminando títulos duplicados y dejando únicamente un botón de llamado a la acción flotante ('boton-cta' redondeado) sobre la barra de indicadores, permitiendo que el póster visual se aprecie limpio e íntegro.
+  * Cada diapositiva se convirtió en un enlace interactivo directo a su sección de destino.

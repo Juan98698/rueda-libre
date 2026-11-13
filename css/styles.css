@@ -1,17 +1,31 @@
 /* 1. VARIABLES Y RESETEO */
 
 :root {
-    /* Paleta de colores institucional */
+    /* Paleta de colores institucional (coherente con @theme en Tailwind) */
     --color-crema: #FAF6EF;
     --color-azul-noche: #14213D;
     --color-verde: #1E7A4F;
     --color-naranja: #F39A2B;
     --color-gris: #5B6470;
+    --color-amarillo-farol: #FFD166;
     --color-blanco: #FFFFFF;
+
+    /* Mapeo institucional a variables Bootstrap (--bs-*) */
+    --bs-primary: #1E7A4F;
+    --bs-secondary: #5B6470;
+    --bs-success: #1E7A4F;
+    --bs-info: #14213D;
+    --bs-warning: #FFD166;
+    --bs-danger: #F39A2B;
+    --bs-light: #FAF6EF;
+    --bs-dark: #14213D;
+    --bs-body-bg: #FAF6EF;
+    --bs-body-color: #14213D;
 
     /* Tipografías */
     --fuente-titulos: 'Montserrat', sans-serif;
     --fuente-texto: 'Open Sans', sans-serif;
+    --bs-body-font-family: 'Open Sans', sans-serif;
 
     /* Escala modular de espaciado */
     --espacio-sm: 0.5rem;
@@ -160,6 +174,77 @@ header h1 {
 .boton-cta:focus {
     outline: 3px solid var(--color-naranja);
     outline-offset: 3px;
+}
+
+/* --- Carrusel en Portada (Bootstrap v2.0 integración - Formato Rectangular 3:2) --- */
+.portada-imagen {
+    position: relative;
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto;
+}
+
+.carrusel-destacados {
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(20, 33, 61, 0.15);
+    background-color: var(--color-azul-noche);
+}
+
+.carrusel-destacados .carousel-inner {
+    border-radius: 12px;
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    background-color: var(--color-azul-noche);
+}
+
+.carrusel-destacados .carousel-item {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 3 / 2;
+    background-color: var(--color-azul-noche);
+}
+
+/* En modo rectangular 3:2 con contain, ninguna imagen se recorta */
+.carrusel-destacados .carousel-item img.img-portada-carrusel {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    display: block;
+}
+
+.carrusel-destacados .carousel-indicators {
+    margin-bottom: 0.35rem;
+}
+
+.carrusel-destacados .carousel-caption {
+    background: transparent;
+    padding: 0;
+    bottom: 1.65rem;
+    left: 5%;
+    right: 5%;
+    text-align: center;
+}
+
+.carrusel-destacados .carousel-caption .boton-cta {
+    padding: 0.4rem 1rem;
+    font-size: 0.85rem;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.boton-cta-nocturna {
+    background-color: var(--color-amarillo-farol) !important;
+    color: var(--color-azul-noche) !important;
+    font-weight: 700;
+}
+
+.boton-cta-nocturna:hover {
+    background-color: var(--color-blanco) !important;
+    color: var(--color-azul-noche) !important;
 }
 
 /* --- Tarjetas de servicios (MiniReto 11 y 12) --- */

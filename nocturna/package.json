@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "tailwindcss -i src/input.css -o src/output.css --watch",
-    "build": "tailwindcss -i src/input.css -o src/output.css"
+    "build": "tailwindcss -i src/input.css -o src/output.css --minify"
   },
   "keywords": [],
   "type": "commonjs",

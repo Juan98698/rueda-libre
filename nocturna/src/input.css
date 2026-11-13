@@ -17,4 +17,22 @@
   --font-open-sans: 'Open Sans', sans-serif;
 }
 
+@layer components {
+  /* 1. Botón Principal de Acción (CTA) */
+  .btn-primary {
+    @apply inline-block font-montserrat font-bold uppercase tracking-wider transition duration-200 rounded-xl shadow-lg shadow-verde-ruta/20 bg-verde-ruta hover:bg-verde-ruta/90 text-white focus:outline-none focus:ring-2 focus:ring-verde-ruta focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-azul-noche cursor-pointer;
+  }
+
+  /* 2. Botón Secundario de Navegación */
+  .btn-secondary {
+    @apply inline-block font-montserrat font-semibold uppercase tracking-wider transition duration-200 rounded-xl bg-azul-noche hover:bg-azul-noche/90 text-crema dark:bg-crema dark:hover:bg-white dark:text-azul-noche focus:outline-none focus:ring-2 focus:ring-gris-asfalto focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-azul-noche cursor-pointer;
+  }
+
+  /* 3. Botón de Contorno / Alternativo */
+  .btn-outline {
+    @apply inline-block font-montserrat font-semibold uppercase tracking-wider transition duration-200 rounded-xl bg-transparent border border-verde-ruta/60 text-verde-ruta hover:border-verde-ruta hover:bg-verde-ruta/10 dark:border-amarillo-farol/60 dark:text-amarillo-farol dark:hover:border-amarillo-farol dark:hover:bg-amarillo-farol/10 focus:outline-none focus:ring-2 focus:ring-verde-ruta dark:focus:ring-amarillo-farol focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-azul-noche cursor-pointer;
+  }
+}
+
+
 

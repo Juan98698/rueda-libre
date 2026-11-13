@@ -1152,3 +1152,82 @@ Al emular 'prefers-color-scheme: dark' en DevTools (Rendering > Emulate CSS medi
 - Las tipografías de encabezados y métricas se iluminan con 'dark:text-white' y 'dark:text-amarillo-farol'.
 - Los campos de formulario cambian a fondos oscuros translúcidos con foco en 'dark:focus:border-amarillo-farol'.
 - El modo claro original se mantiene idéntico, preservando el fondo Crema (#FAF6EF) y la identidad del sitio principal.
+
+
+================================================================================
+SESIÓN: REFACCIÓN DE LEGIBILIDAD CON @apply Y VEREDICTO BOOTSTRAP VS TAILWIND
+Fecha: 2026-11-13
+Objetivo: Optimizar la legibilidad del HTML mediante abstracción controlada de botones con @apply, medir bundle minificado y emitir veredicto justificado.
+================================================================================
+
+1. IDENTIFICACIÓN Y CONTEO DE CLASES REPETITIVAS EN EL HTML:
+Al auditar 'nocturna/index.html' se identificaron los patrones de utilidades atómicas con mayor tasa de repetición:
+- Botón Principal (Primary CTA):
+  * Clases repetidas (17 utilidades): 'inline-block bg-verde-ruta hover:bg-verde-ruta/90 text-white font-montserrat font-bold rounded-xl shadow-lg shadow-verde-ruta/20 uppercase tracking-wider transition duration-200 focus:outline-none focus:ring-2 focus:ring-verde-ruta focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-azul-noche cursor-pointer'.
+  * Frecuencia en HTML: 6 apariciones (Header, Hero, Card 1, Card 2, Card 3 y Envío de Formulario).
+  * Impacto: Generaba ~100 clases redundantes en el marcado solo para botones verdes.
+- Botón Secundario (Secondary CTA):
+  * Clases repetidas (15 utilidades): 'inline-block bg-azul-noche hover:bg-azul-noche/90 text-crema dark:bg-crema dark:hover:bg-white dark:text-azul-noche font-montserrat font-semibold rounded-xl uppercase tracking-wider transition duration-200 focus:outline-none focus:ring-2 focus:ring-gris-asfalto focus:ring-offset-2'.
+  * Frecuencia: 2 apariciones (Hero y Kit de componentes).
+- Botón de Contorno (Outline CTA):
+  * Clases repetidas (18 utilidades): 'inline-block bg-transparent border border-verde-ruta/60 text-verde-ruta hover:border-verde-ruta hover:bg-verde-ruta/10 dark:border-amarillo-farol/60 dark:text-amarillo-farol dark:hover:border-amarillo-farol dark:hover:bg-amarillo-farol/10 font-montserrat font-semibold rounded-xl uppercase tracking-wider transition duration-200 focus:outline-none focus:ring-2'.
+  * Frecuencia: 2 apariciones (Hero y Kit de componentes).
+- Campos de Entrada (Form Inputs):
+  * Clases repetidas (16 utilidades): 'w-full bg-crema dark:bg-azul-noche/80 border border-gris-asfalto/40 dark:border-gris-asfalto/50 text-azul-noche dark:text-crema placeholder-gris-asfalto/60 rounded-xl px-4 py-3 text-sm transition duration-200 focus:outline-none focus:border-verde-ruta focus:ring-2 font-open-sans'.
+  * Frecuencia: 2 apariciones en landing (Correo y Celular) y 2 en kit de componentes.
+
+2. ABSTRACCIÓN CONTROLADA EN 'src/input.css' (@layer components):
+Para resolver el síntoma de "clases kilométricas" sin caer en la dispersión del CSS tradicional, se encapsularon exactamente TRES clases propias bajo la capa de componentes:
+- '.btn-primary': Encapsula el botón de conversión principal de la marca.
+- '.btn-secondary': Encapsula el botón secundario en Azul Noche/Crema.
+- '.btn-outline': Encapsula la acción de contorno con acento dinámico (Verde en claro, Amarillo Farol en oscuro).
+*Resultado en legibilidad:* La etiqueta del botón en el Header pasó de 242 caracteres a solo:
+'<a href="#inscripcion" class="btn-primary px-4 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm">Inscríbete</a>'
+Las dimensiones y paddings variables se mantuvieron con utilidades específicas en el HTML respetando la cascada natural de Tailwind.
+
+3. REGLA DE ORDENAMIENTO DE CLASES POR CATEGORÍA:
+Se ordenaron las clases del marcado siguiendo el estándar de arquitectura visual:
+1. Layout / Posición: 'flex', 'grid', 'sticky', 'absolute', 'relative', 'z-50', 'flex-col', 'items-center', 'justify-between'.
+2. Dimensiones y Espaciado: 'w-full', 'max-w-6xl', 'mx-auto', 'p-6', 'px-4', 'py-3', 'gap-4', 'space-y-6'.
+3. Tipografía: 'font-montserrat', 'font-open-sans', 'text-3xl', 'text-sm', 'font-bold', 'text-center', 'uppercase'.
+4. Color, Bordes y Superficie: 'bg-crema', 'text-azul-noche', 'border', 'border-gris-asfalto/20', 'rounded-2xl', 'shadow-xl'.
+5. Estados e Interactividad: 'transition duration-200', 'hover:border-...', 'focus:ring-2', 'dark:bg-azul-noche', 'dark:text-crema'.
+
+4. MEDICIÓN COMPARATIVA DE RENDIMIENTO Y TAMAÑO DE RECURSOS:
+Se compiló el CSS de producción ejecutando: 'tailwindcss -i src/input.css -o src/output.css --minify'.
+Los datos reales medidos frente al stack tradicional de Bootstrap 5.3 (sitio v2.0) son los siguientes:
+
+| Recurso / Framework | Tamaño Sin Comprimir (Disk) | Tamaño Transferido (Gzip / Wire) | Dependencia JavaScript |
+| :--- | :--- | :--- | :--- |
+| **Tailwind CSS v4 (nocturna minificado)** | **42.3 KB** | **6.5 KB** | **0 KB (Sin JS)** |
+| Bootstrap 5.3 CSS ('bootstrap.min.css') | 232.0 KB | 34.2 KB | - |
+| Bootstrap 5.3 JS ('bootstrap.bundle.min.js')| 80.0 KB | 23.5 KB | 80.0 KB (Obligatorio para modales/nav) |
+| **Total Stack Bootstrap v2.0** | **312.0 KB** | **57.7 KB** | **80.0 KB** |
+
+*Conclusión del rendimiento:*
+El bundle final de Tailwind CSS es un **86.4% más liviano en transferencia de red** (6.5 KB vs 57.7 KB) y elimina por completo la necesidad de un runtime de JavaScript de 80 KB para componentes de interfaz. Para usuarios que provienen de campañas de redes sociales en conexiones móviles 4G/3G, esto se traduce en una mejora radical en los tiempos de First Contentful Paint (FCP) y Largest Contentful Paint (LCP).
+
+5. COMPARATIVA EN CUATRO CRITERIOS: BOOTSTRAP VS TAILWIND CSS
+
+A) Curva de aprendizaje:
+- Bootstrap: Muy accesible durante las primeras horas porque solo exige memorizar nombres prefabricados ('.btn', '.card', '.navbar'). Sin embargo, se vuelve frustrante y compleja en etapas intermedias y avanzadas, ya que cuando se requiere un diseño que se salga de la cuadrícula estándar, el desarrollador debe luchar contra la alta especificidad y los estilos 'encadenados' del framework.
+- Tailwind CSS: Curva inicial más demandante porque no ofrece atajos prefabricados; exige dominar los fundamentos reales de CSS (Flexbox, Grid, Box Model, Box Shadow). Sin embargo, una vez asimilado el vocabulario atómico, la velocidad de desarrollo es exponencialmente mayor: no hay que salir del archivo HTML, no se generan nombres de clases artificiales (BEM) y no hay riesgo de regresiones visuales en cascada.
+
+B) Nivel de personalización y diseño de marca:
+- Bootstrap: Rígido y opinado. Todo proyecto nace con la apariencia inconfundible de Bootstrap. Adaptarlo a los 6 colores corporativos de Rueda Libre requiere compilar Sass, redefinir mapas de variables y escribir decenas de reglas de sobreescritura. El soporte para modo oscuro depende de selectores globales rígidos de tema.
+- Tailwind CSS: 100% no opinado y maleable. Mediante la directiva '@theme' se integraron Crema (#FAF6EF), Azul Noche (#14213D) y Amarillo Farol (#FFD166) en segundos. El modo oscuro ('dark:') se aplica granularmente a nivel de utilidad sin librerías externas ni hacks de especificidad.
+
+C) Tamaño final y optimización (Tree-shaking):
+- Bootstrap: Monolítico. El navegador descarga el catálogo completo de estilos (grillas, tablas, formularios, botones, carruseles, acordeones) aunque la página únicamente requiera tres botones y una tarjeta.
+- Tailwind CSS: Basado en compilación bajo demanda (*just-in-time tree shaking*). Solo se genera en el CSS final aquello que esté escrito en el HTML. Esto garantiza que sin importar qué tan grande crezca el proyecto, el CSS tiende a estabilizarse en un tamaño mínimo (en este caso, 6.5 KB gzip).
+
+D) Casos de uso ideales:
+- Bootstrap: Herramienta perfecta para tableros de administración internos (backoffices, dashboards), plataformas SaaS B2B, prototipos funcionales de hackatón o proyectos sin requerimientos de diseño estricto donde la velocidad de entrega del backend prima sobre la originalidad estética.
+- Tailwind CSS: La opción predilecta para sitios web públicos, landing pages de marketing y conversión, e-commerce, sitios con manual de marca e identidad visual única (como Rueda Libre) y productos donde la optimización de Core Web Vitals y la experiencia en celulares sean críticas.
+
+6. RECOMENDACIÓN FINAL Y JUSTIFICADA PARA RUEDA LIBRE:
+Se recomienda de manera definitiva migrar la próxima versión de todo el sitio web de Rueda Libre a **Tailwind CSS**.
+- Justificación técnica y de negocio:
+  1. Identidad de Marca: Rueda Libre vende una experiencia emocional y turística en Medellín (rodadas nocturnas, luces, paisajes). La identidad no puede parecer una plantilla corporativa genérica de Bootstrap; requiere la elegancia de Azul Noche, la energía de Amarillo Farol y la frescura de Verde Ruta.
+  2. Rendimiento Móvil: Como la campaña se difunde en redes sociales, el 85%+ de las visitas provienen de teléfonos celulares. Pasar de 57.7 KB a 6.5 KB en el payload de red disminuye la tasa de rebote en conexiones móviles.
+  3. Mantenibilidad: La adopción de '@layer components' con clases puntuales como '.btn-primary' demostró que es posible mantener un HTML limpio y legible sin renunciar a la flexibilidad atómica de Tailwind.

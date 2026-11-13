@@ -126,20 +126,6 @@ Todo el contenido fluye verticalmente en una columna fluida sin scroll horizonta
 ### 3. Modo Oscuro Accesible (`prefers-color-scheme: dark`)
 Fondo en Azul Noche (`#14213D`), tarjetas translúcidas con backdrop blur y acentos en Amarillo Farol (`#FFD166`) con contraste WCAG AAA.
 
----
-
-## 🎤 Guion de la Demo (3 Minutos)
-
-Para presentar el proyecto ante el director de Nodo Digital y el cliente:
-
-* **0:00 - 0:45 | Contexto y Sitio Principal:**
-  *"Buenas tardes. Rueda Libre necesitaba expandir su negocio hacia el turismo nocturno en Medellín. Aquí vemos el sitio institucional v2.0 con un carrusel rectangular interactivo cuya cuarta diapositiva invita a vivir la experiencia de Rueda Nocturna. Al hacer clic, viajamos sin fricción a la nueva landing de campaña."*
-* **0:45 - 1:45 | Recorrido de la Landing y Conversión:**
-  *"La landing recibe al usuario con una propuesta de valor clara, la ficha técnica de las 3 rutas guiadas, el proceso en 4 pasos y la nueva sección de Planes, donde destacamos el Plan Pareja como el 'Más elegido'. Al final, el usuario se inscribe en un formulario semántico 100% validado que no permite envíos con datos incompletos ni errores de digitación."*
-* **1:45 - 2:30 | Mobile-First y Modo Oscuro:**
-  *"Como el 85% del tráfico llega de redes sociales, activamos la vista de celular a 360 px: no hay scroll horizontal, el menú se sintetiza y los botones son táctiles. Además, si el sistema del ciclista está en modo oscuro, la interfaz cambia fluidamente a Azul Noche y Amarillo Farol con contraste AAA certificado."*
-* **2:30 - 3:00 | Decisiones Técnicas y Cierre:**
-  *"Tomamos dos decisiones clave: primero, unificar la marca con tokens `@theme` en Tailwind v4 para garantizar accesibilidad automática. Segundo, lograr un bundle de solo 42 KB que carga 86% más rápido que Bootstrap en redes 4G. El ecosistema está publicado en GitHub Pages y listo para recibir inscripciones hoy mismo."*
 
 ---
 

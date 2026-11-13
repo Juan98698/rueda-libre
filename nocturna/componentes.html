@@ -4,89 +4,97 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kit de Componentes | Rueda Nocturna</title>
+    <!-- Fuentes de Marca: Montserrat y Open Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- Enlace al CSS compilado por la CLI -->
     <link rel="stylesheet" href="src/output.css">
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen p-4 md:p-12">
+<body class="bg-crema text-azul-noche dark:bg-azul-noche dark:text-crema min-h-screen p-4 md:p-12 font-open-sans transition-colors duration-200">
 
     <div class="w-full max-w-4xl mx-auto space-y-16">
 
         <!-- Encabezado de la página de componentes -->
-        <header class="border-b border-slate-800 pb-8 text-center md:text-left space-y-3">
-            <p class="text-xs font-semibold uppercase tracking-wider text-emerald-400">
+        <header class="border-b border-gris-asfalto/20 dark:border-gris-asfalto/40 pb-8 text-center md:text-left space-y-3">
+            <p class="text-xs font-semibold uppercase tracking-wider text-verde-ruta dark:text-amarillo-farol font-montserrat">
                 Design System &middot; Rueda Libre
             </p>
-            <h1 class="text-4xl md:text-5xl font-extrabold text-white tracking-tight">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-azul-noche dark:text-white tracking-tight font-montserrat">
                 Kit de Componentes
             </h1>
-            <p class="text-slate-400 text-base md:text-lg max-w-2xl">
-                Librería visual para la campaña Rueda Nocturna: botones, cards, alertas y controles de formulario diseñados con utilidades atómicas de Tailwind CSS.
+            <p class="text-gris-asfalto dark:text-crema/80 text-base md:text-lg max-w-2xl font-open-sans">
+                Librería visual personalizada para la campaña Rueda Nocturna: botones, cards, alertas y controles de formulario adaptados con colores de marca y modo oscuro accesible.
             </p>
         </header>
 
         <main class="space-y-16">
 
+            <!-- SECCIÓN 1: BOTONES -->
             <section id="botones" class="space-y-6">
                 <header class="space-y-1">
-                    <h2 class="text-2xl font-bold text-white tracking-tight">1. Botones</h2>
-                    <p class="text-slate-400 text-sm">Tres variantes para jerarquía de acciones con estados :hover y foco accesible (:focus:ring-*).</p>
+                    <h2 class="text-2xl font-bold text-azul-noche dark:text-white tracking-tight font-montserrat">1. Botones</h2>
+                    <p class="text-gris-asfalto dark:text-crema/80 text-sm font-open-sans">Tres variantes de jerarquía con estados :hover y foco accesible (:focus:ring-*).</p>
                 </header>
 
-                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 md:p-8 flex flex-wrap items-center gap-4">
-                    <!-- Botón Principal -->
-                    <a href="#" class="inline-block bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-6 py-3 rounded-xl text-sm uppercase tracking-wider transition duration-200 shadow-lg shadow-emerald-500/20 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 focus:ring-offset-slate-900">
+                <div class="bg-white dark:bg-black/40 border border-gris-asfalto/20 dark:border-gris-asfalto/40 rounded-2xl p-6 md:p-8 flex flex-wrap items-center gap-4 shadow-md">
+                    <!-- Botón Principal (Verde Ruta / Texto Blanco = 5.31:1 AA) -->
+                    <a href="#" class="inline-block bg-verde-ruta hover:bg-verde-ruta/90 text-white font-montserrat font-bold px-6 py-3 rounded-xl text-sm uppercase tracking-wider transition duration-200 shadow-lg shadow-verde-ruta/20 focus:outline-none focus:ring-2 focus:ring-verde-ruta focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-azul-noche">
                         Inscríbete (Primary)
                     </a>
 
-                    <!-- Botón Secundario -->
-                    <a href="#" class="inline-block bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold px-6 py-3 rounded-xl text-sm uppercase tracking-wider transition duration-200 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-900">
+                    <!-- Botón Secundario (Azul Noche / Crema = 14.83:1 AAA) -->
+                    <a href="#" class="inline-block bg-azul-noche hover:bg-azul-noche/90 text-crema dark:bg-crema dark:hover:bg-white dark:text-azul-noche font-montserrat font-semibold px-6 py-3 rounded-xl text-sm uppercase tracking-wider transition duration-200 focus:outline-none focus:ring-2 focus:ring-gris-asfalto focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-azul-noche">
                         Ver rutas (Secondary)
                     </a>
 
-                    <!-- Botón de Contorno -->
-                    <a href="#" class="inline-block bg-transparent hover:bg-slate-800/60 text-emerald-400 border border-emerald-500/50 hover:border-emerald-400 font-semibold px-6 py-3 rounded-xl text-sm uppercase tracking-wider transition duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 focus:ring-offset-slate-900">
+                    <!-- Botón de Contorno (Verde Ruta en Claro / Amarillo Farol en Oscuro = 11.08:1 AAA) -->
+                    <a href="#" class="inline-block bg-transparent hover:bg-verde-ruta/10 text-verde-ruta border border-verde-ruta/60 hover:border-verde-ruta dark:border-amarillo-farol/60 dark:text-amarillo-farol dark:hover:border-amarillo-farol dark:hover:bg-amarillo-farol/10 font-montserrat font-semibold px-6 py-3 rounded-xl text-sm uppercase tracking-wider transition duration-200 focus:outline-none focus:ring-2 focus:ring-verde-ruta dark:focus:ring-amarillo-farol focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-azul-noche">
                         Alquilar bici (Outline)
                     </a>
                 </div>
             </section>
 
+            <!-- SECCIÓN 2: CARD DE RUTA -->
             <section id="cards" class="space-y-6">
                 <header class="space-y-1">
-                    <h2 class="text-2xl font-bold text-white tracking-tight">2. Card de Ruta</h2>
-                    <p class="text-slate-400 text-sm">Tarjeta con imagen en relación de aspecto uniforme (3:2), etiqueta de nivel, ficha técnica y acción integrada.</p>
+                    <h2 class="text-2xl font-bold text-azul-noche dark:text-white tracking-tight font-montserrat">2. Card de Ruta</h2>
+                    <p class="text-gris-asfalto dark:text-crema/80 text-sm font-open-sans">Tarjeta con imagen en relación de aspecto uniforme (3:2), etiqueta de nivel, ficha técnica y acción integrada.</p>
                 </header>
 
                 <div class="max-w-xl">
-                    <article class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-xl transition duration-300 hover:border-slate-700 hover:shadow-2xl hover:shadow-emerald-500/10">
-                        <img src="../img/LucesDelCentro.png" alt="Ruta nocturna Luces del Centro" class="w-full h-auto aspect-[3/2] object-cover block">
+                    <article class="bg-white dark:bg-black/40 border border-gris-asfalto/20 dark:border-gris-asfalto/40 rounded-2xl overflow-hidden shadow-xl transition duration-300 hover:border-verde-ruta/50 dark:hover:border-verde-ruta/60">
+                        <figure class="m-0">
+                            <img src="../img/LucesDelCentro.png" alt="Ruta nocturna Luces del Centro" class="w-full h-auto aspect-[3/2] object-cover block">
+                        </figure>
                         
                         <div class="p-6 md:p-8 space-y-5">
-                            <p class="inline-block bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">
+                            <p class="inline-block bg-verde-ruta/15 dark:bg-verde-ruta/30 text-verde-ruta dark:text-crema border border-verde-ruta/30 dark:border-verde-ruta/50 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider font-montserrat">
                                 Nivel: Fácil
                             </p>
-                            <h3 class="text-2xl font-bold text-white tracking-tight">Luces del Centro</h3>
+                            <h3 class="text-2xl font-bold text-azul-noche dark:text-white tracking-tight font-montserrat">Luces del Centro</h3>
                             
-                            <dl class="grid grid-cols-3 gap-2 py-3 border-y border-slate-800 text-center">
+                            <dl class="grid grid-cols-3 gap-2 py-3 border-y border-gris-asfalto/20 dark:border-gris-asfalto/40 text-center">
                                 <div>
-                                    <dt class="text-xs text-slate-400 uppercase tracking-wider font-medium">Distancia</dt>
-                                    <dd class="text-base font-bold text-slate-100">10 km</dd>
+                                    <dt class="text-xs text-gris-asfalto dark:text-crema/70 uppercase tracking-wider font-medium">Distancia</dt>
+                                    <dd class="text-base font-bold text-azul-noche dark:text-white font-montserrat">10 km</dd>
                                 </div>
                                 <div>
-                                    <dt class="text-xs text-slate-400 uppercase tracking-wider font-medium">Duración</dt>
-                                    <dd class="text-base font-bold text-slate-100">2 h</dd>
+                                    <dt class="text-xs text-gris-asfalto dark:text-crema/70 uppercase tracking-wider font-medium">Duración</dt>
+                                    <dd class="text-base font-bold text-azul-noche dark:text-white font-montserrat">2 h</dd>
                                 </div>
                                 <div>
-                                    <dt class="text-xs text-slate-400 uppercase tracking-wider font-medium">Salida</dt>
-                                    <dd class="text-base font-bold text-slate-100">Sede RL</dd>
+                                    <dt class="text-xs text-gris-asfalto dark:text-crema/70 uppercase tracking-wider font-medium">Salida</dt>
+                                    <dd class="text-base font-bold text-azul-noche dark:text-white font-montserrat">Sede RL</dd>
                                 </div>
                             </dl>
 
                             <footer class="flex items-center justify-between pt-2">
-                                <p class="text-xs text-slate-400 uppercase tracking-wider">
+                                <p class="text-xs text-gris-asfalto dark:text-crema/70 uppercase tracking-wider">
                                     Precio por persona
-                                    <span class="block text-2xl font-extrabold text-emerald-400">$55.000</span>
+                                    <span class="block text-2xl font-extrabold text-verde-ruta dark:text-amarillo-farol font-montserrat">$55.000</span>
                                 </p>
-                                <a href="#" class="inline-block bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-6 py-3 rounded-xl text-sm uppercase tracking-wider transition duration-200 shadow-lg shadow-emerald-500/20 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 focus:ring-offset-slate-900">
+                                <a href="#" class="inline-block bg-verde-ruta hover:bg-verde-ruta/90 text-white font-montserrat font-bold px-6 py-3 rounded-xl text-sm uppercase tracking-wider transition duration-200 shadow-lg shadow-verde-ruta/20 focus:outline-none focus:ring-2 focus:ring-verde-ruta focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-azul-noche">
                                     Inscríbete
                                 </a>
                             </footer>
@@ -95,57 +103,61 @@
                 </div>
             </section>
 
-           
+            <!-- SECCIÓN 3: ALERTAS -->
             <section id="alertas" class="space-y-6">
                 <header class="space-y-1">
-                    <h2 class="text-2xl font-bold text-white tracking-tight">3. Alertas</h2>
-                    <p class="text-slate-400 text-sm">Mensajes de retroalimentación con fondo sutil, borde lateral reforzado (border-l-4) y roles de accesibilidad.</p>
+                    <h2 class="text-2xl font-bold text-azul-noche dark:text-white tracking-tight font-montserrat">3. Alertas</h2>
+                    <p class="text-gris-asfalto dark:text-crema/80 text-sm font-open-sans">Mensajes de retroalimentación con fondo sutil de marca, borde lateral reforzado (border-l-4) y roles accesibles.</p>
                 </header>
 
                 <div class="space-y-4">
 
-                    <aside role="region" aria-label="Información de la ruta" class="bg-sky-500/10 border border-sky-500/20 border-l-4 border-l-sky-400 rounded-xl p-5 space-y-1">
-                        <h3 class="text-base font-bold text-sky-200 flex items-center gap-2">
+                    <!-- Alerta 1: Informativa (Azul Noche / Crema) -->
+                    <aside role="region" aria-label="Información de la ruta" class="bg-azul-noche/10 dark:bg-azul-noche/50 border border-azul-noche/20 dark:border-azul-noche/50 border-l-4 border-l-azul-noche dark:border-l-crema rounded-xl p-5 space-y-1">
+                        <h3 class="text-base font-bold text-azul-noche dark:text-crema flex items-center gap-2 font-montserrat">
                             <span>ℹ️</span> Punto de encuentro
                         </h3>
-                        <p class="text-sm text-sky-300 leading-relaxed">
+                        <p class="text-sm text-azul-noche/80 dark:text-crema/80 leading-relaxed font-open-sans">
                             Recuerda llegar 15 minutos antes a la sede de Rueda Libre para ajustar tu bicicleta, luces LED y equipo de seguridad.
                         </p>
                     </aside>
 
-                    <aside role="status" class="bg-emerald-500/10 border border-emerald-500/20 border-l-4 border-l-emerald-400 rounded-xl p-5 space-y-1">
-                        <h3 class="text-base font-bold text-emerald-200 flex items-center gap-2">
+                    <!-- Alerta 2: Éxito (Verde Ruta) -->
+                    <aside role="status" class="bg-verde-ruta/15 dark:bg-verde-ruta/20 border border-verde-ruta/30 dark:border-verde-ruta/40 border-l-4 border-l-verde-ruta rounded-xl p-5 space-y-1">
+                        <h3 class="text-base font-bold text-azul-noche dark:text-crema flex items-center gap-2 font-montserrat">
                             <span>✅</span> ¡Inscripción confirmada!
                         </h3>
-                        <p class="text-sm text-emerald-300 leading-relaxed">
+                        <p class="text-sm text-azul-noche/80 dark:text-crema/80 leading-relaxed font-open-sans">
                             Hemos reservado tu cupo para la ruta nocturna. Te enviamos el comprobante y recomendaciones a tu correo electrónico.
                         </p>
                     </aside>
 
-                    <aside role="alert" class="bg-amber-500/10 border border-amber-500/20 border-l-4 border-l-amber-400 rounded-xl p-5 space-y-1">
-                        <h3 class="text-base font-bold text-amber-200 flex items-center gap-2">
+                    <!-- Alerta 3: Advertencia (Amarillo Farol / Naranja Pedal = 11.08:1 AAA) -->
+                    <aside role="alert" class="bg-amarillo-farol/25 dark:bg-amarillo-farol/15 border border-amarillo-farol/50 dark:border-amarillo-farol/30 border-l-4 border-l-amarillo-farol rounded-xl p-5 space-y-1">
+                        <h3 class="text-base font-bold text-azul-noche dark:text-amarillo-farol flex items-center gap-2 font-montserrat">
                             <span>⚠️</span> Cupos limitados
                         </h3>
-                        <p class="text-sm text-amber-300 leading-relaxed">
-                            Quedan únicamente 4 bicicletas eléctricas disponibles para la ruta nocturna de este jueves. Te sugerimos confirmar pronto.
+                        <p class="text-sm text-azul-noche/90 dark:text-crema/80 leading-relaxed font-open-sans">
+                            Quedan únicamente 4 bicicletas disponibles para la ruta nocturna de este jueves. Te sugerimos confirmar pronto.
                         </p>
                     </aside>
 
                 </div>
             </section>
 
+            <!-- SECCIÓN 4: FORMULARIOS -->
             <section id="formularios" class="space-y-6">
                 <header class="space-y-1">
-                    <h2 class="text-2xl font-bold text-white tracking-tight">4. Campos de Formulario (Inputs)</h2>
-                    <p class="text-slate-400 text-sm">Controles de entrada con etiquetas asociadas (&lt;label for&gt;), texto de ayuda accesible y anillo de foco visible.</p>
+                    <h2 class="text-2xl font-bold text-azul-noche dark:text-white tracking-tight font-montserrat">4. Campos de Formulario (Inputs)</h2>
+                    <p class="text-gris-asfalto dark:text-crema/80 text-sm font-open-sans">Controles de entrada con etiquetas asociadas (&lt;label for&gt;), texto de ayuda accesible y anillo de foco visible.</p>
                 </header>
 
-                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 md:p-8 max-w-xl space-y-6">
+                <div class="bg-white dark:bg-black/40 border border-gris-asfalto/20 dark:border-gris-asfalto/40 rounded-2xl p-6 md:p-8 max-w-xl space-y-6 shadow-md">
 
                     <!-- Campo 1: Correo electrónico -->
                     <div class="space-y-2">
-                        <label for="correo" class="block text-sm font-semibold text-slate-200">
-                            Correo electrónico <span class="text-emerald-400" aria-hidden="true">*</span>
+                        <label for="correo" class="block text-sm font-semibold text-azul-noche dark:text-crema font-montserrat">
+                            Correo electrónico <span class="text-verde-ruta dark:text-amarillo-farol" aria-hidden="true">*</span>
                         </label>
                         <input 
                             type="email" 
@@ -154,17 +166,17 @@
                             placeholder="tu.nombre@ejemplo.com"
                             aria-describedby="correo-ayuda"
                             required
-                            class="w-full bg-slate-950 border border-slate-700 text-slate-100 placeholder-slate-500 rounded-xl px-4 py-3 text-sm transition duration-200 focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-400/30 focus:ring-offset-2 focus:ring-offset-slate-900"
+                            class="w-full bg-crema dark:bg-azul-noche/80 border border-gris-asfalto/40 dark:border-gris-asfalto/50 text-azul-noche dark:text-crema placeholder-gris-asfalto/60 dark:placeholder-crema/40 rounded-xl px-4 py-3 text-sm transition duration-200 focus:outline-none focus:border-verde-ruta dark:focus:border-amarillo-farol focus:ring-2 focus:ring-verde-ruta/30 dark:focus:ring-amarillo-farol/30 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-azul-noche font-open-sans"
                         >
-                        <p id="correo-ayuda" class="text-xs text-slate-400">
+                        <p id="correo-ayuda" class="text-xs text-gris-asfalto dark:text-crema/70 font-open-sans">
                             Te enviaremos la confirmación del recorrido y la guía digital a este correo.
                         </p>
                     </div>
 
                     <!-- Campo 2: Teléfono Celular -->
                     <div class="space-y-2">
-                        <label for="celular" class="block text-sm font-semibold text-slate-200">
-                            Número de Celular <span class="text-emerald-400" aria-hidden="true">*</span>
+                        <label for="celular" class="block text-sm font-semibold text-azul-noche dark:text-crema font-montserrat">
+                            Número de Celular <span class="text-verde-ruta dark:text-amarillo-farol" aria-hidden="true">*</span>
                         </label>
                         <input 
                             type="tel" 
@@ -173,9 +185,9 @@
                             placeholder="300 123 4567"
                             aria-describedby="celular-ayuda"
                             required
-                            class="w-full bg-slate-950 border border-slate-700 text-slate-100 placeholder-slate-500 rounded-xl px-4 py-3 text-sm transition duration-200 focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-400/30 focus:ring-offset-2 focus:ring-offset-slate-900"
+                            class="w-full bg-crema dark:bg-azul-noche/80 border border-gris-asfalto/40 dark:border-gris-asfalto/50 text-azul-noche dark:text-crema placeholder-gris-asfalto/60 dark:placeholder-crema/40 rounded-xl px-4 py-3 text-sm transition duration-200 focus:outline-none focus:border-verde-ruta dark:focus:border-amarillo-farol focus:ring-2 focus:ring-verde-ruta/30 dark:focus:ring-amarillo-farol/30 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-azul-noche font-open-sans"
                         >
-                        <p id="celular-ayuda" class="text-xs text-slate-400">
+                        <p id="celular-ayuda" class="text-xs text-gris-asfalto dark:text-crema/70 font-open-sans">
                             Para contactarte en caso de cambios climáticos o imprevistos de última hora.
                         </p>
                     </div>
@@ -185,8 +197,8 @@
 
         </main>
 
-        <footer class="border-t border-slate-800 pt-8 text-center text-xs text-slate-500">
-            Kit de Componentes &middot; Rueda Libre v1.6 &middot; Construido con Tailwind CSS CLI
+        <footer class="border-t border-gris-asfalto/20 dark:border-gris-asfalto/40 pt-8 text-center text-xs text-gris-asfalto dark:text-crema/60 font-open-sans">
+            Kit de Componentes &middot; Rueda Libre v2.0 &middot; Personalizado con tema de marca y modo oscuro
         </footer>
 
     </div>

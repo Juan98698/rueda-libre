@@ -4,16 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rueda Nocturna | Alquiler y Rutas en Medellín</title>
+    <!-- Fuentes de Marca: Montserrat y Open Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- Enlace al CSS compilado por la CLI -->
     <link rel="stylesheet" href="src/output.css">
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen">
+<body class="bg-crema text-azul-noche dark:bg-azul-noche dark:text-crema min-h-screen font-open-sans transition-colors duration-200">
 
-    <header class="sticky top-0 z-50 bg-slate-950/90 backdrop-blur-md border-b border-slate-800">
+    <header class="sticky top-0 z-50 bg-crema/90 dark:bg-azul-noche/90 backdrop-blur-md border-b border-gris-asfalto/20 dark:border-gris-asfalto/40 transition-colors duration-200">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 md:py-0 md:h-20 flex flex-col md:flex-row items-center md:justify-between gap-3 md:gap-0">
             
             <!-- Logo de la campaña -->
-            <a href="#inicio" class="flex items-center gap-2 text-xl font-extrabold text-white tracking-tight hover:text-emerald-400 transition">
+            <a href="#inicio" class="flex items-center gap-2 text-xl font-extrabold text-azul-noche dark:text-white tracking-tight hover:text-verde-ruta dark:hover:text-amarillo-farol transition font-montserrat">
                 <span class="text-2xl" aria-hidden="true">🚲</span>
                 <span>Rueda Nocturna</span>
             </a>
@@ -21,13 +25,13 @@
             <!-- Navegación con anclas y Botón del Kit -->
             <nav aria-label="Navegación principal" class="flex items-center gap-4 sm:gap-6">
                 <ul class="hidden md:flex items-center gap-6 list-none p-0 m-0">
-                    <li><a href="#inicio" class="text-sm font-medium text-slate-300 hover:text-emerald-400 transition">Inicio</a></li>
-                    <li><a href="#rutas" class="text-sm font-medium text-slate-300 hover:text-emerald-400 transition">Rutas</a></li>
-                    <li><a href="#como-funciona" class="text-sm font-medium text-slate-300 hover:text-emerald-400 transition">¿Cómo funciona?</a></li>
-                    <li><a href="#inscripcion" class="text-sm font-medium text-slate-300 hover:text-emerald-400 transition">Inscripción</a></li>
+                    <li><a href="#inicio" class="text-sm font-medium text-gris-asfalto dark:text-crema/80 hover:text-azul-noche dark:hover:text-amarillo-farol transition">Inicio</a></li>
+                    <li><a href="#rutas" class="text-sm font-medium text-gris-asfalto dark:text-crema/80 hover:text-azul-noche dark:hover:text-amarillo-farol transition">Rutas</a></li>
+                    <li><a href="#como-funciona" class="text-sm font-medium text-gris-asfalto dark:text-crema/80 hover:text-azul-noche dark:hover:text-amarillo-farol transition">¿Cómo funciona?</a></li>
+                    <li><a href="#inscripcion" class="text-sm font-medium text-gris-asfalto dark:text-crema/80 hover:text-azul-noche dark:hover:text-amarillo-farol transition">Inscripción</a></li>
                 </ul>
 
-                <a href="#inscripcion" class="inline-block bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm uppercase tracking-wider transition duration-200 shadow-lg shadow-emerald-500/20 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 focus:ring-offset-slate-900">
+                <a href="#inscripcion" class="inline-block bg-verde-ruta hover:bg-verde-ruta/90 text-white dark:bg-amarillo-farol dark:hover:bg-amarillo-farol/90 dark:text-azul-noche font-montserrat font-bold px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm uppercase tracking-wider transition duration-200 shadow-lg shadow-verde-ruta/20 dark:shadow-amarillo-farol/20 focus:outline-none focus:ring-2 focus:ring-verde-ruta dark:focus:ring-amarillo-farol focus:ring-offset-2 focus:ring-offset-crema dark:focus:ring-offset-azul-noche">
                     Inscríbete
                 </a>
             </nav>
@@ -39,38 +43,38 @@
 
 
         <section id="inicio" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <article class="w-full max-w-3xl mx-auto bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8 lg:p-12 text-center shadow-2xl space-y-6">
+            <article class="w-full max-w-3xl mx-auto bg-white dark:bg-black/40 border border-gris-asfalto/20 dark:border-gris-asfalto/40 rounded-2xl p-6 sm:p-8 lg:p-12 text-center shadow-xl dark:shadow-2xl space-y-6">
                 <header class="space-y-3 sm:space-y-4">
-                    <p class="inline-block bg-amber-400/10 text-amber-400 border border-amber-400/20 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">
+                    <p class="inline-block bg-amarillo-farol/30 dark:bg-amarillo-farol/20 text-azul-noche dark:text-amarillo-farol border border-amarillo-farol/60 dark:border-amarillo-farol/40 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider font-montserrat">
                         Nuevo &middot; Jueves a sábado
                     </p>
-                    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight">
+                    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-azul-noche dark:text-white tracking-tight leading-tight font-montserrat">
                         Rueda Nocturna
                     </h1>
-                    <p class="text-slate-300 text-base sm:text-lg lg:text-xl leading-relaxed max-w-xl mx-auto">
+                    <p class="text-gris-asfalto dark:text-crema/80 text-base sm:text-lg lg:text-xl leading-relaxed max-w-xl mx-auto font-open-sans">
                         Descubre Medellín en bici cuando se encienden las luces. Recorridos guiados por las mejores panorámicas de la ciudad.
                     </p>
                 </header>
 
                 <dl class="grid grid-cols-2 gap-3 sm:gap-4 max-w-md mx-auto my-6">
-                    <div class="bg-slate-800/60 border border-slate-700/50 p-3 sm:p-4 rounded-xl">
-                        <dd class="text-xl sm:text-2xl font-bold text-white">3 rutas</dd>
-                        <dt class="text-xs text-slate-400 uppercase tracking-wide">Guiadas</dt>
+                    <div class="bg-crema dark:bg-azul-noche/80 border border-gris-asfalto/20 dark:border-gris-asfalto/40 p-3 sm:p-4 rounded-xl">
+                        <dd class="text-xl sm:text-2xl font-bold text-azul-noche dark:text-white font-montserrat">3 rutas</dd>
+                        <dt class="text-xs text-gris-asfalto dark:text-crema/70 uppercase tracking-wide">Guiadas</dt>
                     </div>
-                    <div class="bg-slate-800/60 border border-slate-700/50 p-3 sm:p-4 rounded-xl">
-                        <dd class="text-xl sm:text-2xl font-bold text-emerald-400">Desde $55.000</dd>
-                        <dt class="text-xs text-slate-400 uppercase tracking-wide">Por persona</dt>
+                    <div class="bg-crema dark:bg-azul-noche/80 border border-gris-asfalto/20 dark:border-gris-asfalto/40 p-3 sm:p-4 rounded-xl">
+                        <dd class="text-xl sm:text-2xl font-bold text-verde-ruta dark:text-amarillo-farol font-montserrat">Desde $55.000</dd>
+                        <dt class="text-xs text-gris-asfalto dark:text-crema/70 uppercase tracking-wide">Por persona</dt>
                     </div>
                 </dl>
 
                 <nav aria-label="Acciones de la campaña" class="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 pt-2">
-                    <a href="#inscripcion" class="inline-block bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-6 py-3 rounded-xl text-sm uppercase tracking-wider transition duration-200 shadow-lg shadow-emerald-500/20 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 focus:ring-offset-slate-900">
+                    <a href="#inscripcion" class="inline-block bg-verde-ruta hover:bg-verde-ruta/90 text-white font-montserrat font-bold px-6 py-3 rounded-xl text-sm uppercase tracking-wider transition duration-200 shadow-lg shadow-verde-ruta/20 focus:outline-none focus:ring-2 focus:ring-verde-ruta focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-azul-noche">
                         Inscríbete
                     </a>
-                    <a href="#rutas" class="inline-block bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold px-6 py-3 rounded-xl text-sm uppercase tracking-wider transition duration-200 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-900">
+                    <a href="#rutas" class="inline-block bg-azul-noche hover:bg-azul-noche/90 text-crema dark:bg-crema dark:hover:bg-white dark:text-azul-noche font-montserrat font-semibold px-6 py-3 rounded-xl text-sm uppercase tracking-wider transition duration-200 focus:outline-none focus:ring-2 focus:ring-gris-asfalto focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-azul-noche">
                         Ver rutas
                     </a>
-                    <a href="../paginas/tarifas.html" class="inline-block bg-transparent hover:bg-slate-800/60 text-emerald-400 border border-emerald-500/50 hover:border-emerald-400 font-semibold px-6 py-3 rounded-xl text-sm uppercase tracking-wider transition duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 focus:ring-offset-slate-900">
+                    <a href="../paginas/tarifas.html" class="inline-block bg-transparent hover:bg-verde-ruta/10 text-verde-ruta border border-verde-ruta/60 hover:border-verde-ruta dark:border-amarillo-farol/60 dark:text-amarillo-farol dark:hover:border-amarillo-farol dark:hover:bg-amarillo-farol/10 font-montserrat font-semibold px-6 py-3 rounded-xl text-sm uppercase tracking-wider transition duration-200 focus:outline-none focus:ring-2 focus:ring-verde-ruta dark:focus:ring-amarillo-farol focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-azul-noche">
                         Alquilar bici
                     </a>
                 </nav>
@@ -81,134 +85,134 @@
         <section id="rutas" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-10">
             
             <header class="text-center space-y-2 max-w-2xl mx-auto">
-                <p class="text-xs font-semibold uppercase tracking-wider text-emerald-400">Circuitos Guiados</p>
-                <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight">Rutas de la Campaña</h2>
-                <p class="text-slate-400 text-sm sm:text-base">Todas salen de la sede de Rueda Libre e incluyen bicicleta, casco, luces LED, chaleco reflectivo y guía profesional.</p>
+                <p class="text-xs font-semibold uppercase tracking-wider text-verde-ruta dark:text-amarillo-farol font-montserrat">Circuitos Guiados</p>
+                <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-azul-noche dark:text-white tracking-tight font-montserrat">Rutas de la Campaña</h2>
+                <p class="text-gris-asfalto dark:text-crema/80 text-sm sm:text-base font-open-sans">Todas salen de la sede de Rueda Libre e incluyen bicicleta, casco, luces LED, chaleco reflectivo y guía profesional.</p>
             </header>
 
             <!-- Grid de 1 col en móvil, 2 cols desde 640px (sm) y 3 cols desde 1024px (lg) -->
             <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 list-none p-0 m-0">
 
-                <!-- CARD 1: Luces del Centro (Fácil / Verde) -->
+                <!-- CARD 1: Luces del Centro (Fácil / Verde Ruta) -->
                 <li class="flex">
-                    <article class="w-full bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-xl transition duration-300 hover:border-slate-700 hover:shadow-2xl hover:shadow-emerald-500/10 flex flex-col justify-between">
+                    <article class="w-full bg-white dark:bg-black/40 border border-gris-asfalto/20 dark:border-gris-asfalto/40 rounded-2xl overflow-hidden shadow-xl transition duration-300 hover:border-verde-ruta/50 dark:hover:border-verde-ruta/60 flex flex-col justify-between">
                         <div>
                             <figure class="m-0">
                                 <img src="../img/LucesDelCentro.png" alt="Ruta nocturna Luces del Centro" class="w-full h-auto aspect-[3/2] object-cover block">
                             </figure>
                             <div class="p-6 space-y-4">
-                                <p class="inline-block bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">
+                                <p class="inline-block bg-verde-ruta/15 dark:bg-verde-ruta/30 text-verde-ruta dark:text-crema border border-verde-ruta/30 dark:border-verde-ruta/50 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider font-montserrat">
                                     Nivel: Fácil
                                 </p>
-                                <h3 class="text-xl font-bold text-white tracking-tight">Luces del Centro</h3>
+                                <h3 class="text-xl font-bold text-azul-noche dark:text-white tracking-tight font-montserrat">Luces del Centro</h3>
                                 
-                                <dl class="grid grid-cols-3 gap-2 py-3 border-y border-slate-800 text-center">
+                                <dl class="grid grid-cols-3 gap-2 py-3 border-y border-gris-asfalto/20 dark:border-gris-asfalto/40 text-center">
                                     <div>
-                                        <dt class="text-xs text-slate-400 uppercase tracking-wider font-medium">Distancia</dt>
-                                        <dd class="text-sm font-bold text-slate-100">10 km</dd>
+                                        <dt class="text-xs text-gris-asfalto dark:text-crema/70 uppercase tracking-wider font-medium">Distancia</dt>
+                                        <dd class="text-sm font-bold text-azul-noche dark:text-white font-montserrat">10 km</dd>
                                     </div>
                                     <div>
-                                        <dt class="text-xs text-slate-400 uppercase tracking-wider font-medium">Duración</dt>
-                                        <dd class="text-sm font-bold text-slate-100">2 h</dd>
+                                        <dt class="text-xs text-gris-asfalto dark:text-crema/70 uppercase tracking-wider font-medium">Duración</dt>
+                                        <dd class="text-sm font-bold text-azul-noche dark:text-white font-montserrat">2 h</dd>
                                     </div>
                                     <div>
-                                        <dt class="text-xs text-slate-400 uppercase tracking-wider font-medium">Salida</dt>
-                                        <dd class="text-sm font-bold text-slate-100">Sede RL</dd>
+                                        <dt class="text-xs text-gris-asfalto dark:text-crema/70 uppercase tracking-wider font-medium">Salida</dt>
+                                        <dd class="text-sm font-bold text-azul-noche dark:text-white font-montserrat">Sede RL</dd>
                                     </div>
                                 </dl>
                             </div>
                         </div>
 
                         <footer class="p-6 pt-0 flex items-center justify-between">
-                            <p class="text-xs text-slate-400 uppercase tracking-wider">
+                            <p class="text-xs text-gris-asfalto dark:text-crema/70 uppercase tracking-wider">
                                 Desde
-                                <span class="block text-xl font-extrabold text-emerald-400">$55.000</span>
+                                <span class="block text-xl font-extrabold text-verde-ruta dark:text-amarillo-farol font-montserrat">$55.000</span>
                             </p>
-                            <a href="#inscripcion" class="inline-block bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-4 py-2.5 rounded-xl text-xs uppercase tracking-wider transition duration-200 shadow-lg shadow-emerald-500/20 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 focus:ring-offset-slate-900">
+                            <a href="#inscripcion" class="inline-block bg-verde-ruta hover:bg-verde-ruta/90 text-white font-montserrat font-bold px-4 py-2.5 rounded-xl text-xs uppercase tracking-wider transition duration-200 shadow-lg shadow-verde-ruta/20 focus:outline-none focus:ring-2 focus:ring-verde-ruta focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-azul-noche">
                                 Inscríbete
                             </a>
                         </footer>
                     </article>
                 </li>
 
-                <!-- CARD 2: Miradores de la Ciudad (Medio / Ámbar) -->
+                <!-- CARD 2: Miradores de la Ciudad (Medio / Amarillo Farol) -->
                 <li class="flex">
-                    <article class="w-full bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-xl transition duration-300 hover:border-slate-700 hover:shadow-2xl hover:shadow-amber-500/10 flex flex-col justify-between">
+                    <article class="w-full bg-white dark:bg-black/40 border border-gris-asfalto/20 dark:border-gris-asfalto/40 rounded-2xl overflow-hidden shadow-xl transition duration-300 hover:border-amarillo-farol/50 dark:hover:border-amarillo-farol/60 flex flex-col justify-between">
                         <div>
                             <figure class="m-0">
                                 <img src="../img/MIradoresDeLaCiudad.png" alt="Ruta nocturna Miradores de la Ciudad" class="w-full h-auto aspect-[3/2] object-cover block">
                             </figure>
                             <div class="p-6 space-y-4">
-                                <p class="inline-block bg-amber-500/10 text-amber-400 border border-amber-500/20 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">
+                                <p class="inline-block bg-amarillo-farol/30 dark:bg-amarillo-farol/20 text-azul-noche dark:text-amarillo-farol border border-amarillo-farol/60 dark:border-amarillo-farol/40 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider font-montserrat">
                                     Nivel: Medio
                                 </p>
-                                <h3 class="text-xl font-bold text-white tracking-tight">Miradores de la Ciudad</h3>
+                                <h3 class="text-xl font-bold text-azul-noche dark:text-white tracking-tight font-montserrat">Miradores de la Ciudad</h3>
                                 
-                                <dl class="grid grid-cols-3 gap-2 py-3 border-y border-slate-800 text-center">
+                                <dl class="grid grid-cols-3 gap-2 py-3 border-y border-gris-asfalto/20 dark:border-gris-asfalto/40 text-center">
                                     <div>
-                                        <dt class="text-xs text-slate-400 uppercase tracking-wider font-medium">Distancia</dt>
-                                        <dd class="text-sm font-bold text-slate-100">16 km</dd>
+                                        <dt class="text-xs text-gris-asfalto dark:text-crema/70 uppercase tracking-wider font-medium">Distancia</dt>
+                                        <dd class="text-sm font-bold text-azul-noche dark:text-white font-montserrat">16 km</dd>
                                     </div>
                                     <div>
-                                        <dt class="text-xs text-slate-400 uppercase tracking-wider font-medium">Duración</dt>
-                                        <dd class="text-sm font-bold text-slate-100">3 h</dd>
+                                        <dt class="text-xs text-gris-asfalto dark:text-crema/70 uppercase tracking-wider font-medium">Duración</dt>
+                                        <dd class="text-sm font-bold text-azul-noche dark:text-white font-montserrat">3 h</dd>
                                     </div>
                                     <div>
-                                        <dt class="text-xs text-slate-400 uppercase tracking-wider font-medium">Salida</dt>
-                                        <dd class="text-sm font-bold text-slate-100">Sede RL</dd>
+                                        <dt class="text-xs text-gris-asfalto dark:text-crema/70 uppercase tracking-wider font-medium">Salida</dt>
+                                        <dd class="text-sm font-bold text-azul-noche dark:text-white font-montserrat">Sede RL</dd>
                                     </div>
                                 </dl>
                             </div>
                         </div>
 
                         <footer class="p-6 pt-0 flex items-center justify-between">
-                            <p class="text-xs text-slate-400 uppercase tracking-wider">
+                            <p class="text-xs text-gris-asfalto dark:text-crema/70 uppercase tracking-wider">
                                 Desde
-                                <span class="block text-xl font-extrabold text-amber-400">$75.000</span>
+                                <span class="block text-xl font-extrabold text-azul-noche dark:text-amarillo-farol font-montserrat">$75.000</span>
                             </p>
-                            <a href="#inscripcion" class="inline-block bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-4 py-2.5 rounded-xl text-xs uppercase tracking-wider transition duration-200 shadow-lg shadow-emerald-500/20 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 focus:ring-offset-slate-900">
+                            <a href="#inscripcion" class="inline-block bg-verde-ruta hover:bg-verde-ruta/90 text-white font-montserrat font-bold px-4 py-2.5 rounded-xl text-xs uppercase tracking-wider transition duration-200 shadow-lg shadow-verde-ruta/20 focus:outline-none focus:ring-2 focus:ring-verde-ruta focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-azul-noche">
                                 Inscríbete
                             </a>
                         </footer>
                     </article>
                 </li>
 
-                <!-- CARD 3: Luna en Las Palmas (Difícil / Rosa-Rojo) -->
+                <!-- CARD 3: Luna en Las Palmas (Difícil / Naranja Pedal) -->
                 <li class="flex">
-                    <article class="w-full bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-xl transition duration-300 hover:border-slate-700 hover:shadow-2xl hover:shadow-rose-500/10 flex flex-col justify-between">
+                    <article class="w-full bg-white dark:bg-black/40 border border-gris-asfalto/20 dark:border-gris-asfalto/40 rounded-2xl overflow-hidden shadow-xl transition duration-300 hover:border-naranja-pedal/50 dark:hover:border-naranja-pedal/60 flex flex-col justify-between">
                         <div>
                             <figure class="m-0">
                                 <img src="../img/LunaEnLasPalmas.png" alt="Ruta nocturna Luna en Las Palmas" class="w-full h-auto aspect-[3/2] object-cover block">
                             </figure>
                             <div class="p-6 space-y-4">
-                                <p class="inline-block bg-rose-500/10 text-rose-400 border border-rose-500/20 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">
+                                <p class="inline-block bg-naranja-pedal/20 text-azul-noche dark:text-naranja-pedal border border-naranja-pedal/40 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider font-montserrat">
                                     Nivel: Difícil
                                 </p>
-                                <h3 class="text-xl font-bold text-white tracking-tight">Luna en Las Palmas</h3>
+                                <h3 class="text-xl font-bold text-azul-noche dark:text-white tracking-tight font-montserrat">Luna en Las Palmas</h3>
                                 
-                                <dl class="grid grid-cols-3 gap-2 py-3 border-y border-slate-800 text-center">
+                                <dl class="grid grid-cols-3 gap-2 py-3 border-y border-gris-asfalto/20 dark:border-gris-asfalto/40 text-center">
                                     <div>
-                                        <dt class="text-xs text-slate-400 uppercase tracking-wider font-medium">Distancia</dt>
-                                        <dd class="text-sm font-bold text-slate-100">22 km</dd>
+                                        <dt class="text-xs text-gris-asfalto dark:text-crema/70 uppercase tracking-wider font-medium">Distancia</dt>
+                                        <dd class="text-sm font-bold text-azul-noche dark:text-white font-montserrat">22 km</dd>
                                     </div>
                                     <div>
-                                        <dt class="text-xs text-slate-400 uppercase tracking-wider font-medium">Duración</dt>
-                                        <dd class="text-sm font-bold text-slate-100">3,5 h</dd>
+                                        <dt class="text-xs text-gris-asfalto dark:text-crema/70 uppercase tracking-wider font-medium">Duración</dt>
+                                        <dd class="text-sm font-bold text-azul-noche dark:text-white font-montserrat">3,5 h</dd>
                                     </div>
                                     <div>
-                                        <dt class="text-xs text-slate-400 uppercase tracking-wider font-medium">Salida</dt>
-                                        <dd class="text-sm font-bold text-slate-100">Sede RL</dd>
+                                        <dt class="text-xs text-gris-asfalto dark:text-crema/70 uppercase tracking-wider font-medium">Salida</dt>
+                                        <dd class="text-sm font-bold text-azul-noche dark:text-white font-montserrat">Sede RL</dd>
                                     </div>
                                 </dl>
                             </div>
                         </div>
 
                         <footer class="p-6 pt-0 flex items-center justify-between">
-                            <p class="text-xs text-slate-400 uppercase tracking-wider">
+                            <p class="text-xs text-gris-asfalto dark:text-crema/70 uppercase tracking-wider">
                                 Desde
-                                <span class="block text-xl font-extrabold text-rose-400">$95.000</span>
+                                <span class="block text-xl font-extrabold text-naranja-pedal font-montserrat">$95.000</span>
                             </p>
-                            <a href="#inscripcion" class="inline-block bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-4 py-2.5 rounded-xl text-xs uppercase tracking-wider transition duration-200 shadow-lg shadow-emerald-500/20 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 focus:ring-offset-slate-900">
+                            <a href="#inscripcion" class="inline-block bg-verde-ruta hover:bg-verde-ruta/90 text-white font-montserrat font-bold px-4 py-2.5 rounded-xl text-xs uppercase tracking-wider transition duration-200 shadow-lg shadow-verde-ruta/20 focus:outline-none focus:ring-2 focus:ring-verde-ruta focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-azul-noche">
                                 Inscríbete
                             </a>
                         </footer>
@@ -216,6 +220,7 @@
                 </li>
 
             </ul>
+
         </section>
 
 
@@ -223,54 +228,54 @@
         <section id="como-funciona" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-10">
             
             <header class="text-center space-y-2 max-w-2xl mx-auto">
-                <p class="text-xs font-semibold uppercase tracking-wider text-emerald-400">Paso a Paso</p>
-                <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight">¿Cómo funciona?</h2>
-                <p class="text-slate-400 text-sm sm:text-base">Cuatro pasos sencillos para vivir una noche inolvidable en bicicleta por Medellín.</p>
+                <p class="text-xs font-semibold uppercase tracking-wider text-verde-ruta dark:text-amarillo-farol font-montserrat">Paso a Paso</p>
+                <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-azul-noche dark:text-white tracking-tight font-montserrat">¿Cómo funciona?</h2>
+                <p class="text-gris-asfalto dark:text-crema/80 text-sm sm:text-base font-open-sans">Cuatro pasos sencillos para vivir una noche inolvidable en bicicleta por Medellín.</p>
             </header>
 
             <!-- Lista ordenada semántica: 1 col en móvil, 2 cols en sm y 4 cols en lg -->
             <ol class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 list-none p-0">
                 
                 <!-- Paso 1 -->
-                <li class="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-3 relative hover:border-slate-700 transition">
-                    <span class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-extrabold flex items-center justify-center text-lg" aria-hidden="true">
+                <li class="bg-white dark:bg-black/40 border border-gris-asfalto/20 dark:border-gris-asfalto/40 rounded-2xl p-6 space-y-3 relative hover:border-gris-asfalto/40 dark:hover:border-amarillo-farol/40 transition">
+                    <span class="w-10 h-10 rounded-xl bg-verde-ruta/15 dark:bg-amarillo-farol/20 border border-verde-ruta/30 dark:border-amarillo-farol/40 text-verde-ruta dark:text-amarillo-farol font-extrabold flex items-center justify-center text-lg font-montserrat" aria-hidden="true">
                         1
                     </span>
-                    <h3 class="text-lg font-bold text-white tracking-tight">Elige tu ruta</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">
+                    <h3 class="text-lg font-bold text-azul-noche dark:text-white tracking-tight font-montserrat">Elige tu ruta</h3>
+                    <p class="text-gris-asfalto dark:text-crema/80 text-sm leading-relaxed font-open-sans">
                         Revisa la distancia, la dificultad y los paisajes entre Centro, Miradores o Las Palmas.
                     </p>
                 </li>
 
                 <!-- Paso 2 -->
-                <li class="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-3 relative hover:border-slate-700 transition">
-                    <span class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-extrabold flex items-center justify-center text-lg" aria-hidden="true">
+                <li class="bg-white dark:bg-black/40 border border-gris-asfalto/20 dark:border-gris-asfalto/40 rounded-2xl p-6 space-y-3 relative hover:border-gris-asfalto/40 dark:hover:border-amarillo-farol/40 transition">
+                    <span class="w-10 h-10 rounded-xl bg-verde-ruta/15 dark:bg-amarillo-farol/20 border border-verde-ruta/30 dark:border-amarillo-farol/40 text-verde-ruta dark:text-amarillo-farol font-extrabold flex items-center justify-center text-lg font-montserrat" aria-hidden="true">
                         2
                     </span>
-                    <h3 class="text-lg font-bold text-white tracking-tight">Inscríbete</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">
+                    <h3 class="text-lg font-bold text-azul-noche dark:text-white tracking-tight font-montserrat">Inscríbete</h3>
+                    <p class="text-gris-asfalto dark:text-crema/80 text-sm leading-relaxed font-open-sans">
                         Completa tus datos en línea para separar tu cupo y recibir la confirmación inmediata.
                     </p>
                 </li>
 
                 <!-- Paso 3 -->
-                <li class="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-3 relative hover:border-slate-700 transition">
-                    <span class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-extrabold flex items-center justify-center text-lg" aria-hidden="true">
+                <li class="bg-white dark:bg-black/40 border border-gris-asfalto/20 dark:border-gris-asfalto/40 rounded-2xl p-6 space-y-3 relative hover:border-gris-asfalto/40 dark:hover:border-amarillo-farol/40 transition">
+                    <span class="w-10 h-10 rounded-xl bg-verde-ruta/15 dark:bg-amarillo-farol/20 border border-verde-ruta/30 dark:border-amarillo-farol/40 text-verde-ruta dark:text-amarillo-farol font-extrabold flex items-center justify-center text-lg font-montserrat" aria-hidden="true">
                         3
                     </span>
-                    <h3 class="text-lg font-bold text-white tracking-tight">Recoge tu equipo</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">
+                    <h3 class="text-lg font-bold text-azul-noche dark:text-white tracking-tight font-montserrat">Recoge tu equipo</h3>
+                    <p class="text-gris-asfalto dark:text-crema/80 text-sm leading-relaxed font-open-sans">
                         Llega 15 min antes a nuestra sede. Te entregamos bici revisada, casco y luces LED.
                     </p>
                 </li>
 
                 <!-- Paso 4 -->
-                <li class="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-3 relative hover:border-slate-700 transition">
-                    <span class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-extrabold flex items-center justify-center text-lg" aria-hidden="true">
+                <li class="bg-white dark:bg-black/40 border border-gris-asfalto/20 dark:border-gris-asfalto/40 rounded-2xl p-6 space-y-3 relative hover:border-gris-asfalto/40 dark:hover:border-amarillo-farol/40 transition">
+                    <span class="w-10 h-10 rounded-xl bg-verde-ruta/15 dark:bg-amarillo-farol/20 border border-verde-ruta/30 dark:border-amarillo-farol/40 text-verde-ruta dark:text-amarillo-farol font-extrabold flex items-center justify-center text-lg font-montserrat" aria-hidden="true">
                         4
                     </span>
-                    <h3 class="text-lg font-bold text-white tracking-tight">Rueda</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">
+                    <h3 class="text-lg font-bold text-azul-noche dark:text-white tracking-tight font-montserrat">Rueda</h3>
+                    <p class="text-gris-asfalto dark:text-crema/80 text-sm leading-relaxed font-open-sans">
                         Pedalea bajo las estrellas con nuestros guías expertos y vive la magia nocturna.
                     </p>
                 </li>
@@ -280,20 +285,20 @@
         </section>
 
         <section id="inscripcion" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <article class="bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8 lg:p-12 shadow-2xl max-w-3xl mx-auto space-y-6 sm:space-y-8">
+            <article class="bg-white dark:bg-black/40 border border-gris-asfalto/20 dark:border-gris-asfalto/40 rounded-2xl p-6 sm:p-8 lg:p-12 shadow-2xl max-w-3xl mx-auto space-y-6 sm:space-y-8">
                 
                 <header class="text-center space-y-2">
-                    <p class="text-xs font-semibold uppercase tracking-wider text-emerald-400">Reserva tu Cupo</p>
-                    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight">Únete a la Próxima Rodada</h2>
-                    <p class="text-slate-400 text-sm sm:text-base">Salidas todos los jueves, viernes y sábados a las 7:00 p. m.</p>
+                    <p class="text-xs font-semibold uppercase tracking-wider text-verde-ruta dark:text-amarillo-farol font-montserrat">Reserva tu Cupo</p>
+                    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-azul-noche dark:text-white tracking-tight font-montserrat">Únete a la Próxima Rodada</h2>
+                    <p class="text-gris-asfalto dark:text-crema/80 text-sm sm:text-base font-open-sans">Salidas todos los jueves, viernes y sábados a las 7:00 p. m.</p>
                 </header>
 
-                <!-- Alerta de Advertencia del Kit (role="alert") -->
-                <aside role="alert" class="bg-amber-500/10 border border-amber-500/20 border-l-4 border-l-amber-400 rounded-xl p-4 sm:p-5 space-y-1">
-                    <h3 class="text-sm font-bold text-amber-200 flex items-center gap-2">
+                <!-- Alerta de Advertencia del Kit con Naranja Pedal (role="alert") -->
+                <aside role="alert" class="bg-naranja-pedal/15 dark:bg-naranja-pedal/10 border border-naranja-pedal/30 border-l-4 border-l-naranja-pedal rounded-xl p-4 sm:p-5 space-y-1">
+                    <h3 class="text-sm font-bold text-azul-noche dark:text-naranja-pedal flex items-center gap-2 font-montserrat">
                         <span>⚠️</span> Cupos limitados por grupo
                     </h3>
-                    <p class="text-xs text-amber-300 leading-relaxed">
+                    <p class="text-xs text-azul-noche/90 dark:text-crema/80 leading-relaxed font-open-sans">
                         Para garantizar la seguridad de la caravana nocturna, solo admitimos 15 ciclistas por salida.
                     </p>
                 </aside>
@@ -306,8 +311,8 @@
 
                         <!-- Campo Correo -->
                         <p class="space-y-2 m-0">
-                            <label for="correo" class="block text-sm font-semibold text-slate-200">
-                                Correo electrónico <span class="text-emerald-400" aria-hidden="true">*</span>
+                            <label for="correo" class="block text-sm font-semibold text-azul-noche dark:text-crema font-montserrat">
+                                Correo electrónico <span class="text-verde-ruta dark:text-amarillo-farol" aria-hidden="true">*</span>
                             </label>
                             <input 
                                 type="email" 
@@ -316,17 +321,17 @@
                                 placeholder="tu.nombre@ejemplo.com"
                                 aria-describedby="correo-ayuda"
                                 required
-                                class="w-full bg-slate-950 border border-slate-700 text-slate-100 placeholder-slate-500 rounded-xl px-4 py-3 text-sm transition duration-200 focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-400/30 focus:ring-offset-2 focus:ring-offset-slate-900"
+                                class="w-full bg-crema dark:bg-azul-noche/80 border border-gris-asfalto/40 dark:border-gris-asfalto/50 text-azul-noche dark:text-crema placeholder-gris-asfalto/60 dark:placeholder-crema/40 rounded-xl px-4 py-3 text-sm transition duration-200 focus:outline-none focus:border-verde-ruta dark:focus:border-amarillo-farol focus:ring-2 focus:ring-verde-ruta/30 dark:focus:ring-amarillo-farol/30 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-azul-noche font-open-sans"
                             >
-                            <span id="correo-ayuda" class="block text-xs text-slate-400">
+                            <span id="correo-ayuda" class="block text-xs text-gris-asfalto dark:text-crema/70">
                                 Te enviaremos la confirmación del recorrido.
                             </span>
                         </p>
 
                         <!-- Campo Celular -->
                         <p class="space-y-2 m-0">
-                            <label for="celular" class="block text-sm font-semibold text-slate-200">
-                                Número de Celular <span class="text-emerald-400" aria-hidden="true">*</span>
+                            <label for="celular" class="block text-sm font-semibold text-azul-noche dark:text-crema font-montserrat">
+                                Número de Celular <span class="text-verde-ruta dark:text-amarillo-farol" aria-hidden="true">*</span>
                             </label>
                             <input 
                                 type="tel" 
@@ -335,9 +340,9 @@
                                 placeholder="300 123 4567"
                                 aria-describedby="celular-ayuda"
                                 required
-                                class="w-full bg-slate-950 border border-slate-700 text-slate-100 placeholder-slate-500 rounded-xl px-4 py-3 text-sm transition duration-200 focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-400/30 focus:ring-offset-2 focus:ring-offset-slate-900"
+                                class="w-full bg-crema dark:bg-azul-noche/80 border border-gris-asfalto/40 dark:border-gris-asfalto/50 text-azul-noche dark:text-crema placeholder-gris-asfalto/60 dark:placeholder-crema/40 rounded-xl px-4 py-3 text-sm transition duration-200 focus:outline-none focus:border-verde-ruta dark:focus:border-amarillo-farol focus:ring-2 focus:ring-verde-ruta/30 dark:focus:ring-amarillo-farol/30 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-azul-noche font-open-sans"
                             >
-                            <span id="celular-ayuda" class="block text-xs text-slate-400">
+                            <span id="celular-ayuda" class="block text-xs text-gris-asfalto dark:text-crema/70">
                                 Para contactarte ante cambios climáticos.
                             </span>
                         </p>
@@ -345,7 +350,7 @@
 
                     <!-- Botón Principal del Kit en footer de formulario -->
                     <footer class="text-center pt-2">
-                        <button type="submit" class="w-full sm:w-auto inline-block bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-8 py-3.5 rounded-xl text-sm uppercase tracking-wider transition duration-200 shadow-lg shadow-emerald-500/20 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 focus:ring-offset-slate-900 cursor-pointer">
+                        <button type="submit" class="w-full sm:w-auto inline-block bg-verde-ruta hover:bg-verde-ruta/90 text-white font-montserrat font-bold px-8 py-3.5 rounded-xl text-sm uppercase tracking-wider transition duration-200 shadow-lg shadow-verde-ruta/20 focus:outline-none focus:ring-2 focus:ring-verde-ruta focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-azul-noche cursor-pointer">
                             Confirmar inscripción
                         </button>
                     </footer>
@@ -357,44 +362,44 @@
 
     </main>
 
-    <footer class="border-t border-slate-800 bg-slate-950/80 py-8 sm:py-12">
+    <footer class="border-t border-gris-asfalto/20 dark:border-gris-asfalto/40 bg-white/60 dark:bg-black/60 py-8 sm:py-12 transition-colors duration-200">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-start gap-8">
             
             <!-- Bloque 1: Marca y Propósito -->
             <section class="space-y-3 max-w-xs">
-                <a href="#inicio" class="flex items-center gap-2 text-lg font-extrabold text-white tracking-tight">
+                <a href="#inicio" class="flex items-center gap-2 text-lg font-extrabold text-azul-noche dark:text-white tracking-tight font-montserrat">
                     <span aria-hidden="true">🚲</span>
                     <span>Rueda Libre</span>
                 </a>
-                <p class="text-slate-400 text-sm leading-relaxed">
+                <p class="text-gris-asfalto dark:text-crema/80 text-sm leading-relaxed font-open-sans">
                     Campaña oficial Rueda Nocturna. Alquiler de bicicletas y recorridos guiados en Medellín, Colombia.
                 </p>
             </section>
 
             <!-- Bloque 2: Navegación Rápida -->
             <nav aria-label="Navegación del pie" class="space-y-3">
-                <p class="text-xs font-bold uppercase tracking-wider text-white">Navegación</p>
-                <ul class="space-y-2 text-sm text-slate-400 list-none p-0 m-0">
-                    <li><a href="#inicio" class="hover:text-emerald-400 transition">Inicio</a></li>
-                    <li><a href="#rutas" class="hover:text-emerald-400 transition">Rutas nocturnas</a></li>
-                    <li><a href="#como-funciona" class="hover:text-emerald-400 transition">¿Cómo funciona?</a></li>
-                    <li><a href="#inscripcion" class="hover:text-emerald-400 transition">Inscripción</a></li>
+                <p class="text-xs font-bold uppercase tracking-wider text-azul-noche dark:text-white font-montserrat">Navegación</p>
+                <ul class="space-y-2 text-sm text-gris-asfalto dark:text-crema/70 list-none p-0 m-0 font-open-sans">
+                    <li><a href="#inicio" class="hover:text-verde-ruta dark:hover:text-amarillo-farol transition">Inicio</a></li>
+                    <li><a href="#rutas" class="hover:text-verde-ruta dark:hover:text-amarillo-farol transition">Rutas nocturnas</a></li>
+                    <li><a href="#como-funciona" class="hover:text-verde-ruta dark:hover:text-amarillo-farol transition">¿Cómo funciona?</a></li>
+                    <li><a href="#inscripcion" class="hover:text-verde-ruta dark:hover:text-amarillo-farol transition">Inscripción</a></li>
                 </ul>
             </nav>
 
             <!-- Bloque 3: Sede y Horarios -->
-            <section class="space-y-3 text-sm text-slate-400">
-                <p class="text-xs font-bold uppercase tracking-wider text-white">Punto de Partida</p>
+            <section class="space-y-3 text-sm text-gris-asfalto dark:text-crema/80 font-open-sans">
+                <p class="text-xs font-bold uppercase tracking-wider text-azul-noche dark:text-white font-montserrat">Punto de Partida</p>
                 <address class="not-italic space-y-1">
-                    <p class="text-slate-200">Sede Principal Rueda Libre</p>
+                    <p class="text-azul-noche dark:text-crema font-medium">Sede Principal Rueda Libre</p>
                     <p>Medellín, Colombia</p>
-                    <p class="text-emerald-400 font-semibold">Salidas: Jueves a Sábado &middot; 7:00 p. m.</p>
+                    <p class="text-verde-ruta dark:text-amarillo-farol font-semibold">Salidas: Jueves a Sábado &middot; 7:00 p. m.</p>
                 </address>
             </section>
 
         </div>
 
-        <p class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-slate-800/60 mt-8 pt-6 text-center text-xs text-slate-500 m-0">
+        <p class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-gris-asfalto/20 dark:border-gris-asfalto/40 mt-8 pt-6 text-center text-xs text-gris-asfalto dark:text-crema/60 m-0 font-open-sans">
             <small class="text-xs">&copy; 2026 Rueda Libre. Todos los derechos reservados &middot; Campaña Rueda Nocturna</small>
         </p>
     </footer>

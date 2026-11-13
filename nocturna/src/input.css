@@ -1,2 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
+
+@theme {
+  --color-crema: #FAF6EF;
+  --color-azul-noche: #14213D;
+  --color-verde-ruta: #1E7A4F;
+  --color-verde: #1E7A4F;
+  --color-naranja-pedal: #F39A2B;
+  --color-naranja: #F39A2B;
+  --color-gris-asfalto: #5B6470;
+  --color-gris: #5B6470;
+  --color-amarillo-farol: #FFD166;
+  --color-amarillo: #FFD166;
+
+  --font-montserrat: 'Montserrat', sans-serif;
+  --font-open-sans: 'Open Sans', sans-serif;
+}
+
 

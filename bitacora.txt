@@ -1097,3 +1097,58 @@ Fecha: 2026-11-13
 - Pie de página (Footer):
   * Los bloques de información y dirección física se organizaron en elementos <section> y <address>.
   * El texto de derechos reservados se migró a un elemento semántico <p><small>...</small></p>.
+
+
+================================================================================
+SESIÓN: PERSONALIZACIÓN DEL TEMA DE MARCA CON @theme Y MODO OSCURO ACCESIBLE
+Fecha: 2026-11-13
+Objetivo: Configurar el sistema de diseño con los 6 colores corporativos, tipografías institucionales e implementar modo oscuro (prefers-color-scheme).
+================================================================================
+
+1. CONFIGURACIÓN DEL TEMA EN 'nocturna/src/input.css':
+Se definieron las variables institucionales en la directiva @theme de Tailwind v4 y se importaron las fuentes desde Google Fonts:
+- Tipografías:
+  * --font-montserrat: 'Montserrat', sans-serif (Títulos, botones, métricas)
+  * --font-open-sans: 'Open Sans', sans-serif (Cuerpo de texto, párrafos, ayuda de formularios)
+- Paleta Institucional (6 colores con nombres propios):
+  * --color-crema: #FAF6EF (Fondo cálido en modo claro)
+  * --color-azul-noche: #14213D (Color principal de marca y fondo nocturno)
+  * --color-verde-ruta: #1E7A4F (Color de acción principal y éxito)
+  * --color-naranja-pedal: #F39A2B (Acentos y alertas de atención)
+  * --color-gris-asfalto: #5B6470 (Texto secundario y bordes neutros)
+  * --color-amarillo-farol: #FFD166 (Nuevo color de campaña Rueda Nocturna: luz y visibilidad nocturna)
+
+2. SUSTITUCIÓN TOTAL DE COLORES GENÉRICOS:
+Se eliminaron al 100% las utilidades 'slate-*', 'emerald-*', 'amber-*', 'rose-*' y 'sky-*' tanto en 'nocturna/index.html' como en 'nocturna/componentes.html', migrando exclusivamente a la paleta institucional y blanco/negro para transparencias.
+
+3. AUDITORÍA CRÍTICA DE CONTRASTE WCAG (VERDE RUTA SOBRE AZUL NOCHE):
+- Diagnóstico matemático:
+  * Verde Ruta (#1E7A4F) sobre Azul Noche (#14213D) entrega una relación de contraste de solo 3.01:1.
+  * Evaluación: FALLA el umbral mínimo exigido por WCAG AA para texto normal (requiere mínimo 4.5:1).
+- Solución arquitectónica implementada:
+  * NUNCA se utiliza texto 'text-verde-ruta' directamente sobre superficies oscuras ('bg-azul-noche' o tarjetas en modo oscuro).
+  * Los botones principales con fondo 'bg-verde-ruta' llevan texto Blanco (#FFFFFF), logrando 5.31:1 (Cumple WCAG AA).
+  * En modo oscuro, los textos destacados, enlaces y botones de contorno adoptan 'dark:text-amarillo-farol', alcanzando un contraste óptimo de 11.08:1 (Supera ampliamente WCAG AAA).
+
+TABLA DE VALIDACIÓN DE CONTRASTE WCAG:
+| Combinación Evaluada | Color de Texto | Color de Fondo | Ratio de Contraste | Nivel WCAG | Veredicto y Aplicación |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| Texto principal en Claro | Azul Noche (#14213D) | Crema (#FAF6EF) | 14.83:1 | AAA | Aprobado (Excelente legibilidad) |
+| Texto secundario en Claro | Gris Asfalto (#5B6470) | Crema (#FAF6EF) | 5.57:1 | AA | Aprobado (Texto secundario y notas) |
+| Enlaces / Acentos en Claro | Verde Ruta (#1E7A4F) | Crema (#FAF6EF) | 4.93:1 | AA | Aprobado (> 4.5:1) |
+| Botón Principal | Blanco (#FFFFFF) | Verde Ruta (#1E7A4F) | 5.31:1 | AA | Aprobado en ambos modos |
+| Botón Secundario en Claro | Crema (#FAF6EF) | Azul Noche (#14213D) | 14.83:1 | AAA | Aprobado (Máxima nitidez) |
+| Botón Secundario en Oscuro | Azul Noche (#14213D) | Crema (#FAF6EF) | 14.83:1 | AAA | Aprobado (Inversión adaptativa) |
+| **Verde Ruta sobre Azul Noche** | Verde Ruta (#1E7A4F) | Azul Noche (#14213D) | **3.01:1** | **FALLA (< 4.5:1)** | **RECHAZADO / CORREGIDO a Amarillo Farol** |
+| Amarillo Farol en Oscuro | Amarillo Farol (#FFD166) | Azul Noche (#14213D) | 11.08:1 | AAA | Aprobado (Acento nocturno espectacular) |
+| Texto principal en Oscuro | Crema (#FAF6EF) | Azul Noche (#14213D) | 14.83:1 | AAA | Aprobado |
+| Texto secundario en Oscuro | Crema 80% opacidad | Azul Noche (#14213D) | 9.87:1 | AAA | Aprobado (> 7:1) |
+| Alerta Naranja en Oscuro | Naranja Pedal (#F39A2B) | Azul Noche (#14213D) | 7.20:1 | AAA | Aprobado (Máxima visibilidad de advertencia) |
+
+4. COMPORTAMIENTO EN MODO OSCURO (EMULACIÓN DEVTOOLS):
+Al emular 'prefers-color-scheme: dark' en DevTools (Rendering > Emulate CSS media feature prefers-color-scheme):
+- El fondo conmuta fluidamente a 'dark:bg-azul-noche' (#14213D).
+- Las tarjetas adoptan 'dark:bg-black/40' con bordes sutiles 'dark:border-gris-asfalto/40'.
+- Las tipografías de encabezados y métricas se iluminan con 'dark:text-white' y 'dark:text-amarillo-farol'.
+- Los campos de formulario cambian a fondos oscuros translúcidos con foco en 'dark:focus:border-amarillo-farol'.
+- El modo claro original se mantiene idéntico, preservando el fondo Crema (#FAF6EF) y la identidad del sitio principal.
